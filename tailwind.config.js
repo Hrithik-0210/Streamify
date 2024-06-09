@@ -2,7 +2,14 @@
 module.exports = {
   content: ["./src/**/*.js"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        roboto: ["Roboto", "sans-serif"],
+      },
+      colors: {
+        "button-list-color": "#F2F2EF",
+      },
+    },
   },
   plugins: [require("tailwindcss")],
 };
