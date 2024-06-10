@@ -4,8 +4,12 @@ import VideoContainer from "./VideoContainer";
 
 const MainContainer = () => {
   return (
-    <div className="flex flex-col w-5/6">
-      <ButtonList />
+    <div className="flex flex-col w-full ">
+      <div className="overflow-x-hidden  my-2 ">
+        <div className="sticky top-0 z-10 pb-4 ">
+          <ButtonList />
+        </div>
+      </div>
       <VideoContainer />
     </div>
   );
