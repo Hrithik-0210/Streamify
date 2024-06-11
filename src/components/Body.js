@@ -10,21 +10,21 @@ const Body = () => {
   return (
     <div className="flex ">
       {isMenuOpen ? (
-        <div className="w-[6%]">
+        <div className="">
           <SideBar />
         </div>
       ) : (
-        <div className="w-[15%]">
+        <div className="">
           <SideBar />
         </div>
       )}
 
       {isMenuOpen ? (
-        <div className="w-[92%] border border-red-300 px-2 ">
+        <div className="w-[92%]  px-2 ">
           <MainContainer />
         </div>
       ) : (
-        <div className="w-[85%] ">
+        <div className="w-[82%] px-2 ">
           <MainContainer />
         </div>
       )}

@@ -69,7 +69,7 @@ const SideBar = () => {
     );
   else {
     return (
-      <div className="side-bar h-screen inset-0 w-60 overflow-y-scroll ">
+      <div className="side-bar h-screen inset-0 w-56 overflow-y-scroll ">
         {/* <div className="flex  items-center mx-2 pl-3">
           <div>
             <HiBars3

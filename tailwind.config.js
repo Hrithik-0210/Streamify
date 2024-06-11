@@ -8,6 +8,7 @@ module.exports = {
       },
       colors: {
         "button-list-color": "#F2F2EF",
+        "Video-card-color": "#EEEFED",
       },
     },
   },
