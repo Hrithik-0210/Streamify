@@ -32,6 +32,9 @@ body {
   background: #d6d6d6;
 }
 
+.video-container::-webkit-scrollbar {
+  display: none;
+}
 /* .side-bar {
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
   transform: translateX(-100%);
