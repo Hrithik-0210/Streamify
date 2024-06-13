@@ -13,8 +13,21 @@ const VideoCard = ({ items }) => {
   // console.log(info.snippet.localized.title);
   // console.log(info.snippet.thumbnails.standard.url);
 
-  function convertToMilions(viewCount) {
-    return (viewCount / 1000000).toFixed(1) + "M";
+  // function convertToMilions(viewCount) {
+  //   return (viewCount / 1000000).toFixed(1) + "M";
+  // }
+  // function convertToK(viewCount) {
+  //   return Math.round(viewCount / 1000) + "k";
+  // }
+
+  function formatViews(viewCount) {
+    if (viewCount >= 1000000) {
+      return (viewCount / 1000000).toFixed(1) + "M";
+    } else if (viewCount >= 1000) {
+      return Math.round(viewCount / 1000) + "K";
+    } else {
+      return viewCount.toString();
+    }
   }
 
   const isMenuOpen = useSelector((store) => store.menu.isMenuOpen);
@@ -46,13 +59,7 @@ const VideoCard = ({ items }) => {
                   <MdCheckCircle className=" w-[0.8rem] h-[0.8rem]" />
                 </div>
                 <div className="view-and-time flex items-center text-[13px] font-normal text-gray-500">
-                  {viewCount <= 999999 ? (
-                    <div className="views mr-2 ">{viewCount / 1000}k views</div>
-                  ) : (
-                    <div className="views mr-2 ">
-                      {convertToMilions(viewCount)} views
-                    </div>
-                  )}
+                  {formatViews(viewCount)} view
                   <GoDotFill className="w-[0.35rem] h-[0.35rem] mx-[0.4rem]" />
                   <div className="time-ago">2 months ago</div>
                 </div>
@@ -84,13 +91,7 @@ const VideoCard = ({ items }) => {
                   <MdCheckCircle className=" w-[0.8rem] h-[0.8rem]" />
                 </div>
                 <div className="view-and-time flex items-center text-[13px] font-normal text-gray-500">
-                  {viewCount <= 999999 ? (
-                    <div className="views mr-2 ">{viewCount / 1000}k views</div>
-                  ) : (
-                    <div className="views mr-2 ">
-                      {convertToMilions(viewCount)} views
-                    </div>
-                  )}
+                  {formatViews(viewCount)} view
                   <GoDotFill className="w-[0.35rem] h-[0.35rem] mx-[0.4rem]" />
                   <div className="time-ago">2 months ago</div>
                 </div>
