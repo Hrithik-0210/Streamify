@@ -30,6 +30,7 @@ import { IoMdHelpCircleOutline } from "react-icons/io";
 import { RiFeedbackLine } from "react-icons/ri";
 import { useSelector } from "react-redux";
 import { HiMiniSignal } from "react-icons/hi2";
+import { NavLink } from "react-router-dom";
 // import { toggleMenu } from "../utils/menuBarSlice";
 // import logo from "../images/YouTube_Logo_2017.svg.png";
 
@@ -41,28 +42,67 @@ const SideBar = () => {
   // };
 
   const isMenuOpen = useSelector((store) => store.menu.isMenuOpen);
-  console.log(isMenuOpen);
+  // console.log(isMenuOpen);
   if (isMenuOpen)
     return (
       <div className=" h-screen relative">
-        <div className="flex flex-col fixed top-14 left-0 z-10">
+        <div className="flex flex-col fixed top-16 left-0 z-10 ">
           <ul className="flex flex-col mx-2 my-2">
-            <li className="flex flex-col items-center hover:bg-stone-100 px-2 py-3 rounded-lg">
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                `${
+                  isActive
+                    ? "bg-gray-100 flex flex-col items-center px-2 py-3 rounded-lg"
+                    : "bg-white flex flex-col items-center px-2 py-3 rounded-lg"
+                } hover:bg-gray-100 my-1`
+              }
+            >
               <GoHome className="w-5 h-5" />
               <h2 className="text-[10px] my-1">Home</h2>
-            </li>
-            <li className="flex flex-col items-center hover:bg-stone-100 px-2 py-3 rounded-lg">
-              <SiYoutubeshorts className="mx-2 w-5 h-5" />
+            </NavLink>
+
+            <NavLink
+              to="/shorts"
+              className={({ isActive }) =>
+                `${
+                  isActive
+                    ? "bg-gray-100 flex flex-col items-center px-2 py-3 rounded-lg"
+                    : "bg-white flex flex-col items-center px-2 py-3 rounded-lg"
+                } hover:bg-gray-100 my-1`
+              }
+            >
+              <SiYoutubeshorts className="w-5 h-5" />
               <h2 className="text-[10px] my-1">Shorts</h2>
-            </li>
-            <li className="flex flex-col items-center hover:bg-stone-100 px-2 py-3 rounded-lg">
+            </NavLink>
+
+            <NavLink
+              to="/subscriptions"
+              className={({ isActive }) =>
+                `${
+                  isActive
+                    ? "bg-gray-100 flex flex-col items-center px-2 py-3 rounded-lg"
+                    : "bg-white flex flex-col items-center px-2 py-3 rounded-lg"
+                } hover:bg-gray-100 my-1`
+              }
+            >
               <MdOutlineSubscriptions className="mx-2 w-5 h-5" />
               <h2 className="text-[10px] my-1">Subscriptions</h2>
-            </li>
-            <li className="flex flex-col items-center hover:bg-stone-100 px-2 py-3 rounded-lg">
+            </NavLink>
+
+            <NavLink
+              to="/you"
+              className={({ isActive }) =>
+                `${
+                  isActive
+                    ? "bg-gray-100 flex flex-col items-center px-2 py-3 rounded-lg"
+                    : "bg-white flex flex-col items-center px-2 py-3 rounded-lg"
+                } hover:bg-gray-100 my-1`
+              }
+            >
               <MdOutlineVideoLibrary className="mx-2 w-5 h-5" />
               <h2 className="text-[10px] my-1">You</h2>
-            </li>
+            </NavLink>
           </ul>
         </div>
       </div>
@@ -70,21 +110,49 @@ const SideBar = () => {
   else {
     return (
       <div className="relative">
-        <div className="side-bar h-screen w-56 overflow-y-scroll flex flex-col fixed top-14 left-0 z-10">
+        <div className="side-bar h-screen bg-white w-56 overflow-y-scroll flex flex-col fixed top-16 left-0 z-10">
           <div className="Section-1 border-b border-gray-300 mx-2 ">
             <ul className=" mx-2 mb-2 mt-1">
-              <li className="flex items-center text-[14px] py-2 pl-2  hover:bg-gray-100 hover:rounded-xl ">
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  `  ${
+                    isActive
+                      ? "bg-gray-100 flex items-center text-[14px]  py-2 pl-2 rounded-xl font-medium"
+                      : "bg-white flex items-center text-[14px]  py-2 pl-2"
+                  } hover:bg-gray-100 hover:rounded-xl my-1 `
+                }
+              >
                 <GoHome className="mx-2 w-4 h-4" />
                 <h2 className="mx-3">Home</h2>
-              </li>
-              <li className="flex items-center text-[14px] py-2 pl-2  hover:bg-gray-100 hover:rounded-xl">
+              </NavLink>
+              <NavLink
+                to="/shorts"
+                className={({ isActive }) =>
+                  `  ${
+                    isActive
+                      ? "bg-gray-200 flex items-center text-[14px]  py-2 pl-2 rounded-xl font-medium"
+                      : "bg-white flex items-center text-[14px]  py-2 pl-2"
+                  } hover:bg-gray-100 hover:rounded-xl my-1 `
+                }
+              >
                 <SiYoutubeshorts className="mx-2 w-4 h-4" />
                 <h2 className="mx-3">Shorts</h2>
-              </li>
-              <li className="flex items-center text-[14px] py-2 pl-2  hover:bg-gray-100 hover:rounded-xl">
+              </NavLink>
+
+              <NavLink
+                to="/shorts"
+                className={({ isActive }) =>
+                  `  ${
+                    isActive
+                      ? "bg-gray-100 flex items-center text-[14px]  py-2 pl-2 rounded-xl font-medium"
+                      : "bg-white flex items-center text-[14px]  py-2 pl-2"
+                  } hover:bg-gray-100 hover:rounded-xl my-1 `
+                }
+              >
                 <MdOutlineSubscriptions className="mx-2 w-4 h-4" />
                 <h2 className="mx-3">Subscriptions</h2>
-              </li>
+              </NavLink>
             </ul>
           </div>
           <div className="Section-2 border-b border-gray-300 mx-2 ">

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../images/YouTube_Logo_2017.svg.png";
 import { CiSearch } from "react-icons/ci";
 import { HiBars3 } from "react-icons/hi2";
@@ -6,13 +6,57 @@ import { FaUserAlt } from "react-icons/fa";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { RiVideoAddLine } from "react-icons/ri";
 import { BiSolidMicrophone } from "react-icons/bi";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/menuBarSlice";
+import { YOUTUBE_SEARCH_API } from "../utils/Constants";
+import { cacheResults } from "../utils/searchSlice";
+import store from "../utils/store";
 
 const Header = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [suggestion, setSuggestion] = useState([]);
+  const [showSuggestion, setShowSuggestion] = useState(false);
+
+  console.log(searchQuery);
+
+  const searchCache = useSelector((store) => store.search);
   const dispatch = useDispatch();
+
+  /**
+   * searchCache   = {
+   *  "iphone":["iphone 11" , "iphone 14"]
+   * }
+   * searchQuery = iphone
+   *
+   */
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (searchCache[searchQuery]) {
+        setSuggestion(searchCache[searchQuery]);
+      } else {
+        showSuggestions();
+      }
+    }, 200);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [searchQuery]);
+
+  const showSuggestions = async () => {
+    const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
+    const jsonData = await data.json();
+    setSuggestion(jsonData[1]);
+    dispatch(
+      cacheResults({
+        [searchQuery]: jsonData[1],
+      })
+    );
+    console.log(jsonData[1]);
+  };
+
   const toggleMenuHandler = () => {
-    console.log("dispatched");
+    // console.log("dispatched");
     dispatch(toggleMenu());
   };
 
@@ -28,31 +72,52 @@ const Header = () => {
           />
         </div>
         <div className="relative pr-2">
-          <img src={logo} alt="logo" className="w-[5.5rem] h-5 rounded mx-2" />
+          <img src={logo} alt="logo" className="w-20 h-[1.1rem] rounded mx-2" />
           <p className="absolute right-0 -top-1   font-sans text-[10px]">IN</p>
         </div>
       </div>
 
       {/* Middle-Container - search*/}
-      <div className=" w-1/3  md:w-1/2 flex ">
-        <form className="searchBox-Container w-full">
-          <div className="">
-            <input
-              type="search"
-              placeholder="Search"
-              className="w-full py-2 px-4 rounded-l-full  focus:outline-none font-sans text-sm border border-gray-400"
-            />
-          </div>
-        </form>
-        <div className="flex items-center justify-center py-1 px-4 bg-gray-100 rounded-e-full border border-gray-400 border-l-0">
-          <button>
-            <CiSearch className="w-5 h-5" />
-          </button>
-        </div>
+      <div className=" w-1/3  md:w-[40%]  flex flex-col">
+        <div className=" w-full   flex ">
+          <form className="searchBox-Container w-full ">
+            <div className="">
+              <input
+                type="search"
+                placeholder="Search"
+                className="w-full py-2 px-4 rounded-l-full  focus:outline-none font-sans text-sm border border-gray-400"
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onFocus={() => setShowSuggestion(true)}
+                onBlur={() => setShowSuggestion(false)}
+              />
+            </div>
+          </form>
 
-        <div className="microphone-icon bg-gray-100 flex items-center mx-3 rounded-full p-2">
-          <BiSolidMicrophone className="w-5 h-5" />
+          <div className="flex items-center justify-center py-1 px-4 bg-gray-100 rounded-e-full border border-gray-400 border-l-0">
+            <button>
+              <CiSearch className="w-5 h-5" />
+            </button>
+          </div>
+
+          <div className="microphone-icon bg-gray-100 flex items-center mx-3 rounded-full p-2">
+            <BiSolidMicrophone className="w-5 h-5" />
+          </div>
         </div>
+        {showSuggestion &&
+          (suggestion.length === 0 ? (
+            " "
+          ) : (
+            <div className="absolute top-[3.2rem] bg-white w-1/3   py-2 shadow-md shadow-gray-300 borderborder-gray-200 rounded-2xl">
+              <ul>
+                {suggestion.map((suggestion) => (
+                  <li className="flex items-center gap-3 hover:bg-gray-200 px-4 py-[0.30rem] ">
+                    <CiSearch className="w-4 h-4" />
+                    <p className="text-sm font-medium">{suggestion}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
       </div>
 
       {/* Right-side-Container - userinfo*/}
