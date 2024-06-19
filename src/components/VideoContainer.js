@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { YOUTUBE_VIDEO_API } from "../utils/Constants";
 import VideoCard from "./VideoCard";
 import { Link } from "react-router-dom";
-import { Shimmer } from "./Shimmer";
+import { ShimmerMenu } from "./Shimmer";
 // import { useDispatch } from "react-redux";
 // import { closeMenu } from "../utils/menuBarSlice";
 
@@ -22,7 +22,7 @@ const VideoContainer = () => {
 
   console.log(videos.length);
   if (videos?.length === 0) {
-    return <Shimmer />;
+    return <ShimmerMenu />;
   } else {
     return (
       // <div className="relative">

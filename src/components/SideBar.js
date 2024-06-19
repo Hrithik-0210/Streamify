@@ -109,7 +109,7 @@ const SideBar = () => {
     );
   else {
     return (
-      <div className="relative">
+      <div className="absolute">
         <div className="side-bar h-screen bg-white w-56 overflow-y-scroll flex flex-col fixed top-16 left-0 z-10">
           <div className="Section-1 border-b border-gray-300 mx-2 ">
             <ul className=" mx-2 mb-2 mt-1">

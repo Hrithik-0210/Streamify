@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { closeMenu } from "../utils/menuBarSlice";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { TiSocialYoutubeCircular } from "react-icons/ti";
 import { MdCheckCircle } from "react-icons/md";
-import { Shimmer } from "./Shimmer";
+import { ShimmerMenu, WatchPageShimmer } from "./Shimmer";
 import { AiOutlineLike } from "react-icons/ai";
 import { BiDislike } from "react-icons/bi";
 import { PiShareFatThin } from "react-icons/pi";
@@ -82,25 +82,23 @@ const WatchPage = () => {
   }
 
   if (videoDetails?.length === 0) {
-    return <Shimmer />;
+    return <WatchPageShimmer />;
   } else {
     const { snippet, statistics } = videoDetails;
-    const { channelTitle, title, thumbnails, publishedAt, description } =
-      snippet;
+    const { channelTitle, title, publishedAt, description } = snippet;
     const { viewCount, likeCount, commentCount } = statistics;
     return (
-      <div className="relative border-2 border-blue-500 w-[96svw]">
-        <div className="absolute top-20 left-20 rounded-xl">
+      <div className="absolute top-20 left-24  w-[92svw] flex ">
+        <div className=" rounded-xl   w-[920px] h-fit">
           <iframe
-            width="1280"
-            height="720"
+            width="920px"
             src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
             title="Kannappa Official Teaser Telugu | Vishnu Manchu | Mohan Babu | Prabhas | Mohanlal | Akshay Kumar"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen="allowfullscreen"
-            className="rounded-xl"
+            className="rounded-xl  h-[35rem]"
           ></iframe>
           <div className="flex flex-col ">
             <div className="mt-2 p-1  text-base font-semibold">{title}</div>
@@ -161,7 +159,7 @@ const WatchPage = () => {
               </div>
             </div>
           </div>
-          <div className="description-container bg-gray-100 rounded-xl mt-2 p-2 w-[1280px] flex flex-col ">
+          <div className="description-container bg-gray-100 rounded-xl mt-2 p-2 w-full flex flex-col  ">
             <div className="view-container  flex items-center gap-2 ">
               <p className="text-xs font-semibold text-gray-700">
                 {formatViews(viewCount)} views
@@ -187,16 +185,19 @@ const WatchPage = () => {
             </div>
           </div>
 
-          <div className="comment-section mt-5"></div>
-          <CommentContainer comment={[commentCount, GOOGLE_API_KEY]} />
+          <div className="comment-section mt-5 w-full ">
+            <CommentContainer comment={[commentCount, GOOGLE_API_KEY]} />
+          </div>
         </div>
 
         {sideVideo?.length === 0 ? (
-          <Shimmer />
+          <WatchPageShimmer />
         ) : (
-          <div className="absolute top-20 right-4">
+          <div className=" absolute right-0 w-fit">
             {sideVideo.map((video) => (
-              <SideVideoCard items={video} />
+              <Link to={"/watch?v=" + video.id} key={video.id}>
+                <SideVideoCard items={video} />
+              </Link>
             ))}
           </div>
         )}

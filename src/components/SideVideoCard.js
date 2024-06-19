@@ -62,7 +62,7 @@ const SideVideoCard = ({ items }) => {
                 <div className="view-and-time flex items-center text-[13px] font-normal text-gray-500">
                   {formatViews(viewCount)} view
                   <GoDotFill className="w-[0.35rem] h-[0.35rem] mx-[0.4rem]" />
-                  <div className="time-ago">2 months ago</div>
+                  <div className="time-ago">{publishTime(publishedAt)}</div>
                 </div>
               </div>
             </div>
@@ -72,27 +72,26 @@ const SideVideoCard = ({ items }) => {
           </div>
         </div>
       ) : (
-        <div className="video-card-container group w-fit my-2 px-2 py-3 rounded-2xl hover:bg-Video-card-color transition ease-linear delay-150 duration-200  ">
-          <div className="video-card w-64 ">
-            <div className="thumbnail-continer rounded-2xl">
+        <div className="video-card-container group w-fit my-1 px-2 rounded-2xl  transition ease-linear delay-150  duration-200 ">
+          <div className="video-card w-[23rem] h-fit transition ease-linear  grid grid-flow-col  gap-2">
+            <div className="thumbnail-container rounded-2xl  h-[5.5rem]  col-span-7 items-center">
               <img
                 src={thumbnails.medium.url}
                 alt="thumbnail"
-                className="rounded-xl group-hover:rounded-sm transition-all delay-100 w-full"
+                className="rounded-xl  transition-all delay-100 w-full h-full "
               />
             </div>
-            <div className="video-details flex py-2 font-medium w-full">
-              <div className="channel-logo w-10 h-10 rounded-full flex items-center mr-3">
-                <TiSocialYoutubeCircular className="w-full h-full" />
-              </div>
+            <div className="video-details flex  h-24  font-medium col-span-5">
               <div className="channel-details flex flex-col overflow-hidden ">
-                <div className="title text-sm my-1  line-clamp-2">{title}</div>
+                <div className="title text-xs mt-1 mb-2 line-clamp-2">
+                  {title}
+                </div>
 
                 <div className="check-logo flex gap-1 items-center font-normal">
                   <div className="channelName text-[13px] text-gray-500">
                     {channelTitle}
                   </div>
-                  <MdCheckCircle className=" w-[0.8rem] h-[0.8rem] text-gray-500" />
+                  <PiCheckCircleDuotone className=" w-[0.8rem] h-[0.8rem]" />
                 </div>
                 <div className="view-and-time flex items-center text-[13px] font-normal text-gray-500">
                   {formatViews(viewCount)} view
@@ -100,6 +99,9 @@ const SideVideoCard = ({ items }) => {
                   <div className="time-ago">{publishTime(publishedAt)}</div>
                 </div>
               </div>
+            </div>
+            <div className="flex items-start my-2 ">
+              <BsThreeDots className="rotate-90 " />
             </div>
           </div>
         </div>
