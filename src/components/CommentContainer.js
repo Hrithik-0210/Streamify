@@ -42,8 +42,8 @@ const CommentContainer = ({ comment }) => {
 
   return (
     <div>
-      <div className="comment-count flex gap-10 items-center">
-        <h1 className="text-xl font-semibold">{commentCount}</h1>
+      <div className="comment-count flex gap-10 items-center mb-5">
+        <h1 className="text-xl font-semibold">{commentCount} Comments</h1>
         <div className="flex gap-2 items-center">
           <MdOutlineSort className="w-7 h-8" />
           <p className="text-sm text-gray-800 font-medium">Sort by</p>

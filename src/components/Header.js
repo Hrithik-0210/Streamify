@@ -109,10 +109,13 @@ const Header = () => {
           ) : (
             <div className="absolute top-[3.2rem] bg-white w-1/3   py-2 shadow-md shadow-gray-300 borderborder-gray-200 rounded-2xl">
               <ul>
-                {suggestion.map((suggestion) => (
-                  <li className="flex items-center gap-3 hover:bg-gray-200 px-4 py-[0.30rem] ">
+                {suggestion.map((suggest) => (
+                  <li
+                    className="flex items-center gap-3 hover:bg-gray-200 px-4 py-[0.30rem] "
+                    onClick={() => setSearchQuery(suggest)}
+                  >
                     <CiSearch className="w-4 h-4" />
-                    <p className="text-sm font-medium">{suggestion}</p>
+                    <p className="text-sm font-medium">{suggest}</p>
                   </li>
                 ))}
               </ul>

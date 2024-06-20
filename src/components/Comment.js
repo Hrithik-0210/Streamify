@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { AiOutlineLike } from "react-icons/ai";
 import { BiDislike } from "react-icons/bi";
-import { MdOutlineSort } from "react-icons/md";
+// import { MdOutlineSort } from "react-icons/md";
 
 const Comment = ({ item }) => {
   const [userProfile, setUserProfile] = useState();
 
-  console.log(item);
+  console.log(userProfile);
   const {
     authorDisplayName,
     authorProfileImageUrl,
@@ -40,7 +40,11 @@ const Comment = ({ item }) => {
   return (
     <div className="comment-container flex gap-3  ">
       <div className="image-container flex items-start ">
-        <img src={userProfile} alt="" className="w-9 h-9 rounded-full" />
+        <img
+          src={userProfile}
+          alt="userPicture"
+          className="w-9 h-9 rounded-full"
+        />
       </div>
 
       <div className="flex flex-col gap-1   ">

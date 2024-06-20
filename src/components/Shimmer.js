@@ -1,8 +1,6 @@
 export const ShimmerMenu = () => {
   return (
     <div data-testid="shimmer" className="flex flex-row flex-wrap gap-4 mx-3  ">
-      {console.log("shimmer loading")}
-
       {Array(12)
         .fill("")
         .map((e) => (
