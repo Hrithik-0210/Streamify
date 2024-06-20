@@ -4,7 +4,7 @@ export const ShimmerMenu = () => {
       {Array(12)
         .fill("")
         .map((e) => (
-          <div className="w-[17rem] h-[17rem] bg-stone-50 flex gap-2 shadow-lg rounded-lg border mt-5"></div>
+          <div className="w-72 h-[17rem] bg-stone-50 flex gap-2 shadow-lg rounded-lg border mt-5"></div>
         ))}
     </div>
   );

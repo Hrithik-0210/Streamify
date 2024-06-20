@@ -89,16 +89,16 @@ const WatchPage = () => {
     const { viewCount, likeCount, commentCount } = statistics;
     return (
       <div className="absolute top-20 left-24  w-[92svw] flex ">
-        <div className=" rounded-xl   w-[920px] h-fit">
+        <div className=" rounded-xl   w-[74%] h-fit">
           <iframe
-            width="920px"
+            width="100%"
             src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
             title="Kannappa Official Teaser Telugu | Vishnu Manchu | Mohan Babu | Prabhas | Mohanlal | Akshay Kumar"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen="allowfullscreen"
-            className="rounded-xl  h-[35rem]"
+            className="rounded-xl  h-[40rem]"
           ></iframe>
           <div className="flex flex-col ">
             <div className="mt-2 p-1  text-base font-semibold">{title}</div>

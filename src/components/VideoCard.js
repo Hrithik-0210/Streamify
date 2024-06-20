@@ -47,7 +47,7 @@ const VideoCard = ({ items }) => {
             </div>
             <div className="video-details flex py-2 font-medium">
               <div className="channel-logo  flex items-center mr-3">
-                <TiSocialYoutubeCircular className="w-20 h-20 rounded-full" />
+                <TiSocialYoutubeCircular className="w-10 h-10 rounded-full" />
               </div>
               <div className="channel-details flex flex-col overflow-hidden ">
                 <div className="title text-sm my-1 line-clamp-2">{title}</div>
