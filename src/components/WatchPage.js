@@ -57,8 +57,8 @@ const WatchPage = () => {
     setSideVideos(jsonData.items);
   };
 
-  console.log(videoDetails);
-  console.log(sideVideo.length);
+  // console.log(videoDetails);
+  // console.log(sideVideo.length);
 
   function formatViews(viewCount) {
     if (viewCount >= 1000000) {

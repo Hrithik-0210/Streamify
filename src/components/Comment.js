@@ -6,7 +6,7 @@ import { BiDislike } from "react-icons/bi";
 const Comment = ({ item }) => {
   const [userProfile, setUserProfile] = useState();
 
-  console.log(userProfile);
+  // console.log(userProfile);
   const {
     authorDisplayName,
     authorProfileImageUrl,
@@ -53,12 +53,12 @@ const Comment = ({ item }) => {
           <p className="text-xs text-gray-600">{publishTime(publishedAt)}</p>
         </div>
         <div className="text-xs font-normal">
-          <p className="text-sm">{textDisplay}</p>
+          <p className="text-xs">{textDisplay}</p>
         </div>
         <div className="comment-like-unlike flex gap-3">
           <div className="flex">
             <AiOutlineLike className="w-5 h-5" />
-            <p className="text-xs text-gray-400">{likeCount}</p>
+            <p className="text-xs text-gray-500 mx-1">{likeCount}</p>
           </div>
           <BiDislike className="w-[1.15rem] h-[1.15rem]  text-gray-700" />
         </div>

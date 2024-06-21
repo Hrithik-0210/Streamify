@@ -11,13 +11,15 @@ import { toggleMenu } from "../utils/menuBarSlice";
 import { YOUTUBE_SEARCH_API } from "../utils/Constants";
 import { cacheResults } from "../utils/searchSlice";
 import store from "../utils/store";
+import { Link } from "react-router-dom";
+// import SearchBox from "./SearchBox";
+// import SuggestionListBox from "./SuggestionListBox";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [suggestion, setSuggestion] = useState([]);
+  const [suggestions, setSuggestions] = useState([]);
   const [showSuggestion, setShowSuggestion] = useState(false);
-
-  console.log(searchQuery);
+  // console.log(searchQuery);
 
   const searchCache = useSelector((store) => store.search);
   const dispatch = useDispatch();
@@ -33,7 +35,7 @@ const Header = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       if (searchCache[searchQuery]) {
-        setSuggestion(searchCache[searchQuery]);
+        setSuggestions(searchCache[searchQuery]);
       } else {
         showSuggestions();
       }
@@ -46,20 +48,31 @@ const Header = () => {
   const showSuggestions = async () => {
     const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
     const jsonData = await data.json();
-    setSuggestion(jsonData[1]);
+    setSuggestions(jsonData[1]);
     dispatch(
       cacheResults({
         [searchQuery]: jsonData[1],
       })
     );
-    console.log(jsonData[1]);
+    // console.log(jsonData[1]);
   };
+
+  // const searchVideo = async () => {
+  //   const data = await fetch(VIDEO_SEARCH_API);
+  //   const jsonData = await data.json();
+  //   console.log(jsonData);
+  // };
 
   const toggleMenuHandler = () => {
     // console.log("dispatched");
     dispatch(toggleMenu());
   };
 
+  // const handleOnClick = (suggestion) => {
+  //   console.log("clicked suggestion : ", suggestion);
+  //   setSearchQuery(suggestion);
+  //   setShowSuggestion(false);
+  // };
   return (
     // Header-Container
     <div className="flex  px-5 py-2 justify-between items-center w-full h-16 fixed top-0 left-0 z-50 bg-white ">
@@ -78,7 +91,8 @@ const Header = () => {
       </div>
 
       {/* Middle-Container - search*/}
-      <div className=" w-1/3  md:w-[40%]  flex flex-col">
+
+      <div className=" w-1/3  md:w-[40%]  flex  ">
         <div className=" w-full   flex ">
           <input
             type="search"
@@ -86,34 +100,41 @@ const Header = () => {
             value={searchQuery}
             className="w-full py-2 px-4 rounded-l-full  focus:outline-none font-sans text-sm border border-gray-400"
             onChange={(e) => setSearchQuery(e.target.value)}
+            onClick={(e) => console.log(searchQuery)}
             onFocus={() => setShowSuggestion(true)}
             onBlur={() => setShowSuggestion(false)}
           />
-
-          <div className="flex items-center justify-center py-1 px-4 bg-gray-100 rounded-e-full border border-gray-400 border-l-0">
-            <button>
-              <CiSearch className="w-5 h-5" />
-            </button>
-          </div>
-
-          <div className="microphone-icon bg-gray-100 flex items-center mx-3 rounded-full p-2">
-            <BiSolidMicrophone className="w-5 h-5" />
-          </div>
         </div>
+        {/* <div>
+          <Link to={"/results"}> */}
+        <div className="flex items-center justify-center py-1 px-4 bg-gray-100 rounded-e-full border border-red-400 border-l-0">
+          <button>
+            <CiSearch className="w-5 h-5" />
+          </button>
+        </div>
+        {/* </Link>
+        </div> */}
+
+        {/* <div className="microphone-icon bg-gray-100 flex items-center mx-3 rounded-full p-2">
+          <BiSolidMicrophone className="w-5 h-5" />
+        </div> */}
+      </div>
+      <div className="absolute top-[3.15rem] left-[31%]   w-1/3 md:w-[33%]  flex flex-col ">
         {showSuggestion &&
-          (suggestion.length === 0 ? (
+          (suggestions.length === 0 ? (
             " "
           ) : (
-            <div className="absolute top-[3.2rem] bg-white w-1/3   py-2 shadow-md shadow-gray-300 borderborder-gray-200 rounded-2xl">
-              <ul>
-                {suggestion.map((suggest, index) => (
+            <div className=" bg-white    py-2 shadow-md shadow-gray-300 borderborder-gray-200 rounded-2xl">
+              <ul onClick={console.log(suggestions)}>
+                {suggestions.map((suggestion, index) => (
                   <li
                     key={index}
-                    className="flex items-center gap-3 hover:bg-gray-200 px-4 py-[0.30rem] border-2 "
-                    onClick={() => setSearchQuery()}
+                    className="flex items-center gap-3 hover:bg-gray-200 px-4 py-[0.30rem] "
                   >
                     <CiSearch className="w-4 h-4" />
-                    <p className="text-sm font-medium">{suggest}</p>
+                    <p className="text-sm font-medium cursor-pointer">
+                      {suggestion}
+                    </p>
                   </li>
                 ))}
               </ul>

@@ -3,10 +3,14 @@ import "./App.css";
 import Body from "./components/Body";
 import Header from "./components/Header";
 import store from "./utils/store";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  BrowserRouter,
+  RouterProvider,
+  createBrowserRouter,
+} from "react-router-dom";
 import MainContainer from "./components/MainContainer";
 import WatchPage from "./components/WatchPage";
-// import { Router } from "react-router-dom";
+import SearchVideoContainer from "./components/SearchVideoContainer";
 
 const appRouter = createBrowserRouter([
   {
@@ -18,8 +22,12 @@ const appRouter = createBrowserRouter([
         element: <MainContainer />,
       },
       {
-        path: "watch",
+        path: "/watch",
         element: <WatchPage />,
+      },
+      {
+        path: "/results",
+        element: <SearchVideoContainer />,
       },
     ],
   },

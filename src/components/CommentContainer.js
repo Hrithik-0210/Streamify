@@ -38,7 +38,7 @@ const CommentContainer = ({ comment }) => {
   const commentDetails = comments.map(
     (coment) => coment.snippet.topLevelComment.snippet
   );
-  console.log(commentDetails[0]);
+  // console.log(commentDetails[0]);
 
   return (
     <div>
