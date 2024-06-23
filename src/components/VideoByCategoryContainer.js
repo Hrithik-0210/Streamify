@@ -39,7 +39,7 @@ const VideoByCategoryContainer = () => {
             <div className="overflow-x-hidden overflow-y-hidden my-1  fixed top-14 left-24 w-[93%] z-50 bg-white py-1 ">
               <ButtonList />
             </div>
-            <div className="flex flex-wrap  justify-normal  absolute top-10 left-5">
+            <div className="flex flex-wrap  justify-center  absolute top-10 ">
               {searchVideo.map((video) => (
                 <>
                   {video.id.videoId ? (
@@ -66,7 +66,7 @@ const VideoByCategoryContainer = () => {
               <ButtonList />
             </div>
             <div className="relative">
-              <div className="flex flex-wrap gap-1 justify-normal  absolute top-10 left-5 ">
+              <div className="flex flex-wrap gap-1 justify-center  absolute top-10  ">
                 {searchVideo.map((video) => (
                   <>
                     {video.id.videoId ? (

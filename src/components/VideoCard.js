@@ -69,7 +69,7 @@ const VideoCard = ({ items }) => {
         </div>
       ) : (
         <div className="video-card-container group w-fit my-2 px-2 py-3 rounded-2xl hover:bg-Video-card-color transition ease-linear delay-150 duration-200  ">
-          <div className="video-card w-64 ">
+          <div className="video-card w-[16.5rem] ">
             <div className="thumbnail-continer rounded-2xl">
               <img
                 src={thumbnails.medium.url}

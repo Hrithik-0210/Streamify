@@ -10,7 +10,7 @@ import store from "../utils/store";
 const Comment = ({ item }) => {
   const [userProfile, setUserProfile] = useState();
   const [replyUserProfiles, setReplyUserProfiles] = useState([]);
-  console.log(item);
+  // console.log(item);
 
   const {
     snippet: {
@@ -28,7 +28,7 @@ const Comment = ({ item }) => {
     videoId,
   } = snippet;
 
-  console.log(replies?.comments);
+  // console.log(replies?.comments);
   // const hasReplies = replies && replies.comments && replies.comments.length > 0;
 
   useEffect(() => {
@@ -83,11 +83,11 @@ const Comment = ({ item }) => {
   const dispatch = useDispatch();
   const handleReplies = () => {
     dispatch(toggleReply());
-    console.log("dispatched");
+    // console.log("dispatched");
   };
 
   const isReplyOpen = useSelector((store) => store.comment.isReplyOpen);
-  console.log(isReplyOpen);
+  // console.log(isReplyOpen);
 
   return (
     <div className="comment-container grid grid-flow-col grid-cols-12  w-full overflow-hidden ">

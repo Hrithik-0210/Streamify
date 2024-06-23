@@ -4,7 +4,7 @@ import { closeMenu } from "../utils/menuBarSlice";
 import { Link, useSearchParams } from "react-router-dom";
 import { TiSocialYoutubeCircular } from "react-icons/ti";
 import { MdCheckCircle } from "react-icons/md";
-import { ShimmerMenu, WatchPageShimmer } from "./Shimmer";
+import { WatchPageShimmer } from "./Shimmer";
 import { AiOutlineLike } from "react-icons/ai";
 import { BiDislike } from "react-icons/bi";
 import { PiShareFatThin } from "react-icons/pi";
@@ -16,6 +16,7 @@ import "../App.css";
 import { YOUTUBE_VIDEO_API } from "../utils/Constants";
 import SideVideoCard from "./SideVideoCard";
 import CommentContainer from "./CommentContainer";
+import SubscriberCount from "./SubscriberCount";
 // import { G } from "../utils/Constants";
 
 const WatchPage = () => {
@@ -57,9 +58,8 @@ const WatchPage = () => {
     setSideVideos(jsonData.items);
   };
 
-  // console.log(videoDetails);
-  // console.log(sideVideo.length);
-
+  const channelId = videoDetails?.snippet?.channelId;
+  console.log(channelId);
   function formatViews(viewCount) {
     if (viewCount >= 1000000) {
       return (viewCount / 1000000).toFixed(1) + "M";
@@ -114,7 +114,7 @@ const WatchPage = () => {
                   </div>
 
                   <div className="flex items-center text-[11.5px] text-gray-600">
-                    <p> {formatViews(likeCount)} subscribers</p>
+                    <SubscriberCount item={channelId} />
                   </div>
                 </div>
                 <button className="text-white text-xs bg-gray-900 rounded-2xl py-[0.45rem] px-4 w-fit h-fit mx-4">

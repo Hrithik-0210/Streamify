@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const commentSlice = createSlice({
   name: "comment",
   initialState: {
-    isReplyOpen: true,
+    isReplyOpen: false,
   },
   reducers: {
     toggleReply: (state) => {
