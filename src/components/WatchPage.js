@@ -59,7 +59,7 @@ const WatchPage = () => {
   };
 
   const channelId = videoDetails?.snippet?.channelId;
-  console.log(channelId);
+  // console.log(channelId);
   function formatViews(viewCount) {
     if (viewCount >= 1000000) {
       return (viewCount / 1000000).toFixed(1) + "M";
