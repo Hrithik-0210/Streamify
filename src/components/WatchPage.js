@@ -35,9 +35,9 @@ const WatchPage = () => {
     dispatch(closeMenu());
     getVideoDetails();
     getSideVideos();
-  }, []);
+  }, [videoId]);
 
-  const GOOGLE_API_KEY = "AIzaSyDQxe2JtqmJk8KxOqk0HjVHfNIRJELhR6k";
+  const GOOGLE_API_KEY = "AIzaSyBLF0MK468DY-dvJm18-MZIZ-FkRmhkztU";
   const VIDEO_DETAILS =
     "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=" +
     videoId +
@@ -88,8 +88,8 @@ const WatchPage = () => {
     const { channelTitle, title, publishedAt, description } = snippet;
     const { viewCount, likeCount, commentCount } = statistics;
     return (
-      <div className="absolute top-20 left-24  w-[92svw] flex ">
-        <div className=" rounded-xl   w-[74%] h-fit">
+      <div className="absolute top-20 left-28  w-[92svw] flex ">
+        <div className=" rounded-xl   w-[72%] h-fit">
           <iframe
             width="100%"
             src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
@@ -185,7 +185,7 @@ const WatchPage = () => {
             </div>
           </div>
 
-          <div className="comment-section mt-5 w-full ">
+          <div className="comment-section mt-5 w-full  ">
             <CommentContainer comment={[commentCount, GOOGLE_API_KEY]} />
           </div>
         </div>
@@ -193,7 +193,7 @@ const WatchPage = () => {
         {sideVideo?.length === 0 ? (
           <WatchPageShimmer />
         ) : (
-          <div className=" absolute right-0 w-fit">
+          <div className=" absolute right-7 w-[25%]">
             {sideVideo.map((video) => (
               <Link to={"/watch?v=" + video.id} key={video.id}>
                 <SideVideoCard items={video} />

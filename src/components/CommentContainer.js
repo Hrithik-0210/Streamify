@@ -12,22 +12,22 @@ const CommentContainer = ({ comment }) => {
   const [searchParams] = useSearchParams();
   const videoId = searchParams.get("v");
 
-  const COMMENT_API = `https://www.googleapis.com/youtube/v3/commentThreads?key=${GOOGLE_API_KEY}&textFormat=plainText&part=snippet&videoId=${videoId}&maxResults=50`;
+  const COMMENT_API = `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&maxResults=50&videoId=${videoId}&key=${GOOGLE_API_KEY}`;
 
-  function publishTime(publishedAt) {
-    const currentDate = new Date();
-    const targetDate = new Date(publishedAt);
-    const differenceMs = targetDate - currentDate;
-    const differenceDays = Math.floor(differenceMs / (1000 * 60 * 60 * 24));
-    // console.log(Math.abs(differenceDays));
+  // function publishTime(publishedAt) {
+  //   const currentDate = new Date();
+  //   const targetDate = new Date(publishedAt);
+  //   const differenceMs = targetDate - currentDate;
+  //   const differenceDays = Math.floor(differenceMs / (1000 * 60 * 60 * 24));
+  //   // console.log(Math.abs(differenceDays));
 
-    const diff = Math.abs(differenceDays) + " days ago";
-    return diff;
-  }
+  //   const diff = Math.abs(differenceDays) + " days ago";
+  //   return diff;
+  // }
 
   useEffect(() => {
     getComments();
-  }, []);
+  }, [videoId]);
 
   const getComments = async () => {
     const data = await fetch(COMMENT_API);
@@ -35,10 +35,10 @@ const CommentContainer = ({ comment }) => {
     // console.log(jsonData.items);
     setComments(jsonData.items);
   };
-  const commentDetails = comments.map(
-    (coment) => coment.snippet.topLevelComment.snippet
-  );
-  // console.log(commentDetails[0]);
+  const commentDetails = comments.map((coment) => coment);
+  const commentReplies = comments.map((coment) => coment?.replies?.comments);
+  console.log(commentDetails[0]);
+  console.log(commentReplies);
 
   return (
     <div>

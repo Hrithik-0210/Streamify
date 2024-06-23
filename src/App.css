@@ -19,17 +19,17 @@ body {
 }
 
 .side-bar::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #cccccc;
   border-radius: 5px;
 }
 
 .side-bar::-webkit-scrollbar-thumb {
-  background: #888;
+  background: #666666;
   border-radius: 5px;
 }
 
 .side-bar:hover::-webkit-scrollbar-thumb {
-  background: #d6d6d6;
+  background: #737373;
 }
 
 .hide-scrollbar::-webkit-scrollbar {

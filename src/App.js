@@ -11,6 +11,8 @@ import {
 import MainContainer from "./components/MainContainer";
 import WatchPage from "./components/WatchPage";
 import SearchVideoContainer from "./components/SearchVideoContainer";
+import VideoByCategoryContainer from "./components/VideoByCategoryContainer";
+// import ExeptionPage from "./utils/ExeptionPage";
 
 const appRouter = createBrowserRouter([
   {
@@ -21,6 +23,7 @@ const appRouter = createBrowserRouter([
         path: "/",
         element: <MainContainer />,
       },
+
       {
         path: "/watch",
         element: <WatchPage />,
@@ -29,17 +32,22 @@ const appRouter = createBrowserRouter([
         path: "/results",
         element: <SearchVideoContainer />,
       },
+      {
+        path: "/category",
+        element: <VideoByCategoryContainer />,
+      },
     ],
   },
 ]);
 
 function App() {
+  return <Providers />;
+}
+
+function Providers({ children }) {
   return (
     <Provider store={store}>
-      <div>
-        <Header />
-        <RouterProvider router={appRouter} />
-      </div>
+      <RouterProvider router={appRouter}>{children}</RouterProvider>
     </Provider>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Button from "./Button";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
+import { NavLink, useLocation } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
 const List = [
@@ -10,7 +11,7 @@ const List = [
   "Sony",
   "Live",
   "News",
-  "Movies",
+  "South Movies",
   "Programming",
   "JavaScript",
   "Sports",
@@ -21,7 +22,6 @@ const List = [
   "laptops",
   "Watched",
   "Cooking",
-
   "Cricket",
   "Series",
   "Sony",
@@ -38,8 +38,10 @@ const TRANSLATE_AMOUNT = 200;
 const ButtonList = () => {
   const [isLeftVisible, setIsLeftVisible] = useState(false);
   const [isRightVisible, setIsRightVisible] = useState(true);
-  const [translate, setTranslate] = useState(300);
+  const [translate, setTranslate] = useState(0);
   const containerRef = useRef(null);
+  const [activeButton, setActiveButton] = useState("All");
+  const location = useLocation();
 
   useEffect(() => {
     if (containerRef.current == null) return;
@@ -61,18 +63,46 @@ const ButtonList = () => {
     };
   }, [List, translate]);
 
+  useEffect(() => {
+    // Determine the active button based on the current URL path
+    const path = location.pathname.substring(1);
+    const searchQuery = new URLSearchParams(location.search).get(
+      "search_query"
+    );
+    if (path === "" && !searchQuery) {
+      setActiveButton("All");
+    } else if (searchQuery) {
+      setActiveButton(searchQuery);
+    } else {
+      setActiveButton(path);
+    }
+  }, [location]);
+
+  const handleActiveButton = (name) => {
+    setActiveButton(name);
+  };
+
   return (
     <div
       ref={containerRef}
       className=" overflow-x-hidden overflow-y-hidden relative"
     >
       <div
-        className="flex  whitespace-nowrap gap-3 transition-transform w-[max-content] mx-8"
+        className="flex  whitespace-nowrap gap-3 transition-transform w-[max-content] mx-8 "
         style={{ transform: `translateX(-${translate}px` }}
       >
-        {List.map((name, index) => {
-          return <Button name={name} key={index} />;
-        })}
+        {List.map((name, index) => (
+          <NavLink
+            key={index}
+            to={name === "All" ? "/" : `/category?search_query=${name}`}
+          >
+            <Button
+              name={name}
+              isActive={activeButton === name}
+              onClick={() => handleActiveButton(name)}
+            />
+          </NavLink>
+        ))}
       </div>
 
       {isLeftVisible && (

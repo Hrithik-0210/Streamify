@@ -20,13 +20,13 @@ const VideoContainer = () => {
     setVideos(jsonData.items);
   };
 
-  // console.log(videos.length);
+  console.log(videos);
   if (videos?.length === 0) {
     return <ShimmerMenu />;
   } else {
     return (
       // <div className="relative">
-      <div className="flex flex-wrap gap-1 justify-center ">
+      <div className="flex flex-wrap gap-1 justify-center  ">
         {videos.map((video) => (
           <Link to={"/watch?v=" + video.id} key={video.id}>
             <VideoCard items={video} />

@@ -11,7 +11,7 @@ import { toggleMenu } from "../utils/menuBarSlice";
 import { YOUTUBE_SEARCH_API } from "../utils/Constants";
 import { cacheResults } from "../utils/searchSlice";
 import store from "../utils/store";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // import SearchBox from "./SearchBox";
 // import SuggestionListBox from "./SuggestionListBox";
 
@@ -20,7 +20,7 @@ const Header = () => {
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestion, setShowSuggestion] = useState(false);
   // console.log(searchQuery);
-
+  const navigate = useNavigate();
   const searchCache = useSelector((store) => store.search);
   const dispatch = useDispatch();
 
@@ -31,6 +31,17 @@ const Header = () => {
    * searchQuery = iphone
    *
    */
+  const showSuggestions = async () => {
+    const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
+    const jsonData = await data.json();
+    setSuggestions(jsonData[1]);
+    dispatch(
+      cacheResults({
+        [searchQuery]: jsonData[1],
+      })
+    );
+    // console.log(jsonData[1]);
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -45,24 +56,6 @@ const Header = () => {
     };
   }, [searchQuery]);
 
-  const showSuggestions = async () => {
-    const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
-    const jsonData = await data.json();
-    setSuggestions(jsonData[1]);
-    dispatch(
-      cacheResults({
-        [searchQuery]: jsonData[1],
-      })
-    );
-    // console.log(jsonData[1]);
-  };
-
-  // const searchVideo = async () => {
-  //   const data = await fetch(VIDEO_SEARCH_API);
-  //   const jsonData = await data.json();
-  //   console.log(jsonData);
-  // };
-
   const toggleMenuHandler = () => {
     // console.log("dispatched");
     dispatch(toggleMenu());
@@ -73,6 +66,14 @@ const Header = () => {
   //   setSearchQuery(suggestion);
   //   setShowSuggestion(false);
   // };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      // Redirect to a new page with searchQuery as a query parameter
+      navigate(`/results?search_query=${encodeURIComponent(searchQuery)}`);
+    }
+  };
+
   return (
     // Header-Container
     <div className="flex  px-5 py-2 justify-between items-center w-full h-16 fixed top-0 left-0 z-50 bg-white ">
@@ -85,7 +86,13 @@ const Header = () => {
           />
         </div>
         <div className="relative pr-2">
-          <img src={logo} alt="logo" className="w-20 h-[1.1rem] rounded mx-2" />
+          <Link to={"/"}>
+            <img
+              src={logo}
+              alt="logo"
+              className="w-20 h-[1.1rem] rounded mx-2"
+            />
+          </Link>
           <p className="absolute right-0 -top-1   font-sans text-[10px]">IN</p>
         </div>
       </div>
@@ -103,23 +110,23 @@ const Header = () => {
             onClick={(e) => console.log(searchQuery)}
             onFocus={() => setShowSuggestion(true)}
             onBlur={() => setShowSuggestion(false)}
+            onKeyDown={handleKeyDown}
           />
         </div>
-        {/* <div>
-          <Link to={"/results"}> */}
-        <div className="flex items-center justify-center py-1 px-4 bg-gray-100 rounded-e-full border border-red-400 border-l-0">
-          <button>
-            <CiSearch className="w-5 h-5" />
-          </button>
-        </div>
-        {/* </Link>
-        </div> */}
 
-        {/* <div className="microphone-icon bg-gray-100 flex items-center mx-3 rounded-full p-2">
+        <Link to={"/results?search_query=" + searchQuery}>
+          <div className="flex items-center justify-center py-2 px-4 bg-gray-100 rounded-e-full border  border-l-0">
+            <button>
+              <CiSearch className="w-5 h-5" />
+            </button>
+          </div>
+        </Link>
+
+        <div className="microphone-icon bg-gray-100 flex items-center mx-3 rounded-full p-2">
           <BiSolidMicrophone className="w-5 h-5" />
-        </div> */}
+        </div>
       </div>
-      <div className="absolute top-[3.15rem] left-[31%]   w-1/3 md:w-[33%]  flex flex-col ">
+      <div className="absolute top-[3.15rem] left-[31%]   w-1/3 md:w-[33%]  flex flex-col z-60 ">
         {showSuggestion &&
           (suggestions.length === 0 ? (
             " "
@@ -132,9 +139,11 @@ const Header = () => {
                     className="flex items-center gap-3 hover:bg-gray-200 px-4 py-[0.30rem] "
                   >
                     <CiSearch className="w-4 h-4" />
-                    <p className="text-sm font-medium cursor-pointer">
-                      {suggestion}
-                    </p>
+                    <Link to={"/results?search_query=" + suggestion}>
+                      <p className="text-sm font-medium cursor-pointer">
+                        {suggestion}
+                      </p>
+                    </Link>
                   </li>
                 ))}
               </ul>

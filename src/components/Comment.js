@@ -1,29 +1,72 @@
 import React, { useEffect, useState } from "react";
 import { AiOutlineLike } from "react-icons/ai";
 import { BiDislike } from "react-icons/bi";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { toggleReply } from "../utils/commentSlice";
+import store from "../utils/store";
 // import { MdOutlineSort } from "react-icons/md";
 
 const Comment = ({ item }) => {
   const [userProfile, setUserProfile] = useState();
+  const [replyUserProfiles, setReplyUserProfiles] = useState([]);
+  console.log(item);
 
-  // console.log(userProfile);
+  const {
+    snippet: {
+      topLevelComment: { snippet },
+    },
+    replies,
+  } = item;
+
   const {
     authorDisplayName,
     authorProfileImageUrl,
-    publishedAt,
-    textDisplay,
     likeCount,
-  } = item;
+    publishedAt,
+    textOriginal,
+    videoId,
+  } = snippet;
+
+  console.log(replies?.comments);
+  // const hasReplies = replies && replies.comments && replies.comments.length > 0;
 
   useEffect(() => {
     getauthorProfileImageUrl();
-  }, []);
+  }, [videoId]);
 
   const getauthorProfileImageUrl = async () => {
-    const data = await fetch(authorProfileImageUrl);
-    const imageBlob = await data.blob();
-    const imageObjectURL = URL.createObjectURL(imageBlob);
-    setUserProfile(imageObjectURL);
+    const data = await fetchImage(authorProfileImageUrl);
+
+    setUserProfile(data);
+    if (replies?.comments) {
+      const replyProfiles = await Promise.all(
+        replies.comments.map(async (reply) => {
+          const replyData = await fetchImage(
+            reply.snippet?.authorProfileImageUrl
+          );
+          return {
+            profileUrl: replyData,
+            authorDisplayName: reply.snippet.authorDisplayName,
+            textOriginal: reply.snippet.textOriginal,
+          };
+        })
+      );
+      setReplyUserProfiles(replyProfiles);
+    }
+  };
+
+  // Depend on authorProfileImageUrl and replies changes
+
+  const fetchImage = async (imageUrl) => {
+    try {
+      const data = await fetch(imageUrl);
+      const imageBlob = await data.blob();
+      return URL.createObjectURL(imageBlob);
+    } catch (error) {
+      console.error("Error fetching image:", error);
+      return null; // Handle error gracefully
+    }
   };
 
   function publishTime(publishedAt) {
@@ -37,30 +80,78 @@ const Comment = ({ item }) => {
     return diff;
   }
 
-  return (
-    <div className="comment-container flex gap-3  ">
-      <div className="image-container flex items-start ">
-        <img
-          src={userProfile}
-          alt="userPicture"
-          className="w-9 h-9 rounded-full"
-        />
-      </div>
+  const dispatch = useDispatch();
+  const handleReplies = () => {
+    dispatch(toggleReply());
+    console.log("dispatched");
+  };
 
-      <div className="flex flex-col gap-1   ">
-        <div className="user-details flex gap-2 items-center">
-          <h2 className="text-xs font-medium">{authorDisplayName}</h2>
-          <p className="text-xs text-gray-600">{publishTime(publishedAt)}</p>
+  const isReplyOpen = useSelector((store) => store.comment.isReplyOpen);
+  console.log(isReplyOpen);
+
+  return (
+    <div className="comment-container grid grid-flow-col grid-cols-12  w-full overflow-hidden ">
+      <div className="image-container  ">
+        <div className="flex justify-center   w-full h-full ">
+          {userProfile && (
+            <img
+              src={userProfile}
+              alt="User Profile"
+              className="w-10 h-10 rounded-full"
+            />
+          )}
         </div>
-        <div className="text-xs font-normal">
-          <p className="text-xs">{textDisplay}</p>
-        </div>
-        <div className="comment-like-unlike flex gap-3">
-          <div className="flex">
-            <AiOutlineLike className="w-5 h-5" />
-            <p className="text-xs text-gray-500 mx-1">{likeCount}</p>
+      </div>
+      <div className=" col-span-12">
+        <div className="flex flex-col gap-1   ">
+          <div className="user-details flex gap-2 items-center">
+            <h2 className="text-xs font-medium">{authorDisplayName}</h2>
+            <p className="text-xs text-gray-600">{publishTime(publishedAt)}</p>
           </div>
-          <BiDislike className="w-[1.15rem] h-[1.15rem]  text-gray-700" />
+          <div className="text-xs font-normal">
+            <p className="text-xs">{textOriginal}</p>
+          </div>
+          <div className="comment-like-unlike flex gap-3 items-center my-1 ">
+            <div className="flex">
+              <AiOutlineLike className="w-5 h-5" />
+              <p className="text-xs text-gray-500 mx-1">{likeCount}</p>
+            </div>
+            <BiDislike className="w-[1.15rem] h-[1.15rem]  text-gray-700" />
+            {replies?.comments?.length > 0 ? (
+              <div className="flex justify-center items-center mx-3">
+                <Link
+                  className="text-blue-800 text-xs font-medium"
+                  onClick={handleReplies}
+                >
+                  {replies.comments.length} replies
+                </Link>
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
+
+          {isReplyOpen && (
+            <div className="reply-container">
+              {replyUserProfiles.map((reply, index) => (
+                <div key={index} className="reply flex  my-1 p-1">
+                  <div className="flex justify-center">
+                    <img
+                      src={reply.profileUrl}
+                      alt="Reply User Profile"
+                      className="w-9 h-9 rounded-full"
+                    />
+                  </div>
+                  <div className="flex flex-col">
+                    <p className="text-xs font-medium">
+                      {reply.authorDisplayName}
+                    </p>
+                    <p className="text-xs">{reply.textOriginal}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

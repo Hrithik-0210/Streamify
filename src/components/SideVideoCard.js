@@ -38,8 +38,8 @@ const SideVideoCard = ({ items }) => {
   return (
     <div className=" w-fit">
       {isMenuOpen ? (
-        <div className="video-card-container group w-fit my-1 px-2 rounded-2xl  transition ease-linear delay-150  duration-200 ">
-          <div className="video-card w-[23rem] h-fit transition ease-linear  grid grid-flow-col  gap-2">
+        <div className="video-card-container group w-full my-1 px-2 rounded-2xl  transition ease-linear delay-150  duration-200 ">
+          <div className="video-card w-[25rem] h-fit transition ease-linear  grid grid-flow-col  gap-2">
             <div className="thumbnail-container rounded-2xl  h-[5.5rem]  col-span-7 items-center">
               <img
                 src={thumbnails.medium.url}
@@ -72,8 +72,8 @@ const SideVideoCard = ({ items }) => {
           </div>
         </div>
       ) : (
-        <div className="video-card-container group w-fit my-1 px-2 rounded-2xl  transition ease-linear delay-150  duration-200 ">
-          <div className="video-card w-[23rem] h-fit transition ease-linear  grid grid-flow-col  gap-2">
+        <div className="video-card-container group w-full my-1 px-2 rounded-2xl  transition ease-linear delay-150  duration-200 ">
+          <div className="video-card w-[25rem] h-fit transition ease-linear  grid grid-flow-col  gap-2">
             <div className="thumbnail-container rounded-2xl  h-[5.5rem]  col-span-7 items-center">
               <img
                 src={thumbnails.medium.url}
