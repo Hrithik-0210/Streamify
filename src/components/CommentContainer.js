@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { MdOutlineSort } from "react-icons/md";
-import { BiDislike } from "react-icons/bi";
-import { AiOutlineLike } from "react-icons/ai";
+
 import Comment from "./Comment";
 
 const CommentContainer = ({ comment }) => {

@@ -20,7 +20,7 @@ const VideoContainer = () => {
     setVideos(jsonData.items);
   };
 
-  console.log(videos);
+  // console.log(videos);
   if (videos?.length === 0) {
     return <ShimmerMenu />;
   } else {

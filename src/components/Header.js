@@ -57,15 +57,8 @@ const Header = () => {
   }, [searchQuery]);
 
   const toggleMenuHandler = () => {
-    // console.log("dispatched");
     dispatch(toggleMenu());
   };
-
-  // const handleOnClick = (suggestion) => {
-  //   console.log("clicked suggestion : ", suggestion);
-  //   setSearchQuery(suggestion);
-  //   setShowSuggestion(false);
-  // };
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
@@ -74,6 +67,7 @@ const Header = () => {
     }
   };
 
+  console.log(suggestions);
   return (
     // Header-Container
     <div className="flex  px-5 py-2 justify-between items-center w-full h-16 fixed top-0 left-0 z-50 bg-white ">
@@ -126,24 +120,24 @@ const Header = () => {
           <BiSolidMicrophone className="w-5 h-5" />
         </div>
       </div>
-      <div className="absolute top-[3.15rem] left-[31%]   w-1/3 md:w-[33%]  flex flex-col z-60 ">
+      <div className="absolut            e top-[3.15rem] left-[31%]   w-1/3 md:w-[33%]  flex flex-col z-60 ">
         {showSuggestion &&
           (suggestions.length === 0 ? (
             " "
           ) : (
             <div className=" bg-white    py-2 shadow-md shadow-gray-300 borderborder-gray-200 rounded-2xl">
-              <ul onClick={console.log(suggestions)}>
+              <ul>
                 {suggestions.map((suggestion, index) => (
                   <li
                     key={index}
                     className="flex items-center gap-3 hover:bg-gray-200 px-4 py-[0.30rem] "
+                    onClick={console.log(suggestion)}
                   >
                     <CiSearch className="w-4 h-4" />
-                    <Link to={"/results?search_query=" + suggestion}>
-                      <p className="text-sm font-medium cursor-pointer">
-                        {suggestion}
-                      </p>
-                    </Link>
+
+                    <p className="text-sm font-medium cursor-pointer">
+                      {suggestion}
+                    </p>
                   </li>
                 ))}
               </ul>

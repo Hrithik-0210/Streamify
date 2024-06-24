@@ -27,7 +27,7 @@ const Body = () => {
             <Outlet />
           </div>
         ) : (
-          <div className="w-[88%] px-2 top-20 left-60">
+          <div className="w-[88%] px-2 top-20 left-56">
             <Outlet />
           </div>
         )}
