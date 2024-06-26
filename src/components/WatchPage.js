@@ -88,18 +88,20 @@ const WatchPage = () => {
     const { channelTitle, title, publishedAt, description } = snippet;
     const { viewCount, likeCount, commentCount } = statistics;
     return (
-      <div className="absolute top-20 left-24  w-[92svw] flex ">
-        <div className=" rounded-xl   w-[62svw] h-fit">
-          <iframe
-            width="100%"
-            src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
-            title={title}
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen="allowfullscreen"
-            className="rounded-xl  h-[35rem]"
-          ></iframe>
+      <div className="absolute top-20 left-24  w-[92svw] flex gap-5">
+        <div className=" rounded-xl   w-[70%] h-fit">
+          <div className="border-2 border-red-400 p-2 w-full h-[38rem]">
+            <iframe
+              width="100%"
+              src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
+              title={title}
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen="allowfullscreen"
+              className="rounded-xl h-full"
+            ></iframe>
+          </div>
           <div className="flex flex-col ">
             <div className="mt-2 p-1  text-base font-semibold">{title}</div>
             <div className=" flex py-1 justify-between">
@@ -193,7 +195,7 @@ const WatchPage = () => {
         {sideVideo?.length === 0 ? (
           <WatchPageShimmer />
         ) : (
-          <div className=" absolute right-2 w-fit ">
+          <div className=" w-fit ">
             {sideVideo.map((video) => (
               <Link to={"/watch?v=" + video.id} key={video.id}>
                 <SideVideoCard items={video} />

@@ -10,8 +10,9 @@ import store from "../utils/store";
 const Comment = ({ item }) => {
   const [userProfile, setUserProfile] = useState();
   const [replyUserProfiles, setReplyUserProfiles] = useState([]);
-  // console.log(item);
+  const [isExpanded, setIsExpanded] = useState(false);
 
+  // console.log(item);
   const {
     snippet: {
       topLevelComment: { snippet },
@@ -28,6 +29,9 @@ const Comment = ({ item }) => {
     videoId,
   } = snippet;
 
+  const toggleExpansion = () => {
+    setIsExpanded(!isExpanded);
+  };
   // console.log(replies?.comments);
   // const hasReplies = replies && replies.comments && replies.comments.length > 0;
 
@@ -108,9 +112,23 @@ const Comment = ({ item }) => {
             <h2 className="text-xs font-medium">{authorDisplayName}</h2>
             <p className="text-xs text-gray-600">{publishTime(publishedAt)}</p>
           </div>
-          <div className="text-xs font-normal">
-            <p className="text-xs">{textOriginal}</p>
+
+          <div className="text-xs font-normal whitespace-pre-line  flex items-end justify-start ">
+            <span className={isExpanded ? "" : "line-clamp-2"}>
+              {textOriginal}
+            </span>
+            {textOriginal.split("\n").length > 2 && (
+              <span>
+                <button
+                  onClick={toggleExpansion}
+                  className="text-gray-800 font-semibold"
+                >
+                  {isExpanded ? "Show less" : "...more"}
+                </button>
+              </span>
+            )}
           </div>
+
           <div className="comment-like-unlike flex gap-3 items-center my-1 ">
             <div className="flex">
               <AiOutlineLike className="w-5 h-5" />

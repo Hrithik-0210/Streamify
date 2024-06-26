@@ -70,7 +70,7 @@ const Header = () => {
   console.log(suggestions);
   return (
     // Header-Container
-    <div className="flex  px-5 py-2 justify-between items-center w-full h-16 fixed top-0 left-0 z-50 bg-white ">
+    <div className="flex justify-between px-5 py-2  items-center w-full h-16 fixed top-0 left-0 z-50 bg-white ">
       {/* Left-side-Container - logo */}
       <div className="flex  items-center justify-between">
         <div>
@@ -93,7 +93,7 @@ const Header = () => {
 
       {/* Middle-Container - search*/}
 
-      <div className=" w-1/3  md:w-[40%]  flex  ">
+      <div className=" w-1/3  md:w-[40%]  flex  justify-center">
         <div className=" w-full   flex ">
           <input
             type="search"
@@ -120,7 +120,7 @@ const Header = () => {
           <BiSolidMicrophone className="w-5 h-5" />
         </div>
       </div>
-      <div className="absolut            e top-[3.15rem] left-[31%]   w-1/3 md:w-[33%]  flex flex-col z-60 ">
+      <div className="absolute top-[3.15rem] left-[31%]   w-1/3 md:w-[33%]  flex flex-col z-60 ">
         {showSuggestion &&
           (suggestions.length === 0 ? (
             " "
@@ -146,7 +146,7 @@ const Header = () => {
       </div>
 
       {/* Right-side-Container - userinfo*/}
-      <div className="User-info-container flex  items-center justify-between w-28 md:w-32 lg:w-32 p-1">
+      <div className="User-info-container flex  items-center justify-between w-28 md:w-32 lg:w-32 p-1 ">
         <div className="create-icon py-[0.35rem] px-2 rounded-full hover:bg-gray-200">
           <RiVideoAddLine className="w-5 h-5" />
         </div>
