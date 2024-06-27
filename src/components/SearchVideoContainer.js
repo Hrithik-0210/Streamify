@@ -36,7 +36,7 @@ const SearchVideoContainer = () => {
       return (
         <div className="relative z-0">
           <div className="flex flex-col w-full absolute top-16 left-24 ">
-            <div className="overflow-x-hidden overflow-y-hidden my-1  fixed top-14 left-[15%] w-[70%] z-50 bg-white py-1 ">
+            <div className="overflow-x-hidden overflow-y-hidden my-1  fixed top-14 left-[15%] w-[70%] z-50 bg-white  ">
               <ButtonList />
             </div>
 
@@ -63,7 +63,7 @@ const SearchVideoContainer = () => {
       return (
         <div className="relative z-0">
           <div className="flex flex-col w-full absolute top-16 left-24 ">
-            <div className="overflow-x-hidden   overflow-y-hidden my-1  fixed top-14 left-[14rem] w-[83%] z-50 bg-white py-1  ">
+            <div className="overflow-x-hidden   overflow-y-hidden my-1  fixed top-14 left-[14rem] w-[83%] z-50 bg-white   ">
               <ButtonList />
             </div>
 

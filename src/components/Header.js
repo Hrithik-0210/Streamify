@@ -15,7 +15,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
 import { FaMoon } from "react-icons/fa";
 import { FiSun } from "react-icons/fi";
-import logo_dark from "../images/logo_dark.png";
+import logo_dark from "../images/youtube -dark-theme-logo.png";
 
 // import SearchBox from "./SearchBox";
 // import SuggestionListBox from "./SuggestionListBox";
@@ -111,7 +111,7 @@ const Header = () => {
               <img
                 src={logo_dark}
                 alt="logo"
-                className="w-20 h-[1.4rem] rounded mx-2"
+                className="w-20 h-[1.6rem] rounded mx-2"
               />
             </Link>
           )}
@@ -148,17 +148,17 @@ const Header = () => {
           <BiSolidMicrophone className="w-5 h-5 dark:text-gray-100" />
         </div>
       </div>
-      <div className="absolute top-[3.15rem] left-[31%]   w-1/3 md:w-[33%]  flex flex-col z-60 ">
+      <div className="absolute top-[3.15rem] left-[30%]   w-1/3 md:w-[33%]  flex flex-col z-60 ">
         {showSuggestion &&
           (suggestions.length === 0 ? (
             " "
           ) : (
-            <div className=" bg-white    py-2 shadow-md shadow-gray-300 borderborder-gray-200 rounded-2xl">
+            <div className=" bg-white dark:bg-gray-950 dark:text-white  py-2 shadow-md shadow-gray-300 borderborder-gray-200 rounded-2xl">
               <ul>
                 {suggestions.map((suggestion, index) => (
                   <li
                     key={index}
-                    className="flex items-center gap-3 hover:bg-gray-200 px-4 py-[0.30rem] "
+                    className="flex items-center gap-3 hover:bg-gray-200 dark:hover:bg-gray-700 dark:text-white  px-4 py-[0.30rem]  "
                     onClick={console.log(suggestion)}
                   >
                     <CiSearch className="w-4 h-4" />
@@ -175,14 +175,17 @@ const Header = () => {
 
       {/* Right-side-Container - userinfo and theme */}
       <div className="User-info-container flex  items-center justify-between w-28 md:w-32 lg:w-44 p-1 mx-2 ">
-        <div className="create-icon py-2 px-2 rounded-full hover:bg-gray-200 dark:hover:text-black">
+        <div className="create-icon  rounded-full  dark:hover:text-black">
           {themeMode === "light" ? (
-            <div className="w-full h-full" onClick={() => themeChange("dark")}>
+            <div
+              className="w-full h-full p-2 rounded-full hover:bg-gray-200 hover:p-2"
+              onClick={() => themeChange("dark")}
+            >
               <FaMoon />
             </div>
           ) : (
             <div
-              className="w-full h-full dark:hover:text-black"
+              className="w-full h-full p-2 rounded-full hover:bg-gray-200 hover:p-2 dark:hover:text-black"
               onClick={() => themeChange("light")}
             >
               <FiSun />

@@ -9,7 +9,7 @@ export const ShimmerMenu = () => {
         .map((e, index) => (
           <div
             key={index}
-            className="w-64 h-[17rem] bg-stone-100 flex gap-2 shadow-md rounded-lg border mt-5"
+            className="w-64 h-[17rem] bg-stone-100 flex gap-2 shadow-md rounded-lg  mt-5 dark:bg-gray-700"
           ></div>
         ))}
     </div>
@@ -25,7 +25,7 @@ export const CategoryShimmer = () => {
       {Array(15)
         .fill("")
         .map((e) => (
-          <div className="w-64 h-[17rem] bg-stone-100 flex gap-2 shadow-md rounded-lg border mt-5"></div>
+          <div className="w-64 h-[17rem] bg-stone-100 flex gap-2 shadow-md dark:bg-gray-700 rounded-lg  mt-5"></div>
         ))}
     </div>
   );
@@ -43,7 +43,7 @@ export const WatchPageShimmer = () => {
         .fill("")
         .map((e, index) => (
           <div
-            className="w-96 h-36 bg-stone-100 flex flex-col shadow-lg rounded-lg border my-2 "
+            className="w-96 h-36 bg-stone-100 flex flex-col shadow-lg rounded-lg  my-2 dark:bg-gray-700"
             key={index}
           ></div>
         ))}
@@ -63,7 +63,7 @@ export const SearchPageShimmer = () => {
         .fill("")
         .map((e, index) => (
           <div
-            className="w-[65svw] h-64 bg-stone-100 flex flex-col shadow-lg rounded-lg border my-2 "
+            className="w-[65svw] h-64 bg-stone-100 flex flex-col shadow-lg rounded-lg  my-2 dark:bg-gray-700"
             key={index}
           ></div>
         ))}

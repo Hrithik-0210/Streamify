@@ -97,7 +97,7 @@ const WatchPage = () => {
     return (
       <div className="absolute top-20 left-24  w-[92svw] flex gap-7">
         <div className=" rounded-xl   w-[70%] h-fit">
-          <div className=" w-[65.5svw] h-[69svh]">
+          <div className=" w-[65.5svw] h-[74svh]">
             <iframe
               width="100%"
               src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
@@ -168,12 +168,12 @@ const WatchPage = () => {
               </div>
             </div>
           </div>
-          <div className="description-container bg-gray-100 rounded-xl mt-2 p-2 w-full flex flex-col  border-2">
+          <div className="description-container bg-gray-100 rounded-xl mt-2 p-2 w-full flex flex-col  dark:bg-gray-950 dark:text-stone-200">
             <div className="view-container  flex items-center gap-2 ">
-              <p className="text-xs font-semibold text-gray-700">
+              <p className="text-xs font-semibold text-gray-700 dark:text-stone-200">
                 {formatViews(viewCount)} views
               </p>
-              <p className="text-xs font-semibold text-gray-700">
+              <p className="text-xs font-semibold text-gray-700 dark:text-stone-200">
                 {publishTime(publishedAt)}
               </p>
             </div>

@@ -26,7 +26,7 @@ const VideoContainer = () => {
   } else {
     return (
       // <div className="relative">
-      <div className="flex flex-wrap gap-1 justify-center w-full dark:bg-black dark:text-white  border border-red-400 ">
+      <div className="flex flex-wrap gap-1 justify-center w-full dark:bg-black dark:text-white ">
         {videos.map((video) => (
           <Link to={"/watch?v=" + video.id} key={video.id}>
             <VideoCard items={video} />

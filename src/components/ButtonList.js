@@ -85,10 +85,10 @@ const ButtonList = () => {
   return (
     <div
       ref={containerRef}
-      className=" overflow-x-hidden overflow-y-hidden relative"
+      className=" overflow-x-hidden overflow-y-hidden relative dark:bg-black"
     >
       <div
-        className="flex  whitespace-nowrap gap-3 transition-transform w-[max-content] mx-8 "
+        className="flex  whitespace-nowrap gap-3 transition-transform w-[max-content] mx-8 dark:bg-black"
         style={{ transform: `translateX(-${translate}px` }}
       >
         {List.map((name, index) => (

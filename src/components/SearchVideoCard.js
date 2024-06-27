@@ -74,12 +74,14 @@ const SearchVideoCard = ({ item }) => {
           </div>
           <div className="check-logo  gap-2 items-center font-normal flex  my-2 ">
             <div className="channelName text-[13px] flex items-center gap-2">
-              <TiSocialYoutubeCircular className="w-8 h-8  rounded-full" />
-              <p className="text-gray-500">{channelTitle}</p>
+              <TiSocialYoutubeCircular className="w-8 h-8  rounded-full dark:text-stone-200" />
+              <p className="text-gray-500 dark:text-stone-200">
+                {channelTitle}
+              </p>
             </div>
             <PiCheckCircleDuotone className=" w-[0.8rem] h-[0.8rem]" />
           </div>
-          <div className="text-[11.5px] font-thin text-gray-500 mt-5">
+          <div className="text-[11.5px] font-thin text-gray-500 dark:text-stone-200 mt-5">
             {description}
           </div>
         </div>
