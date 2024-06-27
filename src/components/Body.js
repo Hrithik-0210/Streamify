@@ -11,23 +11,23 @@ const Body = () => {
   return (
     <>
       <Header />
-      <div className="flex ">
+      <div className="flex dark:bg-black dark:text-white  ">
         {isMenuOpen ? (
-          <div className="">
+          <div className="dark:bg-black dark:text-white">
             <SideBar />
           </div>
         ) : (
-          <div className="mr-3">
+          <div className="mr-3 dark:bg-black dark:text-white">
             <SideBar />
           </div>
         )}
 
         {isMenuOpen ? (
-          <div className="w-[92%]  px-2 top-20 left-24 ">
+          <div className="w-[92%]  px-2 top-20 left-24 dark:bg-black dark:text-white">
             <Outlet />
           </div>
         ) : (
-          <div className="w-[88%] px-2 top-20 left-56 ">
+          <div className="w-[88%] px-2 top-20 left-56 dark:bg-black dark:text-white  ">
             <Outlet />
           </div>
         )}

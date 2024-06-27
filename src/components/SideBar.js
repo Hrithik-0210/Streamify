@@ -40,21 +40,22 @@ const SideBar = () => {
   //   console.log("dispatched");
   //   dispatch(toggleMenu());
   // };
+  // const { themeMode, darkTheme, lightTheme } = useTheme();
 
   const isMenuOpen = useSelector((store) => store.menu.isMenuOpen);
   // console.log(isMenuOpen);
   if (isMenuOpen)
     return (
-      <div className=" h-screen relative">
-        <div className="flex flex-col fixed top-16 left-0 z-10 ">
+      <div className=" h-screen relative bg-red-300 border border-red-400">
+        <div className="flex flex-col fixed top-16 left-0 z-10  h-screen  dark:bg-black dark:text-white">
           <ul className="flex flex-col mx-2 my-2">
             <NavLink
               to="/"
               className={({ isActive }) =>
                 `${
                   isActive
-                    ? "bg-gray-100 flex flex-col items-center px-2 py-3 rounded-lg"
-                    : "bg-white flex flex-col items-center px-2 py-3 rounded-lg"
+                    ? "bg-gray-100 flex flex-col items-center px-2 py-3 rounded-lg dark:bg-gray-700 dark:text-white"
+                    : "bg-white flex flex-col items-center px-2 py-3 rounded-lg dark:bg-black dark:text-white"
                 } hover:bg-gray-100 my-1`
               }
             >
@@ -67,8 +68,8 @@ const SideBar = () => {
               className={({ isActive }) =>
                 `${
                   isActive
-                    ? "bg-gray-100 flex flex-col items-center px-2 py-3 rounded-lg"
-                    : "bg-white flex flex-col items-center px-2 py-3 rounded-lg"
+                    ? "bg-gray-100 flex flex-col items-center px-2 py-3 rounded-lg dark:bg-gray-800 dark:text-white"
+                    : "bg-white flex flex-col items-center px-2 py-3 rounded-lg dark:bg-black dark:text-white"
                 } hover:bg-gray-100 my-1`
               }
             >
@@ -81,8 +82,8 @@ const SideBar = () => {
               className={({ isActive }) =>
                 `${
                   isActive
-                    ? "bg-gray-100 flex flex-col items-center px-2 py-3 rounded-lg"
-                    : "bg-white flex flex-col items-center px-2 py-3 rounded-lg"
+                    ? "bg-gray-100 flex flex-col items-center px-2 py-3 rounded-lg dark:bg-gray-800 dark:text-white"
+                    : "bg-white flex flex-col items-center px-2 py-3 rounded-lg dark:bg-black dark:text-white"
                 } hover:bg-gray-100 my-1`
               }
             >
@@ -95,8 +96,8 @@ const SideBar = () => {
               className={({ isActive }) =>
                 `${
                   isActive
-                    ? "bg-gray-100 flex flex-col items-center px-2 py-3 rounded-lg"
-                    : "bg-white flex flex-col items-center px-2 py-3 rounded-lg"
+                    ? "bg-gray-100 flex flex-col items-center px-2 py-3 rounded-lg dark:bg-gray-800 dark:text-white"
+                    : "bg-white flex flex-col items-center px-2 py-3 rounded-lg dark:bg-black dark:text-white"
                 } hover:bg-gray-100 my-1`
               }
             >
@@ -110,7 +111,7 @@ const SideBar = () => {
   else {
     return (
       <div className="absolute">
-        <div className="side-bar h-screen bg-white w-56 overflow-y-scroll flex flex-col fixed top-16 left-0 z-10">
+        <div className="side-bar  h-screen bg-white w-56 overflow-y-scroll flex flex-col fixed top-16 left-0 z-10 dark:bg-black dark:text-white">
           <div className="Section-1 border-b border-gray-300 mx-2 ">
             <ul className=" mx-2 mb-2 mt-1">
               <NavLink
@@ -118,8 +119,8 @@ const SideBar = () => {
                 className={({ isActive }) =>
                   `  ${
                     isActive
-                      ? "bg-gray-100 flex items-center text-[14px]  py-2 pl-2 rounded-xl font-medium"
-                      : "bg-white flex items-center text-[14px]  py-2 pl-2"
+                      ? "bg-gray-100 flex items-center text-[14px]  py-2 pl-2 rounded-xl font-medium dark:bg-gray-800 dark:text-white"
+                      : "bg-white flex items-center text-[14px]  py-2 pl-2 dark:bg-black dark:text-white"
                   } hover:bg-gray-100 hover:rounded-xl my-1 `
                 }
               >
@@ -131,9 +132,9 @@ const SideBar = () => {
                 className={({ isActive }) =>
                   `  ${
                     isActive
-                      ? "bg-gray-200 flex items-center text-[14px]  py-2 pl-2 rounded-xl font-medium"
-                      : "bg-white flex items-center text-[14px]  py-2 pl-2"
-                  } hover:bg-gray-100 hover:rounded-xl my-1 `
+                      ? "bg-gray-200 flex items-center text-[14px]  py-2 pl-2 rounded-xl font-medium dark:bg-gray-800 dark:text-white "
+                      : "bg-white flex items-center text-[14px]  py-2 pl-2 dark:bg-black dark:text-white"
+                  } hover:bg-gray-100 hover:rounded-xl my-1 dark:hover:bg-slate-800 dark:hover:text-white `
                 }
               >
                 <SiYoutubeshorts className="mx-2 w-4 h-4" />
@@ -145,9 +146,9 @@ const SideBar = () => {
                 className={({ isActive }) =>
                   `  ${
                     isActive
-                      ? "bg-gray-100 flex items-center text-[14px]  py-2 pl-2 rounded-xl font-medium"
-                      : "bg-white flex items-center text-[14px]  py-2 pl-2"
-                  } hover:bg-gray-100 hover:rounded-xl my-1 `
+                      ? "bg-gray-100 flex items-center text-[14px]  py-2 pl-2 rounded-xl font-medium dark:bg-gray-800 dark:text-white"
+                      : "bg-white flex items-center text-[14px]  py-2 pl-2 dark:bg-black dark:text-white"
+                  } hover:bg-gray-100 hover:rounded-xl my-1 dark:hover:bg-slate-800 dark:hover:text-white `
                 }
               >
                 <MdOutlineSubscriptions className="mx-2 w-4 h-4" />
@@ -156,83 +157,83 @@ const SideBar = () => {
             </ul>
           </div>
           <div className="Section-2 border-b border-gray-300 mx-2 ">
-            <div className="Section-heading flex items-center ml-2  py-2 pl-3  mt-2 hover:bg-gray-100 hover:rounded-xl ">
+            <div className="Section-heading flex items-center ml-2  py-2 pl-3  mt-2 hover:bg-gray-100 hover:rounded-xl dark:hover:bg-slate-800 dark:hover:text-white ">
               <h2 className="text-sm font-medium mx-1">You</h2>
               <GoChevronRight className="mx-2 w-4 h-4" />
             </div>
             <ul className=" mx-2 mb-2 ">
-              <li className="flex items-center py-2 pl-2 text-[14px] hover:bg-gray-100 hover:rounded-xl ">
+              <li className="flex items-center py-2 pl-2 text-[14px] hover:bg-gray-100 hover:rounded-xl dark:hover:bg-slate-800 dark:hover:text-white  ">
                 <BiSolidUserAccount className="mx-2 w-4 h-4" />
                 <h2 className="mx-3  font-thin">Your channel</h2>
               </li>
-              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl ">
+              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl dark:hover:bg-slate-800 dark:hover:text-white ">
                 <GoHistory className="mx-2 w-4 h-4" />
                 <h2 className="mx-3  font-thin">History</h2>
               </li>
-              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl ">
+              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl dark:hover:bg-slate-800 dark:hover:text-white ">
                 <RiPlayList2Line className="mx-2 w-4 h-4" />
                 <h2 className="mx-3  font-thin">Playlist</h2>
               </li>
-              <li className="flex items-center py-2 pl-2 text-[14px] hover:bg-gray-100 hover:rounded-xl ">
+              <li className="flex items-center py-2 pl-2 text-[14px] hover:bg-gray-100 hover:rounded-xl dark:hover:bg-slate-800 dark:hover:text-white ">
                 <GoVideo className="mx-2 w-4 h-4" />
                 <h2 className="mx-3   font-thin">Your videos</h2>
               </li>
-              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl ">
+              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl dark:hover:bg-slate-800 dark:hover:text-white ">
                 <MdOutlineWatchLater className="mx-2 w-4 h-4" />
                 <h2 className="mx-3  font-thin">Watch Later</h2>
               </li>
-              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl ">
+              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl dark:hover:bg-slate-800 dark:hover:text-white ">
                 <AiOutlineLike className="mx-2 w-4 h-4" />
                 <h2 className="mx-3  font-thin">Liked videos</h2>
               </li>
             </ul>
           </div>
           <div className="Section-3 border-b border-gray-300 mx-2 ">
-            <div className="Section-heading flex items-center ml-2 mt-2 py-2 pl-3 ">
+            <div className="Section-heading flex items-center ml-2 mt-2 py-2 pl-3 dark:hover:bg-slate-800 dark:hover:text-white ">
               <h2 className="text-sm font-medium mx-1">Explore</h2>
             </div>
             <ul className=" mx-2 mb-2">
-              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl ">
+              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl dark:hover:bg-slate-800 dark:hover:text-white ">
                 <PiFireLight className="mx-2 w-4 h-4" />
                 <h2 className="mx-3  font-thin">Trending</h2>
               </li>
-              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl ">
+              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl dark:hover:bg-slate-800 dark:hover:text-white ">
                 <RiShoppingBag4Line className="mx-2 w-4 h-4" />
                 <h2 className="mx-3  font-thin">Shopping</h2>
               </li>
-              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl ">
+              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl dark:hover:bg-slate-800 dark:hover:text-white  ">
                 <PiMusicNoteThin className="mx-2 w-4 h-4" />
                 <h2 className="mx-3  font-thin">Music</h2>
               </li>
-              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl ">
+              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl dark:hover:bg-slate-800 dark:hover:text-white ">
                 <PiFilmSlateDuotone className="mx-2 w-4 h-4" />
                 <h2 className="mx-3  font-thin">Films</h2>
               </li>
-              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl ">
+              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl dark:hover:bg-slate-800 dark:hover:text-white ">
                 <HiMiniSignal className="mx-2 w-4 h-4" />
                 <h2 className="mx-3   font-thin">Live</h2>
               </li>
-              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl ">
+              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl dark:hover:bg-slate-800 dark:hover:text-white ">
                 <SiYoutubegaming className="mx-2 w-4 h-4" />
                 <h2 className="mx-3   font-thin">Gaming</h2>
               </li>
-              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl ">
+              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl dark:hover:bg-slate-800 dark:hover:text-white  ">
                 <PiNewspaperClippingLight className="mx-2 w-4 h-4" />
                 <h2 className="mx-3 font-thin">News</h2>
               </li>
-              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl ">
+              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl dark:hover:bg-slate-800 dark:hover:text-white ">
                 <TfiCup className="mx-2 w-4 h-4" />
                 <h2 className="mx-3  font-thin">Sport</h2>
               </li>
-              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl ">
+              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl dark:hover:bg-slate-800 dark:hover:text-white ">
                 <PiLightbulbThin className="mx-2 w-4 h-4" />
                 <h2 className="mx-3  font-thin">Courses</h2>
               </li>
-              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl ">
+              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl dark:hover:bg-slate-800 dark:hover:text-white ">
                 <GiHanger className="mx-2 w-4 h-4" />
                 <h2 className="mx-3  font-thin">Fashion & beauty</h2>
               </li>
-              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl ">
+              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl dark:hover:bg-slate-800 dark:hover:text-white  ">
                 <MdPodcasts className="mx-2 w-4 h-4" />
                 <h2 className="mx-3  font-thin">Podcasts</h2>
               </li>
@@ -243,7 +244,7 @@ const SideBar = () => {
               <h2 className="text-sm font-medium mx-1">More from YouTube</h2>
             </div>
             <ul className=" mx-2 mb-2">
-              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl">
+              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl dark:hover:bg-slate-800 dark:hover:text-white ">
                 <img
                   src={YoutubeLogo}
                   alt="youtube-premium"
@@ -251,7 +252,7 @@ const SideBar = () => {
                 />
                 <h2 className="mx-2  font-thin">YouTube Premium</h2>
               </li>
-              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl">
+              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl dark:hover:bg-slate-800 dark:hover:text-white ">
                 <img
                   src={YoutubeStudio}
                   alt="youtube-studio"
@@ -259,7 +260,7 @@ const SideBar = () => {
                 />
                 <h2 className="mx-2  font-thin">YouTube Studio</h2>
               </li>
-              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl">
+              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl dark:hover:bg-slate-800 dark:hover:text-white ">
                 <img
                   src={YoutubeMusic}
                   alt="youtube-music"
@@ -267,7 +268,7 @@ const SideBar = () => {
                 />
                 <h2 className="mx-2 font-thin">YouTube Music</h2>
               </li>
-              <li className="flex items-center py-2 pl-2 text-[14px] hover:bg-gray-100 hover:rounded-xl">
+              <li className="flex items-center py-2 pl-2 text-[14px] hover:bg-gray-100 hover:rounded-xl dark:hover:bg-slate-800 dark:hover:text-white ">
                 <img
                   src={YoutubeKids}
                   alt="youtube-kids"
@@ -279,20 +280,20 @@ const SideBar = () => {
           </div>
           <div className="Section-5 border-b border-gray-300 mx-2 ">
             <ul className=" mx-2 my-2">
-              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl">
+              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl dark:hover:bg-slate-800 dark:hover:text-white ">
                 <IoSettingsOutline className="w-4 h-4 mx-2" />
                 <h2 className="mx-3  font-thin">Settings</h2>
               </li>
 
-              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl">
+              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl dark:hover:bg-slate-800 dark:hover:text-white ">
                 <RiFlagLine className="w-4 h-4 mx-2" />
                 <h2 className="mx-3 font-thin">Report history</h2>
               </li>
-              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl">
+              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl dark:hover:bg-slate-800 dark:hover:text-white ">
                 <IoMdHelpCircleOutline className="w-4 h-4 mx-2" />
                 <h2 className="mx-3  font-thin">Help</h2>
               </li>
-              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl">
+              <li className="flex items-center py-2 pl-2  text-[14px] hover:bg-gray-100 hover:rounded-xl dark:hover:bg-slate-800 dark:hover:text-white ">
                 <RiFeedbackLine className="w-4 h-4 mx-2" />
                 <h2 className="mx-3  font-thin">Send feedback</h2>
               </li>

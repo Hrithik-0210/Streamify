@@ -106,7 +106,10 @@ const ButtonList = () => {
       </div>
 
       {isLeftVisible && (
-        <div className="absolute top-1/2 -left-1 -translate-y-1/2 bg-gradient-to-r from-white from-50%  to-transparent w-24 h-full ">
+        <div
+          className="absolute top-1/2 left-0 -translate-y-1/2 bg-gradient-to-r from-white from-50%  to-transparent w-24 h-full 
+          dark:bg-gradient-to-r dark:from-black dark:from-50%  dark:to-transparent"
+        >
           <button
             variant="ghost"
             size="icon"
@@ -124,7 +127,7 @@ const ButtonList = () => {
         </div>
       )}
       {isRightVisible && (
-        <div className="absolute top-1/2 -right-1 -translate-y-1/2 bg-gradient-to-l from-white from-50%  to-transparent w-24 h-full flex justify-end">
+        <div className="absolute top-1/2 right-0 -translate-y-1/2 bg-gradient-to-l from-white from-50%  to-transparent w-24 h-full flex justify-end dark:bg-gradient-to-l dark:from-black dark:from-50% dark:to-transparent">
           <button
             variant="ghost"
             size="icon"

@@ -80,6 +80,12 @@ const WatchPage = () => {
     const diff = Math.abs(differenceDays) + " days ago";
     return diff;
   }
+  const formatDescription = (text) => {
+    const urlPattern = /(https?:\/\/[^\s]+)/g;
+    return text.replace(urlPattern, (url) => {
+      return `<a href=${url} style="color:black;"> ${url}<?a>`;
+    });
+  };
 
   if (videoDetails?.length === 0) {
     return <WatchPageShimmer />;
@@ -87,10 +93,11 @@ const WatchPage = () => {
     const { snippet, statistics } = videoDetails;
     const { channelTitle, title, publishedAt, description } = snippet;
     const { viewCount, likeCount, commentCount } = statistics;
+    const formatedDescription = formatDescription(description);
     return (
-      <div className="absolute top-20 left-24  w-[92svw] flex gap-5">
+      <div className="absolute top-20 left-24  w-[92svw] flex gap-7">
         <div className=" rounded-xl   w-[70%] h-fit">
-          <div className="border-2 border-red-400 p-2 w-full h-[38rem]">
+          <div className=" w-[65.5svw] h-[69svh]">
             <iframe
               width="100%"
               src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
@@ -161,7 +168,7 @@ const WatchPage = () => {
               </div>
             </div>
           </div>
-          <div className="description-container bg-gray-100 rounded-xl mt-2 p-2 w-full flex flex-col  ">
+          <div className="description-container bg-gray-100 rounded-xl mt-2 p-2 w-full flex flex-col  border-2">
             <div className="view-container  flex items-center gap-2 ">
               <p className="text-xs font-semibold text-gray-700">
                 {formatViews(viewCount)} views
@@ -172,7 +179,10 @@ const WatchPage = () => {
             </div>
             <div className="description-content mt-2 text-xs font-normal whitespace-pre-line  flex items-end justify-start ">
               <span className={isExpanded ? "" : "line-clamp-2"}>
-                {description}
+                {/* {description} */}
+                <span
+                  dangerouslySetInnerHTML={{ __html: formatedDescription }}
+                />
               </span>
               {description.split("\n").length > 2 && (
                 <span>
@@ -195,7 +205,7 @@ const WatchPage = () => {
         {sideVideo?.length === 0 ? (
           <WatchPageShimmer />
         ) : (
-          <div className=" w-fit ">
+          <div className=" w-[28%] ">
             {sideVideo.map((video) => (
               <Link to={"/watch?v=" + video.id} key={video.id}>
                 <SideVideoCard items={video} />

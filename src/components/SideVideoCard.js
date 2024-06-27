@@ -36,10 +36,10 @@ const SideVideoCard = ({ items }) => {
   const isMenuOpen = useSelector((store) => store.menu.isMenuOpen);
   // console.log(isMenuOpen);
   return (
-    <div className=" w-fit">
+    <div className=" w-full">
       {isMenuOpen ? (
         <div className="video-card-container group w-full my-1 px-2 rounded-2xl  transition ease-linear delay-150  duration-200 ">
-          <div className="video-card w-[25rem] h-fit transition ease-linear  grid grid-flow-col  gap-2">
+          <div className="video-card w-[100%] h-fit transition ease-linear  grid grid-flow-col  gap-2">
             <div className="thumbnail-container rounded-2xl  h-[5.5rem]  col-span-7 items-center">
               <img
                 src={thumbnails.medium.url}
@@ -73,7 +73,7 @@ const SideVideoCard = ({ items }) => {
         </div>
       ) : (
         <div className="video-card-container group w-full my-1 px-2 rounded-2xl  transition ease-linear delay-150  duration-200 ">
-          <div className="video-card w-[25rem] h-fit transition ease-linear  grid grid-flow-col  gap-2">
+          <div className="video-card w-[100%] h-fit transition ease-linear  grid grid-flow-col  gap-2">
             <div className="thumbnail-container rounded-2xl  h-[5.5rem]  col-span-7 items-center">
               <img
                 src={thumbnails.medium.url}
