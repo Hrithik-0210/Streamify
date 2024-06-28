@@ -23,12 +23,12 @@ const VideoByCategoryContainer = () => {
     const data = await fetch(VIDEO_SEARCH_API);
     const jsonData = await data.json();
     setSearchVideo(jsonData.items);
-    console.log(jsonData);
+    // console.log(jsonData);
     // console.log(jsonData.items);
   };
   const isMenuOpen = useSelector((store) => store.menu.isMenuOpen);
 
-  console.log(searchVideo);
+  // console.log(searchVideo);
   if (searchVideo?.length === 0) {
     return <CategoryShimmer />;
   } else {

@@ -12,13 +12,13 @@ module.exports = {
         "Video-card-color": "#F2F2F2",
       },
       screens: {
-        sm: "576px",
+        sm: "376px",
         // => @media (min-width: 576px) { ... }
 
-        md: "960px",
+        md: "690px",
         // => @media (min-width: 960px) { ... }
 
-        lg: "1440px",
+        lg: "1050px",
         // => @media (min-width: 1440px) { ... }
         xl: "1595px",
       },

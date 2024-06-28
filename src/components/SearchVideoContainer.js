@@ -36,7 +36,7 @@ const SearchVideoContainer = () => {
       return (
         <div className="relative z-0">
           <div className="flex flex-col w-full absolute top-16 left-24 ">
-            <div className="overflow-x-hidden overflow-y-hidden my-1  fixed top-14 left-[15%] w-[70%] z-50 bg-white  ">
+            <div className="overflow-x-hidden overflow-y-hidden my-1  fixed top-14 left-[20%] w-[70%] z-50 bg-white dark:bg-black ">
               <ButtonList />
             </div>
 

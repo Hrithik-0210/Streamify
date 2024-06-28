@@ -70,7 +70,9 @@ const SearchVideoCard = ({ item }) => {
           </div>
 
           <div className="view-and-time      items-center text-[13px] font-normal text-gray-500">
-            <div className="time-ago">{publishTime(publishedAt)}</div>
+            <div className="time-ago dark:text-stone-200 dark:font-thin dark:text-[13px]">
+              {publishTime(publishedAt)}
+            </div>
           </div>
           <div className="check-logo  gap-2 items-center font-normal flex  my-2 ">
             <div className="channelName text-[13px] flex items-center gap-2">

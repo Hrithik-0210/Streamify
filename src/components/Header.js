@@ -10,7 +10,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/menuBarSlice";
 import { YOUTUBE_SEARCH_API } from "../utils/Constants";
 import { cacheResults } from "../utils/searchSlice";
-import store from "../utils/store";
 import { Link, useNavigate } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
 import { FaMoon } from "react-icons/fa";
@@ -25,10 +24,7 @@ const Header = () => {
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestion, setShowSuggestion] = useState(false);
   const { themeMode, darkTheme, lightTheme } = useTheme();
-  // console.log(themeMode);
-  // console.log(darkTheme);
-  // console.log(lightTheme);
-  // console.log(searchQuery);
+
   const navigate = useNavigate();
   const searchCache = useSelector((store) => store.search);
   const dispatch = useDispatch();
@@ -49,7 +45,6 @@ const Header = () => {
         [searchQuery]: jsonData[1],
       })
     );
-    // console.log(jsonData[1]);
   };
 
   useEffect(() => {
@@ -71,7 +66,6 @@ const Header = () => {
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
-      // Redirect to a new page with searchQuery as a query parameter
       navigate(`/results?search_query=${encodeURIComponent(searchQuery)}`);
     }
   };
@@ -82,10 +76,19 @@ const Header = () => {
     } else {
       lightTheme();
     }
-    console.log(e);
+  };
+  const onClickSuggestion = (e) => {
+    const suggestiontext = e.target.innerText.split(" ").join("+");
+    setSearchQuery(e.target.innerText);
+    setShowSuggestion(true);
+    navigate("/results?search_query=" + suggestiontext);
   };
 
-  console.log(suggestions);
+  const handleClick = (item) => {
+    console.log(item); // Print the clicked item
+  };
+
+  // console.log(suggestions);
   return (
     // Header-Container
     <div className="flex justify-between px-5 py-2  items-center w-full h-16 fixed top-0 left-0 z-50  bg-white dark:bg-black dark:text-white ">
@@ -118,9 +121,7 @@ const Header = () => {
           <p className="absolute right-0 -top-1   font-sans text-[10px]">IN</p>
         </div>
       </div>
-
       {/* Middle-Container - search*/}
-
       <div className=" w-1/3  md:w-[40%]  flex  justify-center">
         <div className=" w-full   flex ">
           <input
@@ -129,7 +130,6 @@ const Header = () => {
             value={searchQuery}
             className="w-full py-2 px-4 rounded-l-full  focus:outline-none font-sans text-sm border border-gray-400 dark:bg-black dark:text-white dark:border-gray-700"
             onChange={(e) => setSearchQuery(e.target.value)}
-            onClick={(e) => console.log(searchQuery)}
             onFocus={() => setShowSuggestion(true)}
             onBlur={() => setShowSuggestion(false)}
             onKeyDown={handleKeyDown}
@@ -148,31 +148,25 @@ const Header = () => {
           <BiSolidMicrophone className="w-5 h-5 dark:text-gray-100" />
         </div>
       </div>
-      <div className="absolute top-[3.15rem] left-[30%]   w-1/3 md:w-[33%]  flex flex-col z-60 ">
-        {showSuggestion &&
-          (suggestions.length === 0 ? (
-            " "
-          ) : (
-            <div className=" bg-white dark:bg-gray-950 dark:text-white  py-2 shadow-md shadow-gray-300 borderborder-gray-200 rounded-2xl">
-              <ul>
-                {suggestions.map((suggestion, index) => (
+      {/* //suggestion box */}
+      <div className="absolute top-[3.15rem] left-[30%] w-1/3 md:w-[33%] flex flex-col z-60">
+        {showSuggestion && suggestions.length > 0 && (
+          <div className="bg-white dark:bg-gray-900 dark:text-white dark:border dark:border-gray-700 dark:shadow-none py-2 shadow-md shadow-gray-300 border border-gray-200 rounded-2xl">
+            <ul>
+              {suggestions &&
+                suggestions.map((suggestion, index) => (
                   <li
                     key={index}
                     className="flex items-center gap-3 hover:bg-gray-200 dark:hover:bg-gray-700 dark:text-white  px-4 py-[0.30rem]  "
-                    onClick={console.log(suggestion)}
+                    onMouseDown={(e) => onClickSuggestion(e)}
                   >
-                    <CiSearch className="w-4 h-4" />
-
-                    <p className="text-sm font-medium cursor-pointer">
-                      {suggestion}
-                    </p>
+                    {suggestion}
                   </li>
                 ))}
-              </ul>
-            </div>
-          ))}
+            </ul>
+          </div>
+        )}
       </div>
-
       {/* Right-side-Container - userinfo and theme */}
       <div className="User-info-container flex  items-center justify-between w-28 md:w-32 lg:w-44 p-1 mx-2 ">
         <div className="create-icon  rounded-full  dark:hover:text-black">
@@ -193,7 +187,7 @@ const Header = () => {
           )}
         </div>
 
-        <div className="create-icon py-[0.35rem] px-2 rounded-full hover:bg-gray-200 dark:hover:text-black">
+        <div className="create-icon  md:py-[0.35rem] md:px-2 :rounded-full :hover:bg-gray-200 dark:hover:text-black">
           <RiVideoAddLine className="w-5 h-5" />
         </div>
         <div className="notification-icon py-[0.3rem] px-[0.5rem] rounded-full hover:bg-gray-200 dark:hover:text-black">
