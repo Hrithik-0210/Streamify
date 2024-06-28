@@ -16,9 +16,6 @@ import { FaMoon } from "react-icons/fa";
 import { FiSun } from "react-icons/fi";
 import logo_dark from "../images/youtube -dark-theme-logo.png";
 
-// import SearchBox from "./SearchBox";
-// import SuggestionListBox from "./SuggestionListBox";
-
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
@@ -157,10 +154,11 @@ const Header = () => {
                 suggestions.map((suggestion, index) => (
                   <li
                     key={index}
-                    className="flex items-center gap-3 hover:bg-gray-200 dark:hover:bg-gray-700 dark:text-white  px-4 py-[0.30rem]  "
+                    className="flex items-center gap-3 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700 dark:text-white  px-4 py-[0.30rem]  "
                     onMouseDown={(e) => onClickSuggestion(e)}
                   >
-                    {suggestion}
+                    <CiSearch />
+                    <span>{suggestion}</span>
                   </li>
                 ))}
             </ul>
