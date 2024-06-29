@@ -4,7 +4,6 @@ import { BiDislike } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { toggleReply } from "../utils/commentSlice";
-import store from "../utils/store";
 // import { MdOutlineSort } from "react-icons/md";
 
 const Comment = ({ item }) => {

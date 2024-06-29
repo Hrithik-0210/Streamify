@@ -1,6 +1,5 @@
 import React from "react";
-import { BsThreeDots } from "react-icons/bs";
-import { GoDotFill } from "react-icons/go";
+
 import { MdCheckCircle } from "react-icons/md";
 import { PiCheckCircleDuotone } from "react-icons/pi";
 import { TiSocialYoutubeCircular } from "react-icons/ti";
@@ -8,7 +7,7 @@ import { useSelector } from "react-redux";
 
 const VideoByCategoryCard = ({ item }) => {
   const { snippet } = item;
-  const { channelTitle, description, publishedAt, thumbnails, title } = snippet;
+  const { channelTitle, publishedAt, thumbnails, title } = snippet;
 
   function publishTime(publishedAt) {
     const currentDate = new Date();

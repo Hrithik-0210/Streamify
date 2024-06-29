@@ -9,16 +9,15 @@ const SubscriberCount = ({ item }) => {
 
   const [subscribersCount, setSubscribersCount] = useState([]);
 
-  useEffect(() => {
-    getSubscriberCount();
-  }, [channelId]);
-
   const getSubscriberCount = async () => {
     const data = await fetch(SUBSCRIBER_COUNT_API);
     const jsonData = await data.json();
     // console.log(jsonData.items);
     setSubscribersCount(jsonData.items);
   };
+  useEffect(() => {
+    getSubscriberCount();
+  }, [channelId]);
 
   function formatViews(viewCount) {
     if (viewCount >= 1000000) {

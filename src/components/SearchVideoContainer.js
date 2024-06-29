@@ -16,10 +16,6 @@ const SearchVideoContainer = () => {
 
   const VIDEO_SEARCH_API = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=${query}&key=${GOOGLE_API_KEY}`;
 
-  useEffect(() => {
-    searchVideos();
-  }, [query]);
-
   const searchVideos = async () => {
     const data = await fetch(VIDEO_SEARCH_API);
     const jsonData = await data.json();
@@ -27,6 +23,9 @@ const SearchVideoContainer = () => {
     // console.log(jsonData);
     // console.log(jsonData.items);
   };
+  useEffect(() => {
+    searchVideos();
+  }, [query]);
 
   // console.log(searchVideo);
   if (searchVideo?.length === 0) {

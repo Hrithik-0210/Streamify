@@ -154,7 +154,7 @@ const Header = () => {
                     onMouseDown={(e) => onClickSuggestion(e)}
                   >
                     <CiSearch />
-                    <span className="text-sm ">{suggestion}</span>
+                    <span className="text-[13px] ">{suggestion}</span>
                   </li>
                 ))}
             </ul>

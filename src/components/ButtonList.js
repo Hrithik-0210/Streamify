@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import Button from "./Button";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import { NavLink, useLocation } from "react-router-dom";
-// import { Link } from "react-router-dom";
 
 const List = [
   "All",
@@ -61,7 +60,7 @@ const ButtonList = () => {
     return () => {
       observer.disconnect();
     };
-  }, [List, translate]);
+  }, [translate]);
 
   useEffect(() => {
     // Determine the active button based on the current URL path

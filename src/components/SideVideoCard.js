@@ -1,7 +1,6 @@
 import React from "react";
 import { GoDotFill } from "react-icons/go";
-import { TiSocialYoutubeCircular } from "react-icons/ti";
-import { MdCheckCircle } from "react-icons/md";
+
 import { useSelector } from "react-redux";
 import { PiCheckCircleDuotone } from "react-icons/pi";
 import { BsThreeDots } from "react-icons/bs";
