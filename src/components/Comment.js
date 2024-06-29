@@ -97,7 +97,7 @@ const Comment = ({ item }) => {
             <img
               src={userProfile}
               alt="User Profile"
-              className="w-10 h-10 rounded-full"
+              className="w-10 h-10 sm:w-7 sm:h-7 rounded-full"
             />
           )}
         </div>
@@ -111,7 +111,7 @@ const Comment = ({ item }) => {
             </p>
           </div>
 
-          <div className="text-xs font-normal whitespace-pre-line  flex items-end justify-start ">
+          <div className="text-xs font-normal whitespace-pre-line  flex items-end justify-start sm:text-[11.5px] ">
             <span className={isExpanded ? "" : "line-clamp-2"}>
               {textOriginal}
             </span>
@@ -164,7 +164,9 @@ const Comment = ({ item }) => {
                     <p className="text-xs font-medium">
                       {reply.authorDisplayName}
                     </p>
-                    <p className="text-xs">{reply.textOriginal}</p>
+                    <p className="text-xs sm:text-[11.5px]">
+                      {reply.textOriginal}
+                    </p>
                   </div>
                 </div>
               ))}

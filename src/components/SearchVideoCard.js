@@ -55,17 +55,17 @@ const SearchVideoCard = ({ item }) => {
 
   //   console.log(snippet);
   return (
-    <div className="video-card-container  transition ease-linear delay-150  duration-200 w-[65svw] h-fit rounded-2xl grid grid-flow-col grid-cols-12 gap-2  ">
-      <div className="thumbnail-container rounded-xl   w-full md:h-52 xl:h-60 2xl:h-64 items-center  m-2 col-span-5 overflow-hidden hover:rounded-sm transition-all ease-linear delay-100 duration-150">
+    <div className="video-card-container  transition ease-linear delay-150  duration-200 w-[65svw] h-fit rounded-2xl grid grid-flow-col grid-cols-12 gap-2 sm:flex sm:flex-col sm:hover:bg-stone-100 sm:my-5 sm:w-96 sm:h-[22rem]">
+      <div className="thumbnail-container rounded-xl   w-full md:h-52 xl:h-60 2xl:h-64 items-center  m-2 col-span-5 overflow-hidden hover:rounded-sm transition-all ease-linear delay-100 duration-150 sm:w-96 sm:h-64 ">
         <img
           src={thumbnails.high.url}
           alt="thumbnail"
-          className="  w-full h-full   flex items-center justify-center  object-center object-cover "
+          className="  w-full h-full sm:w-full sm:h-full  flex items-center justify-center  object-center object-cover "
         />
       </div>
       <div className="video-details   h-24  font-medium m-2 col-span-6">
         <div className="channel-details  overflow-hidden ">
-          <div className="title text-base font-thin my-1 line-clamp-2">
+          <div className="title text-base font-thin my-1 line-clamp-2 sm:text-sm">
             {title}
           </div>
 
@@ -81,14 +81,16 @@ const SearchVideoCard = ({ item }) => {
                 {channelTitle}
               </p>
             </div>
-            <PiCheckCircleDuotone className=" w-[0.8rem] h-[0.8rem]" />
+            <div className="sm:hidden">
+              <PiCheckCircleDuotone className=" w-[0.8rem] h-[0.8rem] " />
+            </div>
           </div>
-          <div className="text-[11.5px] font-thin text-gray-500 dark:text-stone-200 mt-5">
+          <div className="text-[11.5px] font-thin text-gray-500 dark:text-stone-200 mt-5 sm:hidden">
             {description}
           </div>
         </div>
       </div>
-      <div className=" items-start my-2 m-2 col-span-1 py-1">
+      <div className=" items-start my-2 m-2 col-span-1 py-1 sm:hidden">
         <BsThreeDots className="rotate-90 " />
       </div>
     </div>

@@ -31,17 +31,11 @@ import { RiFeedbackLine } from "react-icons/ri";
 import { useSelector } from "react-redux";
 import { HiMiniSignal } from "react-icons/hi2";
 import { NavLink } from "react-router-dom";
+// import {  } from "../utils/menuBarSlice";
 // import { toggleMenu } from "../utils/menuBarSlice";
 // import logo from "../images/YouTube_Logo_2017.svg.png";
 
 const SideBar = () => {
-  // const dispatch = useDispatch();
-  // const toggleMenuHandler = () => {
-  //   console.log("dispatched");
-  //   dispatch(toggleMenu());
-  // };
-  // const { themeMode, darkTheme, lightTheme } = useTheme();
-
   const isMenuOpen = useSelector((store) => store.menu.isMenuOpen);
   // console.log(isMenuOpen);
   if (isMenuOpen)

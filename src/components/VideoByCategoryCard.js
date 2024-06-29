@@ -59,12 +59,12 @@ const VideoByCategoryCard = ({ item }) => {
     <div>
       {isMenuOpen ? (
         <div className="video-card-container group w-fit my-[0.40rem] px-2 py-3 rounded-2xl hover:bg-Video-card-color transition ease-linear delay-150  duration-200 dark:bg-black dark:text-white dark:hover:bg-gray-800">
-          <div className="video-card w-72 h-64 transition ease-linear ">
-            <div className="thumbnail-continer rounded-2xl">
+          <div className="video-card w-72 h-64 sm:w-96 sm:h-72 sm:my-1  transition ease-linear ">
+            <div className="thumbnail-continer rounded-2xl  sm:w-96 sm:h-52 ">
               <img
                 src={thumbnails.medium.url}
                 alt="thumbnail"
-                className="rounded-xl group-hover:rounded-sm transition-all delay-100"
+                className="rounded-xl group-hover:rounded-sm transition-all delay-100 sm:w-full sm:h-full"
               />
             </div>
             <div className="video-details flex py-2 font-medium">
@@ -91,8 +91,8 @@ const VideoByCategoryCard = ({ item }) => {
         </div>
       ) : (
         <div className="video-card-container group w-fit my-[0.40rem]  px-2 py-3 rounded-2xl hover:bg-Video-card-color transition ease-linear delay-150 duration-200 dark:bg-black dark:text-white dark:hover:bg-gray-800">
-          <div className="video-card w-[16.5rem] ">
-            <div className="thumbnail-continer rounded-2xl">
+          <div className="video-card w-[16.5rem] sm:w-96 sm:h-72 sm:my-1 transition ease-linear  ">
+            <div className="thumbnail-continer rounded-2xl sm:w-96 sm:h-52">
               <img
                 src={thumbnails.medium.url}
                 alt="thumbnail"

@@ -93,9 +93,9 @@ const WatchPage = () => {
     const { viewCount, likeCount, commentCount } = statistics;
     const formatedDescription = formatDescription(description);
     return (
-      <div className="absolute top-20 left-24  w-[92svw] flex md:w-[80svw] sm:w-svw gap-7">
-        <div className=" rounded-xl   w-[70%] h-fit md:w-full">
-          <div className=" w-[65svw] h-[72.7svh] md:w-[80svw] md:h-[65svw]">
+      <div className="absolute top-20 left-24 sm:left-1 sm:w-svw  w-[92svw] flex md:w-[80svw]  gap-7">
+        <div className=" rounded-xl   w-[70%] h-fit md:w-full sm:w-[95svw]">
+          <div className=" w-[65svw] h-[72.7svh] md:w-[80svw] md:h-[65svw] sm:w-[95svw] sm:h-64">
             <iframe
               width="100%"
               src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
@@ -108,15 +108,19 @@ const WatchPage = () => {
             ></iframe>
           </div>
           <div className="flex flex-col ">
-            <div className="mt-2 p-1  text-base font-semibold">{title}</div>
-            <div className=" flex py-1 justify-between">
-              <div className="left-details-container flex items-center">
+            <div className="mt-2 p-1  text-base font-semibold sm:text-sm">
+              {title}
+            </div>
+            <div className=" flex py-1 justify-between sm:flex-col  sm:w-full">
+              <div className="left-details-container flex items-center sm:justify-between">
                 <div className="flex items-center mr-2">
                   <TiSocialYoutubeCircular className="w-8 h-8" />
                 </div>
                 <div className="flex flex-col mx-2">
                   <div className="flex items-center text-[11.5px] text-gray-700 dark:text-stone-200">
-                    <h2 className="text-sm font-medium">{channelTitle}</h2>
+                    <h2 className="text-sm font-medium sm:text-xs">
+                      {channelTitle}
+                    </h2>
                     <MdCheckCircle className=" w-[0.8rem] h-[0.8rem] text-gray-500 mx-1" />
                   </div>
 
@@ -128,7 +132,7 @@ const WatchPage = () => {
                   Subscribe
                 </button>
               </div>
-              <div className="right-details-conatiner  flex items-center gap-2">
+              <div className="right-details-conatiner  flex items-center gap-2  sm:my-3">
                 <div className="like-dislike-container bg-gray-100  rounded-full flex h-8 dark:bg-black">
                   <div className="like-container hover:bg-gray-200 rounded-l-full flex items-center dark:bg-gray-900 dark:text-gray-200 dark:font-medium dark:hover:bg-gray-700 ">
                     <div className="flex border-r border-gray-400 my-1 px-4  gap-2 items-center justify-center">
@@ -150,7 +154,7 @@ const WatchPage = () => {
                     Share
                   </p>
                 </div>
-                <div className="download-conatiner sm:hidden md:hidden flex items-center justify-center gap-3 bg-gray-100 rounded-full hover:bg-gray-200 py-2 px-4 h-8  dark:bg-gray-900 dark:text-gray-200 dark:font-medium dark:hover:bg-gray-700">
+                <div className="download-conatiner  flex items-center justify-center gap-3 bg-gray-100 rounded-full hover:bg-gray-200 py-2 px-4 h-8  dark:bg-gray-900 dark:text-gray-200 dark:font-medium dark:hover:bg-gray-700">
                   <TfiDownload className="w-4 h-4" />
                   <p className="text-xs font-medium text-gray-700 dark:text-gray-200">
                     Download
@@ -174,7 +178,7 @@ const WatchPage = () => {
               </div>
             </div>
           </div>
-          <div className="description-container bg-gray-100 rounded-xl mt-2 p-2 w-full flex flex-col  dark:bg-gray-950 dark:text-stone-200">
+          <div className="description-container sm:w-[95svw] bg-gray-100 rounded-xl mt-2 p-2 w-full flex flex-col  dark:bg-gray-950 dark:text-stone-200">
             <div className="view-container  flex items-center gap-2 ">
               <p className="text-xs font-semibold text-gray-700 dark:text-stone-200">
                 {formatViews(viewCount)} views
@@ -203,7 +207,7 @@ const WatchPage = () => {
             </div>
           </div>
 
-          <div className="comment-section mt-5 w-full  ">
+          <div className="comment-section mt-5 w-full   ">
             <CommentContainer comment={[commentCount, GOOGLE_API_KEY]} />
           </div>
         </div>

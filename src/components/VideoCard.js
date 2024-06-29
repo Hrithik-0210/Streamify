@@ -36,13 +36,13 @@ const VideoCard = ({ items }) => {
   return (
     <div>
       {isMenuOpen ? (
-        <div className="video-card-container group w-fit my-2 px-2 py-3 rounded-2xl hover:bg-Video-card-color dark:hover:bg-gray-800 transition ease-linear delay-150  duration-200 ">
-          <div className="video-card w-72 h-64 transition ease-linear ">
-            <div className="thumbnail-continer rounded-2xl ">
+        <div className="video-card-container group w-fit my-2 px-2 py-3 rounded-2xl hover:bg-Video-card-color dark:hover:bg-gray-800 transition ease-linear delay-150  duration-200  ">
+          <div className="video-card w-72 h-64 sm:w-96 sm:h-72 sm:my-1 transition ease-linear  ">
+            <div className="thumbnail-continer rounded-2xl h-40 sm:h-[13.5rem] ">
               <img
-                src={thumbnails.medium.url}
+                src={thumbnails.high.url}
                 alt="thumbnail"
-                className="rounded-xl group-hover:rounded-sm transition-all delay-100 "
+                className="rounded-xl group-hover:rounded-sm transition-all delay-100 w-full h-full  sm:w-full sm:h-full object-cover object-center "
               />
             </div>
             <div className="video-details flex py-2 font-medium">
@@ -69,12 +69,12 @@ const VideoCard = ({ items }) => {
         </div>
       ) : (
         <div className="video-card-container group w-fit my-2 px-2 py-3 rounded-2xl hover:bg-Video-card-color dark:hover:bg-gray-800 transition ease-linear delay-150 duration-200  ">
-          <div className="video-card w-[16.5rem] ">
-            <div className="thumbnail-continer rounded-2xl">
+          <div className="video-card w-[16.5rem] sm:w-96   ">
+            <div className="thumbnail-continer rounded-2xl h-36 sm:h-[13.5rem]">
               <img
-                src={thumbnails.medium.url}
+                src={thumbnails.high.url}
                 alt="thumbnail"
-                className="rounded-xl group-hover:rounded-sm transition-all delay-100 w-full"
+                className="rounded-xl group-hover:rounded-sm transition-all delay-100 w-full h-full object-cover object-center"
               />
             </div>
             <div className="video-details flex py-2 font-medium w-full">
