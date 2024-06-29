@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { MdOutlineSort } from "react-icons/md";
 
@@ -24,16 +24,16 @@ const CommentContainer = ({ comment }) => {
   //   return diff;
   // }
 
-  useEffect(() => {
-    getComments();
-  }, [videoId]);
-
-  const getComments = async () => {
+  const getComments = useCallback(async () => {
     const data = await fetch(COMMENT_API);
     const jsonData = await data.json();
-    // console.log(jsonData.items);
     setComments(jsonData.items);
-  };
+  }, [COMMENT_API]);
+
+  useEffect(() => {
+    getComments();
+  }, [getComments]);
+
   const commentDetails = comments.map((coment) => coment);
   // const commentReplies = comments.map((coment) => coment?.replies?.comments);
   // console.log(commentDetails[0]);

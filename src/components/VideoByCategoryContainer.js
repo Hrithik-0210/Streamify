@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { CategoryShimmer } from "./Shimmer";
 import VideoByCategoryCard from "./VideoByCategoryCard";
@@ -15,16 +15,17 @@ const VideoByCategoryContainer = () => {
 
   const VIDEO_SEARCH_API = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=${query}&key=${GOOGLE_API_KEY}`;
 
-  const searchVideos = async () => {
+  const searchVideos = useCallback(async () => {
     const data = await fetch(VIDEO_SEARCH_API);
     const jsonData = await data.json();
     setSearchVideo(jsonData.items);
     // console.log(jsonData);
     // console.log(jsonData.items);
-  };
+  }, [VIDEO_SEARCH_API]);
+
   useEffect(() => {
     searchVideos();
-  }, [query]);
+  }, [searchVideos]);
 
   const isMenuOpen = useSelector((store) => store.menu.isMenuOpen);
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 // import { json } from "react-router-dom";
 
 const SubscriberCount = ({ item }) => {
@@ -9,15 +9,15 @@ const SubscriberCount = ({ item }) => {
 
   const [subscribersCount, setSubscribersCount] = useState([]);
 
-  const getSubscriberCount = async () => {
+  const getSubscriberCount = useCallback(async () => {
     const data = await fetch(SUBSCRIBER_COUNT_API);
     const jsonData = await data.json();
-    // console.log(jsonData.items);
     setSubscribersCount(jsonData.items);
-  };
+  }, [SUBSCRIBER_COUNT_API]);
+
   useEffect(() => {
     getSubscriberCount();
-  }, [channelId]);
+  }, [getSubscriberCount]);
 
   function formatViews(viewCount) {
     if (viewCount >= 1000000) {

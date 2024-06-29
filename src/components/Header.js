@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import logo from "../images/YouTube_Logo_2017.svg.png";
 import { CiSearch } from "react-icons/ci";
 import { HiBars3 } from "react-icons/hi2";
@@ -33,7 +33,7 @@ const Header = () => {
    * searchQuery = iphone
    *
    */
-  const showSuggestions = async () => {
+  const showSuggestions = useCallback(async () => {
     const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
     const jsonData = await data.json();
     setSuggestions(jsonData[1]);
@@ -42,7 +42,7 @@ const Header = () => {
         [searchQuery]: jsonData[1],
       })
     );
-  };
+  }, [searchQuery, dispatch]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -55,7 +55,7 @@ const Header = () => {
     return () => {
       clearTimeout(timer);
     };
-  }, [searchQuery]);
+  }, [showSuggestions, searchCache, searchQuery]);
 
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { AiOutlineLike } from "react-icons/ai";
 import { BiDislike } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
@@ -25,7 +25,6 @@ const Comment = ({ item }) => {
     likeCount,
     publishedAt,
     textOriginal,
-    videoId,
   } = snippet;
 
   const toggleExpansion = () => {
@@ -34,13 +33,8 @@ const Comment = ({ item }) => {
   // console.log(replies?.comments);
   // const hasReplies = replies && replies.comments && replies.comments.length > 0;
 
-  useEffect(() => {
-    getauthorProfileImageUrl();
-  }, [videoId]);
-
-  const getauthorProfileImageUrl = async () => {
+  const getauthorProfileImageUrl = useCallback(async () => {
     const data = await fetchImage(authorProfileImageUrl);
-
     setUserProfile(data);
     if (replies?.comments) {
       const replyProfiles = await Promise.all(
@@ -57,8 +51,11 @@ const Comment = ({ item }) => {
       );
       setReplyUserProfiles(replyProfiles);
     }
-  };
+  }, [authorProfileImageUrl, replies]);
 
+  useEffect(() => {
+    getauthorProfileImageUrl();
+  }, [getauthorProfileImageUrl]);
   // Depend on authorProfileImageUrl and replies changes
 
   const fetchImage = async (imageUrl) => {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { closeMenu } from "../utils/menuBarSlice";
 import { Link, useSearchParams } from "react-router-dom";
@@ -26,36 +26,35 @@ const WatchPage = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [sideVideo, setSideVideos] = useState([]);
 
-  const toggleExpansion = () => {
-    setIsExpanded(!isExpanded);
-  };
-
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(closeMenu());
-    getVideoDetails();
-    getSideVideos();
-  }, [videoId]);
-
   const GOOGLE_API_KEY = "AIzaSyDUfAMkZHrrPIDR_wcVuVBsHcUiiCJHfUQ";
   const VIDEO_DETAILS =
     "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=" +
     videoId +
     "&key=" +
     GOOGLE_API_KEY;
-
-  const getVideoDetails = async () => {
+  const toggleExpansion = () => {
+    setIsExpanded(!isExpanded);
+  };
+  const getVideoDetails = useCallback(async () => {
     const data = await fetch(VIDEO_DETAILS);
     const jsonData = await data.json();
     setVideoDetails(jsonData.items[0]);
     // console.log(videoDetail);
-  };
-  const getSideVideos = async () => {
+  }, [VIDEO_DETAILS]);
+
+  const getSideVideos = useCallback(async () => {
     const data = await fetch(YOUTUBE_VIDEO_API);
     const jsonData = await data.json();
     // console.log(jsonData.items);
     setSideVideos(jsonData.items);
-  };
+  }, []);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(closeMenu());
+    getVideoDetails();
+    getSideVideos();
+  }, [videoId, dispatch, getSideVideos, getVideoDetails]);
 
   const channelId = videoDetails?.snippet?.channelId;
   // console.log(channelId);
