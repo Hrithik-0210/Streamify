@@ -12,7 +12,7 @@ const SearchVideoContainer = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get("search_query");
 
-  const GOOGLE_API_KEY = "AIzaSyDUfAMkZHrrPIDR_wcVuVBsHcUiiCJHfUQ";
+  const GOOGLE_API_KEY = "AIzaSyBLVfa6PsWCQuzcvhj4hzF4zATQ4bvRGhM";
 
   const VIDEO_SEARCH_API = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=${query}&key=${GOOGLE_API_KEY}`;
 

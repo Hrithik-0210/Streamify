@@ -26,7 +26,7 @@ const WatchPage = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [sideVideo, setSideVideos] = useState([]);
 
-  const GOOGLE_API_KEY = "AIzaSyDUfAMkZHrrPIDR_wcVuVBsHcUiiCJHfUQ";
+  const GOOGLE_API_KEY = "AIzaSyBLVfa6PsWCQuzcvhj4hzF4zATQ4bvRGhM";
   const VIDEO_DETAILS =
     "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=" +
     videoId +
