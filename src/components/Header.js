@@ -199,7 +199,7 @@ const Header = () => {
         )}
       </div>
       {/* Right-side-Container - userinfo and theme */}
-      <div className="User-info-container  flex  items-center justify-between w-fit gap-2 p-1 mx-2 sm:mx-0 ">
+      <div className="User-info-container  flex  items-center justify-between w-fit gap-2 p-1 mx-2 sm:mx-0 sm:w-24 sm:gap-0 ">
         <div className="create-icon  rounded-full  dark:hover:text-black">
           {themeMode === "light" ? (
             <div
@@ -221,7 +221,7 @@ const Header = () => {
         <div className="create-icon sm:hidden  py-[0.35rem] px-2 rounded-full hover:bg-gray-200 dark:hover:text-black">
           <RiVideoAddLine className="w-5 h-5" />
         </div>
-        <div className="notification-icon py-[0.3rem] px-[0.5rem] rounded-full hover:bg-gray-200 dark:hover:text-black">
+        <div className="notification-icon sm:hidden py-[0.3rem] px-[0.5rem] rounded-full hover:bg-gray-200 dark:hover:text-black">
           <IoMdNotificationsOutline className="w-5 h-5" />
         </div>
         <div className="user-icon py-[0.3rem] px-[0.5rem] rounded-full hover:bg-gray-200 dark:hover:text-black border dark:border-none">
@@ -265,11 +265,13 @@ const Header = () => {
             </div>
           ) : (
             <button
-              className="flex gap-2 rounded-3xl  py-1 px-3 items-center"
+              className="flex gap-2 rounded-3xl  py-1 px-3 items-center sm:gap-0 sm:h-7 sm:px-1 sm:ml-1"
               onClick={() => loginWithRedirect()}
             >
-              <FaUserAlt className="w-4 h-4" />
-              <span className="text-blue-700 text-sm font-medium">sign in</span>
+              <FaUserAlt className="w-4 h-4 sm:hidden" />
+              <span className="text-blue-700 text-sm sm:text-xs sm:w-9  font-medium">
+                sign in
+              </span>
             </button>
           )}
         </div>

@@ -37,7 +37,7 @@ const VideoCard = ({ items }) => {
     <div>
       {isMenuOpen ? (
         <div className="video-card-container group w-fit my-2 px-2 py-3 sm:p-0 rounded-2xl hover:bg-Video-card-color dark:hover:bg-gray-800 transition ease-linear delay-150  duration-200  ">
-          <div className="video-card w-72 h-64 sm:w-96 sm:h-72 sm:my-1 transition ease-linear  ">
+          <div className="video-card w-72 h-64 sm:w-96 sm:h-80 sm:my-2 transition ease-linear  ">
             <div className="thumbnail-continer rounded-2xl h-40 sm:h-[13.5rem] ">
               <img
                 src={thumbnails.high.url}
@@ -69,7 +69,7 @@ const VideoCard = ({ items }) => {
         </div>
       ) : (
         <div className="video-card-container group w-fit my-2 px-2 py-3 sm:p-0 rounded-2xl hover:bg-Video-card-color dark:hover:bg-gray-800 transition ease-linear delay-150 duration-200  ">
-          <div className="video-card w-[16.5rem] sm:w-96   ">
+          <div className="video-card w-[16.5rem] sm:w-96  sm:h-80 ">
             <div className="thumbnail-continer rounded-2xl h-36 sm:h-[13.5rem]">
               <img
                 src={thumbnails.high.url}
