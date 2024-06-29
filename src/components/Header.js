@@ -81,19 +81,15 @@ const Header = () => {
     navigate("/results?search_query=" + suggestiontext);
   };
 
-  const handleClick = (item) => {
-    console.log(item); // Print the clicked item
-  };
-
   // console.log(suggestions);
   return (
     // Header-Container
-    <div className="flex justify-between px-5 py-2  items-center w-full h-16 fixed top-0 left-0 z-50  bg-white dark:bg-black dark:text-white ">
+    <div className="flex  justify-between lg:px-5 xl:px-5 2xl:px-5 py-2  items-center w-full h-16 fixed top-0 left-0 z-50  bg-white dark:bg-black dark:text-white sm:px-2">
       {/* Left-side-Container - logo */}
-      <div className="flex  items-center justify-between">
+      <div className="flex  items-center justify-between ">
         <div>
           <HiBars3
-            className="w-6 h-6 mx-3 cursor-pointer"
+            className="w-6 h-6 mx-3 cursor-pointer sm:mx-0 sm:w-5 sm:h-5 md:mx-1 md:w-5 md:h-5"
             onClick={() => toggleMenuHandler()}
           />
         </div>
@@ -103,7 +99,7 @@ const Header = () => {
               <img
                 src={logo}
                 alt="logo"
-                className="w-20 h-[1.1rem] rounded mx-2"
+                className="w-20 h-[1.1rem] rounded mx-2 sm:w-16 sm:h-4 md:w-16 md:h-4"
               />
             </Link>
           ) : (
@@ -111,7 +107,7 @@ const Header = () => {
               <img
                 src={logo_dark}
                 alt="logo"
-                className="w-20 h-[1.6rem] rounded mx-2"
+                className="w-20 h-[1.6rem] rounded mx-2 sm:w-16 sm:h-4  md:w-16 md:h-4 "
               />
             </Link>
           )}
@@ -119,7 +115,7 @@ const Header = () => {
         </div>
       </div>
       {/* Middle-Container - search*/}
-      <div className=" w-1/3  md:w-[40%]  flex  justify-center">
+      <div className=" w-1/3  md:w-[40%]  flex  justify-center sm:h-7  md:h-7">
         <div className=" w-full   flex ">
           <input
             type="search"
@@ -134,19 +130,19 @@ const Header = () => {
         </div>
 
         <Link to={"/results?search_query=" + searchQuery}>
-          <div className="flex items-center justify-center py-2 px-4 bg-gray-100 rounded-e-full border  border-l-0 dark:bg-black dark:border-gray-700">
+          <div className="flex items-center justify-center py-2 px-4 bg-gray-100 rounded-e-full border  border-l-0 dark:bg-black dark:border-gray-700 sm:h-7 sm:px-2 md:h-7 md:px-2">
             <button>
               <CiSearch className="w-5 h-5" />
             </button>
           </div>
         </Link>
 
-        <div className="microphone-icon bg-gray-100 flex items-center mx-3 rounded-full p-2 dark:bg-gray-800">
+        <div className="microphone-icon bg-gray-100 flex items-center mx-3 rounded-full p-2 dark:bg-gray-800 sm:hidden">
           <BiSolidMicrophone className="w-5 h-5 dark:text-gray-100" />
         </div>
       </div>
       {/* //suggestion box */}
-      <div className="absolute top-[3.15rem] left-[30%] w-1/3 md:w-[33%] flex flex-col z-60">
+      <div className="absolute top-[3.15rem] sm:left-10 sm:w-[80%] md:left-[22%] md:w-[50%] lg:left-[30%] left-[34%] w-[29%]  flex flex-col z-60">
         {showSuggestion && suggestions.length > 0 && (
           <div className="bg-white dark:bg-gray-900 dark:text-white dark:border dark:border-gray-700 dark:shadow-none py-2 shadow-md shadow-gray-300 border border-gray-200 rounded-2xl">
             <ul>
@@ -166,7 +162,7 @@ const Header = () => {
         )}
       </div>
       {/* Right-side-Container - userinfo and theme */}
-      <div className="User-info-container flex  items-center justify-between w-28 md:w-32 lg:w-44 p-1 mx-2 ">
+      <div className="User-info-container flex  items-center justify-between w-28 md:w-32 lg:w-44 p-1 mx-2 sm:mx-0 ">
         <div className="create-icon  rounded-full  dark:hover:text-black">
           {themeMode === "light" ? (
             <div
@@ -185,7 +181,7 @@ const Header = () => {
           )}
         </div>
 
-        <div className="create-icon  md:py-[0.35rem] md:px-2 :rounded-full :hover:bg-gray-200 dark:hover:text-black">
+        <div className="create-icon sm:hidden  py-[0.35rem] px-2 rounded-full hover:bg-gray-200 dark:hover:text-black">
           <RiVideoAddLine className="w-5 h-5" />
         </div>
         <div className="notification-icon py-[0.3rem] px-[0.5rem] rounded-full hover:bg-gray-200 dark:hover:text-black">

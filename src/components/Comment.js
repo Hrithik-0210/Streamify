@@ -110,7 +110,9 @@ const Comment = ({ item }) => {
         <div className="flex flex-col gap-1   ">
           <div className="user-details flex gap-2 items-center">
             <h2 className="text-xs font-medium">{authorDisplayName}</h2>
-            <p className="text-xs text-gray-600">{publishTime(publishedAt)}</p>
+            <p className="text-xs text-gray-600 dark:text-stone-200 dark:font-thin">
+              {publishTime(publishedAt)}
+            </p>
           </div>
 
           <div className="text-xs font-normal whitespace-pre-line  flex items-end justify-start ">
@@ -132,9 +134,11 @@ const Comment = ({ item }) => {
           <div className="comment-like-unlike flex gap-3 items-center my-1 ">
             <div className="flex">
               <AiOutlineLike className="w-5 h-5" />
-              <p className="text-xs text-gray-500 mx-1">{likeCount}</p>
+              <p className="text-xs text-gray-500 mx-1 dark:text-stone-200">
+                {likeCount}
+              </p>
             </div>
-            <BiDislike className="w-[1.15rem] h-[1.15rem]  text-gray-700" />
+            <BiDislike className="w-[1.15rem] h-[1.15rem]  text-gray-700 dark:text-stone-200" />
             {replies?.comments?.length > 0 ? (
               <div className="flex justify-center items-center mx-3">
                 <Link
@@ -150,9 +154,9 @@ const Comment = ({ item }) => {
           </div>
 
           {isReplyOpen && (
-            <div className="reply-container">
+            <div className="reply-container ">
               {replyUserProfiles.map((reply, index) => (
-                <div key={index} className="reply flex  my-1 p-1">
+                <div key={index} className="reply flex gap-4  my-1 p-1">
                   <div className="flex justify-center">
                     <img
                       src={reply.profileUrl}

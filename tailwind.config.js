@@ -12,15 +12,20 @@ module.exports = {
         "Video-card-color": "#F2F2F2",
       },
       screens: {
-        sm: "376px",
-        // => @media (min-width: 576px) { ... }
+        sm: { min: "100px", max: "550px" },
+        // => @media (min-width: 640px and max-width: 767px) { ... }
 
-        md: "690px",
-        // => @media (min-width: 960px) { ... }
+        md: { min: "550px", max: "1150px" },
+        // => @media (min-width: 768px and max-width: 1023px) { ... }
 
-        lg: "1050px",
-        // => @media (min-width: 1440px) { ... }
-        xl: "1595px",
+        lg: { min: "1150px", max: "1530px" },
+        // => @media (min-width: 1024px and max-width: 1279px) { ... }
+
+        xl: { min: "1530px", max: "1700px" },
+        // => @media (min-width: 1280px and max-width: 1535px) { ... }
+
+        "2xl": { min: "1700px" },
+        // => @media (min-width: 1536px) { ... }
       },
       height: {
         infinite: "auto",

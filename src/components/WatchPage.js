@@ -95,9 +95,9 @@ const WatchPage = () => {
     const { viewCount, likeCount, commentCount } = statistics;
     const formatedDescription = formatDescription(description);
     return (
-      <div className="absolute top-20 left-24  w-[92svw] flex gap-7">
-        <div className=" rounded-xl   w-[70%] h-fit">
-          <div className=" w-[65.5svw] h-[74svh]">
+      <div className="absolute top-20 left-24  w-[92svw] flex md:w-[80svw] sm:w-svw gap-7">
+        <div className=" rounded-xl   w-[70%] h-fit md:w-full">
+          <div className=" w-[65.5svw] h-[74svh] md:w-[80svw] md:h-[65svw]">
             <iframe
               width="100%"
               src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
@@ -117,22 +117,22 @@ const WatchPage = () => {
                   <TiSocialYoutubeCircular className="w-8 h-8" />
                 </div>
                 <div className="flex flex-col mx-2">
-                  <div className="flex items-center text-[11.5px] text-gray-700">
+                  <div className="flex items-center text-[11.5px] text-gray-700 dark:text-stone-200">
                     <h2 className="text-sm font-medium">{channelTitle}</h2>
                     <MdCheckCircle className=" w-[0.8rem] h-[0.8rem] text-gray-500 mx-1" />
                   </div>
 
-                  <div className="flex items-center text-[11.5px] text-gray-600">
+                  <div className="flex items-center text-[11.5px] text-gray-600 dark:text-stone-200">
                     <SubscriberCount item={channelId} />
                   </div>
                 </div>
-                <button className="text-white text-xs bg-gray-900 rounded-2xl py-[0.45rem] px-4 w-fit h-fit mx-4">
+                <button className="text-white text-xs bg-gray-900 rounded-2xl py-[0.45rem] px-4 w-fit h-fit mx-4 dark:bg-stone-200 dark:text-gray-800 dark:font-medium">
                   Subscribe
                 </button>
               </div>
               <div className="right-details-conatiner  flex items-center gap-2">
-                <div className="like-dislike-container bg-gray-100  rounded-full flex h-8 ">
-                  <div className="like-container hover:bg-gray-200 rounded-l-full flex items-center ">
+                <div className="like-dislike-container bg-gray-100  rounded-full flex h-8 dark:bg-black">
+                  <div className="like-container hover:bg-gray-200 rounded-l-full flex items-center dark:bg-gray-900 dark:text-gray-200 dark:font-medium dark:hover:bg-gray-700 ">
                     <div className="flex border-r border-gray-400 my-1 px-4  gap-2 items-center justify-center">
                       <AiOutlineLike className="w-5 h-5" />
                       <p className="text-xs font-medium">
@@ -140,30 +140,38 @@ const WatchPage = () => {
                       </p>
                     </div>
                   </div>
-                  <div className=" flex items-center justify-center dislike-container hover:bg-gray-200 rounded-r-full p-[0.35rem]">
+                  <div className=" flex items-center justify-center dislike-container hover:bg-gray-200 rounded-r-full p-[0.35rem] dark:bg-gray-900 dark:text-gray-200 dark:font-medium dark:hover:bg-gray-700 ">
                     <div className="my-1 px-2 gap-1 ">
-                      <BiDislike className="w-[1.15rem] h-[1.15rem]  text-gray-700" />
+                      <BiDislike className="w-[1.15rem] h-[1.15rem]  text-gray-700 dark:text-gray-200 " />
                     </div>
                   </div>
                 </div>
-                <div className="share-container flex items-center justify-center gap-2 bg-gray-100 rounded-full hover:bg-gray-200 py-2 px-4 h-8">
-                  <PiShareFatThin className="w-5 h-5 text-gray-600" />
-                  <p className="text-xs font-medium text-gray-700">Share</p>
+                <div className="share-container flex items-center justify-center gap-2 bg-gray-100 rounded-full hover:bg-gray-200 py-2 px-4 h-8 dark:bg-gray-900 dark:text-gray-200 dark:font-medium dark:hover:bg-gray-700">
+                  <PiShareFatThin className="w-5 h-5 text-gray-600 dark:text-gray-200" />
+                  <p className="text-xs font-medium text-gray-700 dark:text-gray-200">
+                    Share
+                  </p>
                 </div>
-                <div className="download-conatiner flex items-center justify-center gap-3 bg-gray-100 rounded-full hover:bg-gray-200 py-2 px-4 h-8">
+                <div className="download-conatiner sm:hidden md:hidden flex items-center justify-center gap-3 bg-gray-100 rounded-full hover:bg-gray-200 py-2 px-4 h-8  dark:bg-gray-900 dark:text-gray-200 dark:font-medium dark:hover:bg-gray-700">
                   <TfiDownload className="w-4 h-4" />
-                  <p className="text-xs font-medium text-gray-700">Download</p>
+                  <p className="text-xs font-medium text-gray-700 dark:text-gray-200">
+                    Download
+                  </p>
                 </div>
-                <div className="download-conatiner flex items-center justify-center gap-3 bg-gray-100 rounded-full hover:bg-gray-200 py-2 px-4 h-8">
-                  <TiScissorsOutline className="w-5 h-5 text-gray-600 -rotate-90" />
-                  <p className="text-xs font-medium text-gray-700">Clip</p>
+                <div className="trim-conatiner sm:hidden md:hidden flex items-center justify-center gap-3 bg-gray-100 rounded-full hover:bg-gray-200 py-2 px-4 h-8 dark:bg-gray-900 dark:text-gray-200 dark:font-medium dark:hover:bg-gray-700">
+                  <TiScissorsOutline className="w-5 h-5 text-gray-600 -rotate-90 dark:text-gray-200" />
+                  <p className="text-xs font-medium text-gray-700 dark:text-gray-200">
+                    Clip
+                  </p>
                 </div>
-                <div className="download-conatiner flex items-center justify-center gap-3 bg-gray-100 rounded-full hover:bg-gray-200 py-2 px-4 h-8">
-                  <MdPlaylistAdd className="w-5 h-5 text-gray-600 " />
-                  <p className="text-xs font-medium text-gray-700">Save</p>
+                <div className="save-conatiner sm:hidden md:hidden  flex items-center justify-center gap-3 bg-gray-100 rounded-full hover:bg-gray-200 py-2 px-4 h-8 dark:bg-gray-900 dark:text-gray-200 dark:font-medium dark:hover:bg-gray-700">
+                  <MdPlaylistAdd className="w-5 h-5 text-gray-600 dark:text-gray-200 " />
+                  <p className="text-xs font-medium text-gray-700 dark:text-gray-200">
+                    Save
+                  </p>
                 </div>
-                <div className="download-conatiner flex items-center justify-center gap-3 bg-gray-100 rounded-full hover:bg-gray-200 p-[0.35rem] h-8">
-                  <BsThreeDots className="w-5 h-5 text-gray-600 " />
+                <div className="threedots-conatiner  flex items-center justify-center gap-3 bg-gray-100 rounded-full hover:bg-gray-200 p-[0.35rem] h-8 dark:bg-gray-900 dark:text-gray-200 dark:font-medium dark:hover:bg-gray-700">
+                  <BsThreeDots className="w-5 h-5 text-gray-600 dark:text-gray-200" />
                 </div>
               </div>
             </div>
@@ -188,7 +196,7 @@ const WatchPage = () => {
                 <span>
                   <button
                     onClick={toggleExpansion}
-                    className="text-gray-800 font-semibold"
+                    className="text-gray-800 font-semibold dark:text-stone-200"
                   >
                     {isExpanded ? "Show less" : "...more"}
                   </button>
@@ -202,17 +210,19 @@ const WatchPage = () => {
           </div>
         </div>
 
-        {sideVideo?.length === 0 ? (
-          <WatchPageShimmer />
-        ) : (
-          <div className=" w-[28%] ">
-            {sideVideo.map((video) => (
-              <Link to={"/watch?v=" + video.id} key={video.id}>
-                <SideVideoCard items={video} />
-              </Link>
-            ))}
-          </div>
-        )}
+        <div className="w-[28%] sm:hidden md:hidden absolute right-0">
+          {sideVideo?.length === 0 ? (
+            <WatchPageShimmer />
+          ) : (
+            <div className=" w-full ">
+              {sideVideo.map((video) => (
+                <Link to={"/watch?v=" + video.id} key={video.id}>
+                  <SideVideoCard items={video} />
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     );
   }

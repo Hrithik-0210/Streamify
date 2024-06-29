@@ -46,7 +46,7 @@ const SideBar = () => {
   // console.log(isMenuOpen);
   if (isMenuOpen)
     return (
-      <div className=" h-screen relative">
+      <div className=" h-screen relative sm:hidden md:hidden">
         <div className="flex flex-col fixed top-16 left-0 z-10  h-screen  dark:bg-black dark:text-white">
           <ul className="flex flex-col mx-2 my-2">
             <NavLink
@@ -110,8 +110,8 @@ const SideBar = () => {
     );
   else {
     return (
-      <div className="absolute">
-        <div className="side-bar  h-screen bg-white w-56 overflow-y-scroll flex flex-col fixed top-16 left-0 z-10 dark:bg-black dark:text-white">
+      <div className="absolute ">
+        <div className="side-bar  h-screen bg-white w-56 md:w-44 overflow-y-scroll flex flex-col fixed top-16 left-0 z-10 dark:bg-black dark:text-white sm:absolute">
           <div className="Section-1 border-b border-gray-300 mx-2 ">
             <ul className=" mx-2 mb-2 mt-1">
               <NavLink
