@@ -97,7 +97,7 @@ const WatchPage = () => {
     return (
       <div className="absolute top-20 left-24  w-[92svw] flex md:w-[80svw] sm:w-svw gap-7">
         <div className=" rounded-xl   w-[70%] h-fit md:w-full">
-          <div className=" w-[65.5svw] h-[74svh] md:w-[80svw] md:h-[65svw]">
+          <div className=" w-[65.5svw] h-[72.7svh] md:w-[80svw] md:h-[65svw]">
             <iframe
               width="100%"
               src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}

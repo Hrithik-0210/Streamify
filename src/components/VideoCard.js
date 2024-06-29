@@ -31,7 +31,7 @@ const VideoCard = ({ items }) => {
     return diff;
   }
   const isMenuOpen = useSelector((store) => store.menu.isMenuOpen);
-  // console.log(isMenuOpen);
+  console.log(items);
 
   return (
     <div>

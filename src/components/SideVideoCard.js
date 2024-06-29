@@ -60,7 +60,7 @@ const SideVideoCard = ({ items }) => {
                   <PiCheckCircleDuotone className=" w-[0.8rem] h-[0.8rem]" />
                 </div>
                 <div className="view-and-time flex items-center text-[13px] font-normal text-gray-500 dark:text-stone-200">
-                  {formatViews(viewCount)} view
+                  {formatViews(viewCount)} views
                   <GoDotFill className="w-[0.35rem] h-[0.35rem] mx-[0.4rem]" />
                   <div className="time-ago dark:text-stone-200">
                     {publishTime(publishedAt)}
