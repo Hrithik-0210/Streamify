@@ -10,8 +10,8 @@ const MainContainer = () => {
   if (isMenuOpen)
     return (
       <div className="relative z-0 dark:bg-black dark:text-white">
-        <div className="flex flex-col w-full absolute top-16 left-24 sm:left-0 md:left-0 dark:bg-black dark:text-white  ">
-          <div className="overflow-x-hidden overflow-y-hidden my-1  fixed top-14 left-24 sm:left-0 md:left-0 w-[93%] z-50 bg-white py-1 dark:bg-black dark:text-white ">
+        <div className="flex flex-col  w-full absolute top-16 left-24 sm:left-3 md:left-0 dark:bg-black dark:text-white  ">
+          <div className="overflow-x-hidden overflow-y-hidden my-1  fixed top-14 left-24 sm:left-0 md:left-0 sm:w-[100%] w-[93%] z-50 bg-white py-1 dark:bg-black dark:text-white ">
             <ButtonList />
           </div>
           <div className="relative">
@@ -25,8 +25,8 @@ const MainContainer = () => {
   else {
     return (
       <div className="relative z-0 h-screen dark:bg-black dark:text-white">
-        <div className="flex flex-col w-full absolute top-16 left-48 sm:left-0 md:left-36 dark:bg-black dark:text-white">
-          <div className="overflow-x-hidden   overflow-y-hidden my-1  fixed top-14 left-60 sm:left-0 sm:w-[98%] w-[84%] z-50 bg-white py-1 dark:bg-black dark:text-white md:w-[70%]">
+        <div className="flex flex-col w-full absolute top-16 left-48 sm:left-3 md:left-36 sm:w-full dark:bg-black dark:text-white">
+          <div className="overflow-x-hidden   overflow-y-hidden my-1  fixed top-14 left-60 sm:left-0 sm:w-[100%] w-[84%] z-50 bg-white py-1 dark:bg-black dark:text-white md:w-[70%]">
             <div className="sticky top-0  mb-1 dark:bg-black dark:text-white">
               <ButtonList />
             </div>

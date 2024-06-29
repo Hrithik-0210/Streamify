@@ -93,7 +93,7 @@ const WatchPage = () => {
     const { viewCount, likeCount, commentCount } = statistics;
     const formatedDescription = formatDescription(description);
     return (
-      <div className="absolute top-20 left-24 sm:left-1 sm:w-svw  w-[92svw] flex md:w-[80svw]  gap-7">
+      <div className="absolute top-20 left-24 sm:left-2 sm:w-svw  w-[92svw] flex md:w-[80svw]  gap-7">
         <div className=" rounded-xl   w-[70%] h-fit md:w-full sm:w-[95svw]">
           <div className=" w-[65svw] h-[72.7svh] md:w-[80svw] md:h-[65svw] sm:w-[95svw] sm:h-64">
             <iframe
@@ -112,7 +112,7 @@ const WatchPage = () => {
               {title}
             </div>
             <div className=" flex py-1 justify-between sm:flex-col  sm:w-full">
-              <div className="left-details-container flex items-center sm:justify-between">
+              <div className="left-details-container flex items-center ">
                 <div className="flex items-center mr-2">
                   <TiSocialYoutubeCircular className="w-8 h-8" />
                 </div>
@@ -128,9 +128,11 @@ const WatchPage = () => {
                     <SubscriberCount item={channelId} />
                   </div>
                 </div>
-                <button className="text-white text-xs bg-gray-900 rounded-2xl py-[0.45rem] px-4 w-fit h-fit mx-4 dark:bg-stone-200 dark:text-gray-800 dark:font-medium">
-                  Subscribe
-                </button>
+                <div className="ml-auto">
+                  <button className="text-white text-xs bg-gray-900 rounded-2xl py-[0.45rem] px-4 w-fit h-fit mx-4 dark:bg-stone-200 dark:text-gray-800 dark:font-medium sm:justify-items-end">
+                    Subscribe
+                  </button>
+                </div>
               </div>
               <div className="right-details-conatiner  flex items-center gap-2  sm:my-3">
                 <div className="like-dislike-container bg-gray-100  rounded-full flex h-8 dark:bg-black">
@@ -172,7 +174,7 @@ const WatchPage = () => {
                     Save
                   </p>
                 </div>
-                <div className="threedots-conatiner  flex items-center justify-center gap-3 bg-gray-100 rounded-full hover:bg-gray-200 p-[0.35rem] h-8 dark:bg-gray-900 dark:text-gray-200 dark:font-medium dark:hover:bg-gray-700">
+                <div className="threedots-conatiner sm:ml-auto  flex items-center justify-center gap-3 bg-gray-100 rounded-full hover:bg-gray-200 p-[0.35rem] h-8 dark:bg-gray-900 dark:text-gray-200 dark:font-medium dark:hover:bg-gray-700">
                   <BsThreeDots className="w-5 h-5 text-gray-600 dark:text-gray-200" />
                 </div>
               </div>
