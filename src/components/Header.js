@@ -15,16 +15,22 @@ import { useTheme } from "../context/ThemeContext";
 import { FaMoon } from "react-icons/fa";
 import { FiSun } from "react-icons/fi";
 import logo_dark from "../images/youtube -dark-theme-logo.png";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestion, setShowSuggestion] = useState(false);
   const { themeMode, darkTheme, lightTheme } = useTheme();
+  const [userImageUrl, setUserImageUrl] = useState(null);
+  const [showUserInfo, setShowUserInfo] = useState(false);
 
   const navigate = useNavigate();
   const searchCache = useSelector((store) => store.search);
   const dispatch = useDispatch();
+
+  const { user, loginWithRedirect, logout } = useAuth0();
+  console.log(user);
 
   /**
    * searchCache   = {
@@ -33,6 +39,37 @@ const Header = () => {
    * searchQuery = iphone
    *
    */
+
+  const fetchImage = async (imageUrl) => {
+    try {
+      const data = await fetch(imageUrl);
+      const imageBlob = await data.blob();
+      return URL.createObjectURL(imageBlob);
+    } catch (error) {
+      console.error("Error fetching image:", error);
+      return null; // Handle error gracefully
+    }
+  };
+
+  useEffect(() => {
+    const loadImage = async () => {
+      if (user) {
+        const imageObjectUrl = await fetchImage(user.picture);
+        setUserImageUrl(imageObjectUrl);
+      } else {
+      }
+    };
+    loadImage();
+  }, [user]);
+
+  const handleShowLogout = () => {
+    if (showUserInfo === true) {
+      setShowUserInfo(false);
+    } else {
+      setShowUserInfo(true);
+    }
+  };
+
   const showSuggestions = useCallback(async () => {
     const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
     const jsonData = await data.json();
@@ -80,7 +117,7 @@ const Header = () => {
     setShowSuggestion(true);
     navigate("/results?search_query=" + suggestiontext);
   };
-
+  console.log(userImageUrl);
   // console.log(suggestions);
   return (
     // Header-Container
@@ -162,7 +199,7 @@ const Header = () => {
         )}
       </div>
       {/* Right-side-Container - userinfo and theme */}
-      <div className="User-info-container flex  items-center justify-between w-28 md:w-32 lg:w-44 p-1 mx-2 sm:mx-0 ">
+      <div className="User-info-container  flex  items-center justify-between w-fit gap-2 p-1 mx-2 sm:mx-0 ">
         <div className="create-icon  rounded-full  dark:hover:text-black">
           {themeMode === "light" ? (
             <div
@@ -187,8 +224,54 @@ const Header = () => {
         <div className="notification-icon py-[0.3rem] px-[0.5rem] rounded-full hover:bg-gray-200 dark:hover:text-black">
           <IoMdNotificationsOutline className="w-5 h-5" />
         </div>
-        <div className="user-icon py-[0.3rem] px-[0.5rem] rounded-full hover:bg-gray-200 dark:hover:text-black">
-          <FaUserAlt className="w-5 h-5" />
+        <div className="user-icon py-[0.3rem] px-[0.5rem] rounded-full hover:bg-gray-200 dark:hover:text-black border dark:border-none">
+          {user ? (
+            <div className="flex" onClick={() => handleShowLogout()}>
+              <img
+                src={userImageUrl}
+                alt="userImage"
+                className="w-6 h-6 rounded-full"
+              />
+              {showUserInfo ? (
+                <div className="absolute top-12 right-1  h-fit m-1 bg-gray-50 text-sm font-semibold w-52 shadow-lg flex flex-col">
+                  <div className="userinfo flex  py-3 mx-2 px-6  border-b-2 justify-around">
+                    <img
+                      src={userImageUrl}
+                      alt=""
+                      className="w-5 h-5 rounded-full"
+                    />
+                    <p className="text-sm font-thin">{user.name}</p>
+                  </div>
+                  <div className="flex flex-col justify-center items-center py-3 w-full h-full">
+                    <p className="text-sm font-thin hover:bg-gray-100 w-full h-8 text-center  flex items-center justify-center">
+                      Google Account
+                    </p>
+                    <p className="text-sm font-thin hover:bg-gray-100 w-full h-8 text-center  flex items-center justify-center">
+                      Switch Account
+                    </p>
+                    <button
+                      className="text-sm font-thin  w-full h-8 hover:bg-gray-100"
+                      onClick={() =>
+                        logout({ returnTo: window.location.origin })
+                      }
+                    >
+                      Logout
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                ""
+              )}
+            </div>
+          ) : (
+            <button
+              className="flex gap-2 rounded-3xl  py-1 px-3 items-center"
+              onClick={() => loginWithRedirect()}
+            >
+              <FaUserAlt className="w-4 h-4" />
+              <span className="text-blue-700 text-sm font-medium">sign in</span>
+            </button>
+          )}
         </div>
       </div>
     </div>
