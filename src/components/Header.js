@@ -179,7 +179,7 @@ const Header = () => {
         </div>
       </div>
       {/* //suggestion box */}
-      <div className="absolute top-[3.15rem] sm:left-10 sm:w-[80%] md:left-[22%] md:w-[50%] lg:left-[30%] left-[34%] w-[29%]  flex flex-col z-60">
+      <div className="absolute top-[3.15rem] sm:left-10 sm:w-[80%] md:left-[19%] md:w-[50%] lg:left-[30%] left-[30.5%] w-[29%]  flex flex-col z-60">
         {showSuggestion && suggestions.length > 0 && (
           <div className="bg-white dark:bg-gray-900 dark:text-white dark:border dark:border-gray-700 dark:shadow-none py-2 shadow-md shadow-gray-300 border border-gray-200 rounded-2xl">
             <ul>
