@@ -11,7 +11,7 @@ const VideoByCategoryContainer = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get("search_query");
 
-  const GOOGLE_API_KEY = "AIzaSyBLVfa6PsWCQuzcvhj4hzF4zATQ4bvRGhM";
+  const GOOGLE_API_KEY = "AIzaSyBwr4XwhCQmWXFtKeof7IbI4UXHNJZfSDc";
 
   const VIDEO_SEARCH_API = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=${query}&key=${GOOGLE_API_KEY}`;
 
@@ -62,8 +62,8 @@ const VideoByCategoryContainer = () => {
     } else {
       return (
         <div className="relative z-0">
-          <div className="flex flex-col w-full absolute top-16 left-44 sm:left-3 ">
-            <div className="overflow-x-hidden overflow-y-hidden my-1  fixed top-14 left-52 sm:left-0 sm:w-[90%] w-[85%] z-50 bg-white  ">
+          <div className="flex flex-col w-full absolute top-16 left-44 sm:left-3 sm:w-96 sm:h-72 ">
+            <div className="overflow-x-hidden overflow-y-hidden my-1  fixed top-14 left-52 sm:left-0 sm:w-[100%] w-[85%] z-50 bg-white  ">
               <ButtonList />
             </div>
             <div className="relative">

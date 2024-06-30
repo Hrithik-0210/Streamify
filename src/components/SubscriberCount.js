@@ -4,7 +4,7 @@ import React, { useCallback, useEffect, useState } from "react";
 const SubscriberCount = ({ item }) => {
   //   console.log(item);
   const channelId = item;
-  const GOOGLE_API_KEY = "AIzaSyBLVfa6PsWCQuzcvhj4hzF4zATQ4bvRGhM";
+  const GOOGLE_API_KEY = "AIzaSyBwr4XwhCQmWXFtKeof7IbI4UXHNJZfSDc";
   const SUBSCRIBER_COUNT_API = `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=${GOOGLE_API_KEY}`;
 
   const [subscribersCount, setSubscribersCount] = useState([]);
@@ -19,13 +19,13 @@ const SubscriberCount = ({ item }) => {
     getSubscriberCount();
   }, [getSubscriberCount]);
 
-  function formatViews(viewCount) {
-    if (viewCount >= 1000000) {
-      return (viewCount / 1000000).toFixed(2) + "M";
-    } else if (viewCount >= 1000) {
-      return Math.round(viewCount / 1000) + "K";
+  function formatViews(subCount) {
+    if (subCount >= 1000000) {
+      return (subCount / 1000000).toFixed(1) + "M";
+    } else if (subCount >= 1000) {
+      return Math.round(subCount / 1000) + "K";
     } else {
-      return viewCount.toString();
+      return subCount.toString();
     }
   }
 

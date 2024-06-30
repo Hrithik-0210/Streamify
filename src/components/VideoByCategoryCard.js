@@ -96,7 +96,7 @@ const VideoByCategoryCard = ({ item }) => {
               <img
                 src={thumbnails.medium.url}
                 alt="thumbnail"
-                className="rounded-xl group-hover:rounded-sm transition-all delay-100 w-full"
+                className="rounded-xl group-hover:rounded-sm transition-all delay-100 w-full sm:w-full sm:h-full"
               />
             </div>
             <div className="video-details flex py-2 font-medium w-full">
@@ -104,7 +104,9 @@ const VideoByCategoryCard = ({ item }) => {
                 <TiSocialYoutubeCircular className="w-full h-full" />
               </div>
               <div className="channel-details flex flex-col overflow-hidden ">
-                <div className="title text-sm my-1  line-clamp-2">{title}</div>
+                <div className="title text-[13.9px] my-1 line-clamp-2">
+                  {title}
+                </div>
 
                 <div className="check-logo flex gap-1 items-center font-normal">
                   <div className="channelName text-[13px] text-gray-500 dark:text-stone-300">

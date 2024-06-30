@@ -4,10 +4,11 @@ import { TiSocialYoutubeCircular } from "react-icons/ti";
 import { MdCheckCircle } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { PiCheckCircleDuotone } from "react-icons/pi";
+import { Link } from "react-router-dom";
 
 const VideoCard = ({ items }) => {
   const { snippet, statistics } = items;
-  const { channelTitle, title, thumbnails, publishedAt } = snippet;
+  const { channelTitle, title, thumbnails, publishedAt, channelId } = snippet;
   const { viewCount } = statistics;
 
   function formatViews(viewCount) {
@@ -84,12 +85,14 @@ const VideoCard = ({ items }) => {
               <div className="channel-details flex flex-col overflow-hidden ">
                 <div className="title text-sm my-1  line-clamp-2">{title}</div>
 
-                <div className="check-logo flex gap-1 items-center font-normal">
-                  <div className="channelName text-[13px] text-gray-500 dark:text-stone-300">
-                    {channelTitle}
+                <Link to={"/channel?id=" + channelId} key={channelId}>
+                  <div className="check-logo flex gap-1 items-center font-normal">
+                    <div className="channelName text-[13px] text-gray-500 dark:text-stone-300">
+                      {channelTitle}
+                    </div>
+                    <MdCheckCircle className=" w-[0.8rem] h-[0.8rem] text-gray-500 dark:text-stone-300" />
                   </div>
-                  <MdCheckCircle className=" w-[0.8rem] h-[0.8rem] text-gray-500 dark:text-stone-300" />
-                </div>
+                </Link>
                 <div className="view-and-time flex items-center text-[13px] font-normal text-gray-500 dark:text-stone-300">
                   {formatViews(viewCount)} views
                   <GoDotFill className="w-[0.35rem] h-[0.35rem] mx-[0.4rem]" />

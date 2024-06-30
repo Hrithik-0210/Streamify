@@ -9,6 +9,7 @@ import SearchVideoContainer from "./components/SearchVideoContainer";
 import VideoByCategoryContainer from "./components/VideoByCategoryContainer";
 import { ThemeProvider } from "./context/ThemeContext";
 import { useEffect, useState } from "react";
+import ChannelPageContainer from "./components/ChannelPageContainer";
 // import ExeptionPage from "./utils/ExeptionPage";
 
 const appRouter = createBrowserRouter([
@@ -32,6 +33,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/category",
         element: <VideoByCategoryContainer />,
+      },
+      {
+        path: "/channel",
+        element: <ChannelPageContainer />,
       },
     ],
   },

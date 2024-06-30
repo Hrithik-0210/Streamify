@@ -11,7 +11,7 @@ const Body = () => {
   return (
     <>
       <Header />
-      <div className="flex  ">
+      <div className="  ">
         {isMenuOpen ? (
           <div className="dark:bg-black dark:text-white">
             <SideBar />

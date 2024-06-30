@@ -26,7 +26,7 @@ const WatchPage = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [sideVideo, setSideVideos] = useState([]);
 
-  const GOOGLE_API_KEY = "AIzaSyBLVfa6PsWCQuzcvhj4hzF4zATQ4bvRGhM";
+  const GOOGLE_API_KEY = "AIzaSyBwr4XwhCQmWXFtKeof7IbI4UXHNJZfSDc";
   const VIDEO_DETAILS =
     "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=" +
     videoId +
@@ -117,12 +117,14 @@ const WatchPage = () => {
                   <TiSocialYoutubeCircular className="w-8 h-8" />
                 </div>
                 <div className="flex flex-col mx-2">
-                  <div className="flex items-center text-[11.5px] text-gray-700 dark:text-stone-200">
-                    <h2 className="text-sm font-medium sm:text-xs">
-                      {channelTitle}
-                    </h2>
-                    <MdCheckCircle className=" w-[0.8rem] h-[0.8rem] text-gray-500 mx-1" />
-                  </div>
+                  <Link to={"/channel?id=" + channelId} key={channelId}>
+                    <div className="flex items-center text-[11.5px] text-gray-700 dark:text-stone-200">
+                      <h2 className="text-sm font-medium sm:text-xs">
+                        {channelTitle}
+                      </h2>
+                      <MdCheckCircle className=" w-[0.8rem] h-[0.8rem] text-gray-500 mx-1" />
+                    </div>
+                  </Link>
 
                   <div className="flex items-center text-[11.5px] text-gray-600 dark:text-stone-200">
                     <SubscriberCount item={channelId} />

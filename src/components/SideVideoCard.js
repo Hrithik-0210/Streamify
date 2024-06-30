@@ -4,12 +4,13 @@ import { GoDotFill } from "react-icons/go";
 import { useSelector } from "react-redux";
 import { PiCheckCircleDuotone } from "react-icons/pi";
 import { BsThreeDots } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const SideVideoCard = ({ items }) => {
   // console.log(items);
 
   const { snippet, statistics } = items;
-  const { channelTitle, title, thumbnails, publishedAt } = snippet;
+  const { channelTitle, title, thumbnails, publishedAt, channelId } = snippet;
   const { viewCount } = statistics;
 
   function formatViews(viewCount) {
@@ -51,13 +52,14 @@ const SideVideoCard = ({ items }) => {
                 <div className="title text-xs mt-1 mb-2 line-clamp-2">
                   {title}
                 </div>
-
-                <div className="check-logo flex gap-1 items-center font-normal">
-                  <div className="channelName text-[13px] text-gray-500 dark:text-stone-200 dark:font-thin dark:text-[12px]">
-                    {channelTitle}
+                <Link to={"/channel?id=" + channelId} key={channelId}>
+                  <div className="check-logo flex gap-1 items-center font-normal">
+                    <div className="channelName text-[13px] text-gray-500 dark:text-stone-200 dark:font-thin dark:text-[12px]">
+                      {channelTitle}
+                    </div>
+                    <PiCheckCircleDuotone className=" w-[0.8rem] h-[0.8rem]" />
                   </div>
-                  <PiCheckCircleDuotone className=" w-[0.8rem] h-[0.8rem]" />
-                </div>
+                </Link>
                 <div className="view-and-time flex items-center text-[13px] font-normal text-gray-500 dark:text-stone-200">
                   {formatViews(viewCount)} views
                   <GoDotFill className="w-[0.35rem] h-[0.35rem] mx-[0.4rem]" />

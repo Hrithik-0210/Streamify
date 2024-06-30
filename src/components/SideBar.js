@@ -40,7 +40,7 @@ const SideBar = () => {
   // console.log(isMenuOpen);
   if (isMenuOpen)
     return (
-      <div className=" h-screen relative sm:hidden md:hidden">
+      <div className="sm:hidden md:hidden">
         <div className="flex flex-col fixed top-16 left-0 z-10  h-screen  dark:bg-black dark:text-white">
           <ul className="flex flex-col mx-2 my-2">
             <NavLink
