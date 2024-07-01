@@ -4,7 +4,7 @@ import React, { useCallback, useEffect, useState } from "react";
 const SubscriberCount = ({ item }) => {
   //   console.log(item);
   const channelId = item;
-  const GOOGLE_API_KEY = "AIzaSyBwr4XwhCQmWXFtKeof7IbI4UXHNJZfSDc";
+  const GOOGLE_API_KEY = "AIzaSyBJxKtp5wPqY-8BBkpkgTUPWOGTf6D_x60";
   const SUBSCRIBER_COUNT_API = `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=${GOOGLE_API_KEY}`;
 
   const [subscribersCount, setSubscribersCount] = useState([]);

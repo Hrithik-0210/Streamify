@@ -8,7 +8,7 @@ const ChannelDetails = ({ item }) => {
     if (viewCount >= 1000000) {
       return (viewCount / 1000000).toFixed(1) + "M";
     } else if (viewCount >= 1000) {
-      return Math.round(viewCount / 1000).toFixed(1) + "K";
+      return Math.round(viewCount / 1000) + "K";
     } else {
       return viewCount.toString();
     }

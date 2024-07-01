@@ -11,7 +11,7 @@ const VideoByCategoryContainer = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get("search_query");
 
-  const GOOGLE_API_KEY = "AIzaSyBwr4XwhCQmWXFtKeof7IbI4UXHNJZfSDc";
+  const GOOGLE_API_KEY = "AIzaSyBJxKtp5wPqY-8BBkpkgTUPWOGTf6D_x60";
 
   const VIDEO_SEARCH_API = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=${query}&key=${GOOGLE_API_KEY}`;
 

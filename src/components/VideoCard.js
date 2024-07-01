@@ -1,10 +1,10 @@
 import React from "react";
 import { GoDotFill } from "react-icons/go";
-import { TiSocialYoutubeCircular } from "react-icons/ti";
 import { MdCheckCircle } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { PiCheckCircleDuotone } from "react-icons/pi";
 import { Link } from "react-router-dom";
+import ChannelLogo from "./ChannelLogo";
 
 const VideoCard = ({ items }) => {
   const { snippet, statistics } = items;
@@ -24,15 +24,47 @@ const VideoCard = ({ items }) => {
   function publishTime(publishedAt) {
     const currentDate = new Date();
     const targetDate = new Date(publishedAt);
-    const differenceMs = targetDate - currentDate;
-    const differenceDays = Math.floor(differenceMs / (1000 * 60 * 60 * 24));
-    // console.log(Math.abs(differenceDays));
+    const differenceMs = currentDate - targetDate;
 
-    const diff = Math.abs(differenceDays) + " days ago";
-    return diff;
+    const differenceDays = Math.floor(differenceMs / (1000 * 60 * 60 * 24));
+
+    if (differenceDays >= 365) {
+      const differenceYears = Math.floor(differenceDays / 365);
+      if (differenceYears === 1) {
+        return "1 year ago";
+      } else {
+        return `${differenceYears} years ago`;
+      }
+    } else if (differenceDays >= 30) {
+      const differenceMonths = Math.floor(differenceDays / 30);
+      if (differenceMonths === 1) {
+        return "1 month ago";
+      } else {
+        return `${differenceMonths} months ago`;
+      }
+    } else if (differenceDays > 0) {
+      if (differenceDays === 1) {
+        return "1 day ago";
+      } else {
+        return `${differenceDays} days ago`;
+      }
+    } else {
+      const differenceHours = Math.floor(differenceMs / (1000 * 60 * 60));
+      if (differenceHours === 1) {
+        return "1 hour ago";
+      } else if (differenceHours > 0) {
+        return `${differenceHours} hours ago`;
+      } else {
+        const differenceMinutes = Math.floor(differenceMs / (1000 * 60));
+        if (differenceMinutes === 1) {
+          return "1 minute ago";
+        } else {
+          return `${differenceMinutes} minutes ago`;
+        }
+      }
+    }
   }
   const isMenuOpen = useSelector((store) => store.menu.isMenuOpen);
-  // console.log(isMenuOpen);
 
   return (
     <div>
@@ -47,9 +79,8 @@ const VideoCard = ({ items }) => {
               />
             </div>
             <div className="video-details flex py-2 font-medium">
-              <div className="channel-logo  flex items-center mr-2">
-                <TiSocialYoutubeCircular className="w-10 h-10 rounded-full" />
-              </div>
+              <ChannelLogo channelId={channelId} />
+
               <div className="channel-details flex flex-col overflow-hidden ">
                 <div className="title text-sm my-1 line-clamp-2">{title}</div>
 
@@ -79,9 +110,8 @@ const VideoCard = ({ items }) => {
               />
             </div>
             <div className="video-details flex py-2 font-medium w-full">
-              <div className="channel-logo w-10 h-10 rounded-full flex items-center mr-3">
-                <TiSocialYoutubeCircular className="w-9 h-9" />
-              </div>
+              <ChannelLogo channelId={channelId} />
+
               <div className="channel-details flex flex-col overflow-hidden ">
                 <div className="title text-sm my-1  line-clamp-2">{title}</div>
 

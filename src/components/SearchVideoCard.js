@@ -2,8 +2,8 @@ import React from "react";
 import { BsThreeDots } from "react-icons/bs";
 // import { GoDotFill } from "react-icons/go";
 import { PiCheckCircleDuotone } from "react-icons/pi";
-import { TiSocialYoutubeCircular } from "react-icons/ti";
 import { Link } from "react-router-dom";
+import ChannelLogo from "./ChannelLogo";
 
 const SearchVideoCard = ({ item }) => {
   console.log(item);
@@ -63,12 +63,12 @@ const SearchVideoCard = ({ item }) => {
 
   //   console.log(snippet);
   return (
-    <div className="video-card-container  transition ease-linear delay-150  duration-200 w-[66svw] h-fit rounded-2xl grid grid-flow-col grid-cols-12 gap-2 sm:flex sm:flex-col  sm:my-0 sm:w-96 sm:h-80">
-      <div className="thumbnail-container rounded-xl   w-full md:h-52 xl:h-60 2xl:h-64 items-center sm:m-1 m-2 col-span-5 overflow-hidden hover:rounded-sm transition-all ease-linear delay-100 duration-150 sm:w-96 sm:h-52 ">
+    <div className="video-card-container  transition ease-linear delay-150  duration-200 w-[66svw] h-72   my-1 rounded-2xl grid grid-flow-col grid-cols-12 gap-2 sm:flex sm:flex-col  sm:my-0 sm:w-96 sm:h-80  md:h-48 lg:h-56">
+      <div className="thumbnail-container rounded-xl   w-full md:h-44 h-[16.8rem]  items-center sm:m-1 m-2 col-span-5 overflow-hidden hover:rounded-sm transition-all ease-linear delay-100 duration-150 sm:w-96 sm:h-52 lg:h-[13.5rem] ">
         <img
           src={thumbnails.high.url}
           alt="thumbnail"
-          className="  w-full h-full sm:w-full sm:h-full  flex items-center justify-center  object-center object-cover "
+          className="  w-full h-full sm:w-full sm:h-full   object-center object-cover "
         />
       </div>
       <div className="video-details   h-24  font-medium m-2 col-span-6 sm:m-0 sm:pl-3">
@@ -77,10 +77,10 @@ const SearchVideoCard = ({ item }) => {
             {title}
           </div>
           <div className="sm:flex sm:items-center sm:gap-6 ">
-            <div className="check-logo  gap-2 items-center font-normal flex  my-2 sm:m-0 ">
+            <div className="check-logo  gap-2 items-center font-normal flex  my-1 sm:m-0 ">
               <Link to={"/channel?id=" + channelId} key={channelId}>
                 <div className="channelName text-[13px] flex items-center gap-2">
-                  <TiSocialYoutubeCircular className="w-8 h-8  rounded-full dark:text-stone-200" />
+                  <ChannelLogo channelId={channelId} />
                   <p className="text-gray-500 dark:text-stone-200">
                     {channelTitle}
                   </p>

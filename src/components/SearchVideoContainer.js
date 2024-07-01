@@ -12,7 +12,7 @@ const SearchVideoContainer = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get("search_query");
 
-  const GOOGLE_API_KEY = "AIzaSyBwr4XwhCQmWXFtKeof7IbI4UXHNJZfSDc";
+  const GOOGLE_API_KEY = "AIzaSyBJxKtp5wPqY-8BBkpkgTUPWOGTf6D_x60";
 
   const VIDEO_SEARCH_API = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=${query}&key=${GOOGLE_API_KEY}`;
 
@@ -38,20 +38,21 @@ const SearchVideoContainer = () => {
             </div>
 
             <div className="grid grid-flow-row  gap-1 absolute top-10 left-[20%] sm:left-0 justify-center  m-auto  ">
-              {searchVideo.map((video) => (
-                <>
-                  {video.id.videoId ? (
-                    <Link
-                      to={"/watch?v=" + video.id.videoId}
-                      key={video.id.videoId}
-                    >
-                      <SearchVideoCard item={video} />
-                    </Link>
-                  ) : (
-                    ""
-                  )}
-                </>
-              ))}
+              {searchVideo &&
+                searchVideo.map((video) => (
+                  <>
+                    {video.id.videoId ? (
+                      <Link
+                        to={"/watch?v=" + video.id.videoId}
+                        key={video.id.videoId}
+                      >
+                        <SearchVideoCard item={video} />
+                      </Link>
+                    ) : (
+                      ""
+                    )}
+                  </>
+                ))}
             </div>
           </div>
         </div>
@@ -59,12 +60,12 @@ const SearchVideoContainer = () => {
     } else {
       return (
         <div className="relative z-0">
-          <div className="flex flex-col w-full absolute top-16 left-24 sm:left-3 ">
-            <div className="overflow-x-hidden   overflow-y-hidden my-1  fixed top-14 left-[14rem] sm:left-0 w-[83%] z-50 bg-white   ">
+          <div className="flex flex-col w-full absolute top-16 left-24 sm:left-3 md:left-3 ">
+            <div className="overflow-x-hidden   overflow-y-hidden my-1  fixed top-14 left-[14rem] sm:left-0 md:left-0 w-[83%] z-50 bg-white   ">
               <ButtonList />
             </div>
 
-            <div className="grid grid-flow-row  gap-1 absolute top-10 left-[20%] sm:left-0 justify-center  m-auto ">
+            <div className="grid grid-flow-row  gap-1 absolute top-10 left-[20%] sm:left-0 md:left-0  md:m-0 justify-center  m-auto ">
               {searchVideo.map((video) => (
                 <>
                   {video.id.videoId ? (

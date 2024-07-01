@@ -1,13 +1,12 @@
 import React from "react";
-
 import { MdCheckCircle } from "react-icons/md";
 import { PiCheckCircleDuotone } from "react-icons/pi";
-import { TiSocialYoutubeCircular } from "react-icons/ti";
 import { useSelector } from "react-redux";
+import ChannelLogo from "./ChannelLogo";
 
 const VideoByCategoryCard = ({ item }) => {
   const { snippet } = item;
-  const { channelTitle, publishedAt, thumbnails, title } = snippet;
+  const { channelTitle, publishedAt, thumbnails, title, channelId } = snippet;
 
   function publishTime(publishedAt) {
     const currentDate = new Date();
@@ -68,9 +67,8 @@ const VideoByCategoryCard = ({ item }) => {
               />
             </div>
             <div className="video-details flex py-2 font-medium">
-              <div className="channel-logo  flex items-center mr-3">
-                <TiSocialYoutubeCircular className="w-10 h-10 rounded-full" />
-              </div>
+              <ChannelLogo channelId={channelId} />
+
               <div className="channel-details flex flex-col overflow-hidden dark:bg-black dark:text-white">
                 <div className="title text-[13.9px] my-1 line-clamp-2">
                   {title}
@@ -100,9 +98,8 @@ const VideoByCategoryCard = ({ item }) => {
               />
             </div>
             <div className="video-details flex py-2 font-medium w-full">
-              <div className="channel-logo w-10 h-10 rounded-full flex items-center mr-3">
-                <TiSocialYoutubeCircular className="w-full h-full" />
-              </div>
+              <ChannelLogo channelId={channelId} />
+
               <div className="channel-details flex flex-col overflow-hidden ">
                 <div className="title text-[13.9px] my-1 line-clamp-2">
                   {title}

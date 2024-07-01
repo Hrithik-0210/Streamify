@@ -23,7 +23,7 @@ const Body = () => {
         )}
 
         {isMenuOpen ? (
-          <div className="w-[92%]  px-2 top-20 left-24 dark:bg-black dark:text-white">
+          <div className="w-[92%]  px-2 top-20 left-24 dark:bg-black dark:text-white ">
             <Outlet />
           </div>
         ) : (
