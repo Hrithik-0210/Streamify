@@ -27,12 +27,12 @@ const ChannelDetails = ({ item }) => {
 
     return (
       <div className="channelDetails-container sm:w-[94svw]  w-[65svw] mx-auto ">
-        <div className="flex gap-2 items-center  w-full ">
+        <div className="flex sm:gap-2 items-center  w-full gap-4 ">
           <div className="channelImg-container sm:w-20 sm:h-20 w-36 h-36 rounded-full ">
             <img
               src={thumbnails.high.url}
               alt=""
-              className="w-full h-full  rounded-full"
+              className="w-full h-full  rounded-full object-cover object-center"
             />
           </div>
           <div className="details-container flex flex-col gap-1">

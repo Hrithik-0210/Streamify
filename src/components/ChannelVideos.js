@@ -11,8 +11,8 @@ const ChannelVideos = ({ video }) => {
   //   console.log(snippet);
   return (
     <div className="channel-video-container  sm:flex-col sm:gap-2 flex px-2 py-3 hover:bg-gray-100 rounded-2xl  ">
-      <div className="videocard  sm:grid sm:grid-cols-12  sm:w-[90svw] sm:h-32 sm:my-2 w-[16.5rem] h-[12.5rem]">
-        <div className="thumbnail-container sm:col-span-7 sm:h-[8.5rem] rounded-2xl hover:rounded-sm h-36 ">
+      <div className="videocard  sm:grid sm:grid-cols-12  sm:w-[90svw] sm:h-32 sm:my-2 w-[16.5rem] h-56">
+        <div className="thumbnail-container sm:col-span-7 sm:h-[8.5rem] rounded-2xl hover:rounded-sm h-[9.5rem] ">
           <img
             src={thumbnails.high.url}
             alt=""

@@ -2,9 +2,10 @@ import React, { useCallback, useEffect, useState } from "react";
 
 const ChannelLogo = ({ channelId }) => {
   const [channelDetails, setChannelDetails] = useState([]);
-  //   const [channelLogo, setChannelLogo] = useState();
   const GOOGLE_API_KEY = "AIzaSyBJxKtp5wPqY-8BBkpkgTUPWOGTf6D_x60";
   const CHANNEL_DETAILS_API = `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}&key=${GOOGLE_API_KEY}`;
+
+  console.log(channelId);
 
   const getChannelDetails = useCallback(async () => {
     const data = await fetch(CHANNEL_DETAILS_API);
@@ -19,6 +20,7 @@ const ChannelLogo = ({ channelId }) => {
 
   if (channelDetails?.length === 0) {
   } else {
+    console.log(channelDetails);
     const [{ snippet }] = channelDetails;
     const { thumbnails } = snippet;
 

@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { closeMenu } from "../utils/menuBarSlice";
 import { Link, useSearchParams } from "react-router-dom";
-import { TiSocialYoutubeCircular } from "react-icons/ti";
 import { MdCheckCircle } from "react-icons/md";
 import { WatchPageShimmer } from "./Shimmer";
 import { AiOutlineLike } from "react-icons/ai";
@@ -17,6 +16,7 @@ import { YOUTUBE_VIDEO_API } from "../utils/Constants";
 import SideVideoCard from "./SideVideoCard";
 import CommentContainer from "./CommentContainer";
 import SubscriberCount from "./SubscriberCount";
+import ChannelLogo from "./ChannelLogo";
 
 const WatchPage = () => {
   const [videoDetails, setVideoDetails] = useState([]);
@@ -56,7 +56,7 @@ const WatchPage = () => {
     getSideVideos();
   }, [videoId, dispatch, getSideVideos, getVideoDetails]);
 
-  const channelId = videoDetails?.snippet?.channelId;
+  // const channelId = videoDetails?.snippet?.channelId;
   // console.log(channelId);
   function formatViews(viewCount) {
     if (viewCount >= 1000000) {
@@ -82,7 +82,8 @@ const WatchPage = () => {
     return <WatchPageShimmer />;
   } else {
     const { snippet, statistics } = videoDetails;
-    const { channelTitle, title, publishedAt, description } = snippet;
+    const { channelTitle, title, publishedAt, description, channelId } =
+      snippet;
     const { viewCount, likeCount, commentCount } = statistics;
     return (
       <div className="absolute top-20 left-24 sm:left-2 sm:w-svw  w-[92svw] flex md:w-[80svw]  gap-7">
@@ -105,9 +106,7 @@ const WatchPage = () => {
             </div>
             <div className=" flex py-1 justify-between sm:flex-col  sm:w-full">
               <div className="left-details-container flex items-center ">
-                <div className="flex items-center mr-2">
-                  <TiSocialYoutubeCircular className="w-8 h-8" />
-                </div>
+                <ChannelLogo channelId={channelId} />
                 <div className="flex flex-col mx-2">
                   <Link to={"/channel?id=" + channelId} key={channelId}>
                     <div className="flex items-center text-[11.5px] text-gray-700 dark:text-stone-200">
