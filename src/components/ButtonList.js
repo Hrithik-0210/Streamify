@@ -63,7 +63,6 @@ const ButtonList = () => {
   }, [translate]);
 
   useEffect(() => {
-    // Determine the active button based on the current URL path
     const path = location.pathname.substring(1);
     const searchQuery = new URLSearchParams(location.search).get(
       "search_query"

@@ -74,16 +74,9 @@ const WatchPage = () => {
     const differenceMs = targetDate - currentDate;
     const differenceDays = Math.floor(differenceMs / (1000 * 60 * 60 * 24));
     // console.log(Math.abs(differenceDays));
-
     const diff = Math.abs(differenceDays) + " days ago";
     return diff;
   }
-  const formatDescription = (text) => {
-    const urlPattern = /(https?:\/\/[^\s]+)/g;
-    return text.replace(urlPattern, (url) => {
-      return `<a href=${url} style="color:black;"> ${url}<?a>`;
-    });
-  };
 
   if (videoDetails?.length === 0) {
     return <WatchPageShimmer />;
@@ -91,7 +84,6 @@ const WatchPage = () => {
     const { snippet, statistics } = videoDetails;
     const { channelTitle, title, publishedAt, description } = snippet;
     const { viewCount, likeCount, commentCount } = statistics;
-    const formatedDescription = formatDescription(description);
     return (
       <div className="absolute top-20 left-24 sm:left-2 sm:w-svw  w-[92svw] flex md:w-[80svw]  gap-7">
         <div className=" rounded-xl   w-[70%] h-fit md:w-full sm:w-[95svw]">
@@ -193,10 +185,7 @@ const WatchPage = () => {
             </div>
             <div className="description-content mt-2 text-xs font-normal whitespace-pre-line  flex items-end justify-start ">
               <span className={isExpanded ? "" : "line-clamp-2"}>
-                {/* {description} */}
-                <span
-                  dangerouslySetInnerHTML={{ __html: formatedDescription }}
-                />
+                {description}
               </span>
               {description.split("\n").length > 2 && (
                 <span>

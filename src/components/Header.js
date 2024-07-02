@@ -30,7 +30,7 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const { user, loginWithRedirect, logout } = useAuth0();
-  console.log(user);
+  // console.log(user);
 
   /**
    * searchCache   = {
@@ -46,7 +46,7 @@ const Header = () => {
       const imageBlob = await data.blob();
       return URL.createObjectURL(imageBlob);
     } catch (error) {
-      console.error("Error fetching image:", error);
+      // console.error("Error fetching image:", error);
       return null; // Handle error gracefully
     }
   };
@@ -117,7 +117,7 @@ const Header = () => {
     setShowSuggestion(true);
     navigate("/results?search_query=" + suggestiontext);
   };
-  console.log(userImageUrl);
+  // console.log(userImageUrl);
   // console.log(suggestions);
   return (
     // Header-Container

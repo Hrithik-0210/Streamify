@@ -13,17 +13,6 @@ const CommentContainer = ({ comment }) => {
 
   const COMMENT_API = `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&maxResults=50&videoId=${videoId}&key=${GOOGLE_API_KEY}`;
 
-  // function publishTime(publishedAt) {
-  //   const currentDate = new Date();
-  //   const targetDate = new Date(publishedAt);
-  //   const differenceMs = targetDate - currentDate;
-  //   const differenceDays = Math.floor(differenceMs / (1000 * 60 * 60 * 24));
-  //   // console.log(Math.abs(differenceDays));
-
-  //   const diff = Math.abs(differenceDays) + " days ago";
-  //   return diff;
-  // }
-
   const getComments = useCallback(async () => {
     const data = await fetch(COMMENT_API);
     const jsonData = await data.json();

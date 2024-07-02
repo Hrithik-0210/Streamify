@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { PiCheckCircleDuotone } from "react-icons/pi";
 import { BsThreeDots } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import usePublishTime from "../utils/usePublishTime";
 
 const SideVideoCard = ({ items }) => {
   // console.log(items);
@@ -23,17 +24,10 @@ const SideVideoCard = ({ items }) => {
     }
   }
 
-  function publishTime(publishedAt) {
-    const currentDate = new Date();
-    const targetDate = new Date(publishedAt);
-    const differenceMs = targetDate - currentDate;
-    const differenceDays = Math.floor(differenceMs / (1000 * 60 * 60 * 24));
-    // console.log(Math.abs(differenceDays));
-
-    const diff = Math.abs(differenceDays) + " days ago";
-    return diff;
-  }
   const isMenuOpen = useSelector((store) => store.menu.isMenuOpen);
+
+  const publishTime = usePublishTime(publishedAt);
+
   // console.log(isMenuOpen);
   return (
     <div className=" w-full">
@@ -64,7 +58,7 @@ const SideVideoCard = ({ items }) => {
                   {formatViews(viewCount)} views
                   <GoDotFill className="w-[0.35rem] h-[0.35rem] mx-[0.4rem]" />
                   <div className="time-ago dark:text-stone-200">
-                    {publishTime(publishedAt)}
+                    {publishTime}
                   </div>
                 </div>
               </div>
@@ -99,7 +93,7 @@ const SideVideoCard = ({ items }) => {
                 <div className="view-and-time flex items-center text-[13px] font-normal text-gray-500">
                   {formatViews(viewCount)} view
                   <GoDotFill className="w-[0.35rem] h-[0.35rem] mx-[0.4rem]" />
-                  <div className="time-ago">{publishTime(publishedAt)}</div>
+                  <div className="time-ago">{publishTime}</div>
                 </div>
               </div>
             </div>

@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { PiCheckCircleDuotone } from "react-icons/pi";
 import { Link } from "react-router-dom";
 import ChannelLogo from "./ChannelLogo";
+import usePublishTime from "../utils/usePublishTime";
 
 const VideoCard = ({ items }) => {
   const { snippet, statistics } = items;
@@ -20,50 +21,8 @@ const VideoCard = ({ items }) => {
       return viewCount.toString();
     }
   }
+  const publishTime = usePublishTime(publishedAt);
 
-  function publishTime(publishedAt) {
-    const currentDate = new Date();
-    const targetDate = new Date(publishedAt);
-    const differenceMs = currentDate - targetDate;
-
-    const differenceDays = Math.floor(differenceMs / (1000 * 60 * 60 * 24));
-
-    if (differenceDays >= 365) {
-      const differenceYears = Math.floor(differenceDays / 365);
-      if (differenceYears === 1) {
-        return "1 year ago";
-      } else {
-        return `${differenceYears} years ago`;
-      }
-    } else if (differenceDays >= 30) {
-      const differenceMonths = Math.floor(differenceDays / 30);
-      if (differenceMonths === 1) {
-        return "1 month ago";
-      } else {
-        return `${differenceMonths} months ago`;
-      }
-    } else if (differenceDays > 0) {
-      if (differenceDays === 1) {
-        return "1 day ago";
-      } else {
-        return `${differenceDays} days ago`;
-      }
-    } else {
-      const differenceHours = Math.floor(differenceMs / (1000 * 60 * 60));
-      if (differenceHours === 1) {
-        return "1 hour ago";
-      } else if (differenceHours > 0) {
-        return `${differenceHours} hours ago`;
-      } else {
-        const differenceMinutes = Math.floor(differenceMs / (1000 * 60));
-        if (differenceMinutes === 1) {
-          return "1 minute ago";
-        } else {
-          return `${differenceMinutes} minutes ago`;
-        }
-      }
-    }
-  }
   const isMenuOpen = useSelector((store) => store.menu.isMenuOpen);
 
   return (
@@ -93,7 +52,7 @@ const VideoCard = ({ items }) => {
                 <div className="view-and-time flex items-center text-[13px] font-normal text-gray-500 dark:text-stone-300">
                   {formatViews(viewCount)} views
                   <GoDotFill className="w-[0.35rem] h-[0.35rem] mx-[0.4rem]" />
-                  <div className="time-ago">{publishTime(publishedAt)}</div>
+                  <div className="time-ago">{publishTime}</div>
                 </div>
               </div>
             </div>
@@ -126,7 +85,7 @@ const VideoCard = ({ items }) => {
                 <div className="view-and-time flex items-center text-[13px] font-normal text-gray-500 dark:text-stone-300">
                   {formatViews(viewCount)} views
                   <GoDotFill className="w-[0.35rem] h-[0.35rem] mx-[0.4rem]" />
-                  <div className="time-ago">{publishTime(publishedAt)}</div>
+                  <div className="time-ago">{publishTime}</div>
                 </div>
               </div>
             </div>

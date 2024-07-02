@@ -4,6 +4,7 @@ import { BiDislike } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { toggleReply } from "../utils/commentSlice";
+import usePublishTime from "../utils/usePublishTime";
 // import { MdOutlineSort } from "react-icons/md";
 
 const Comment = ({ item }) => {
@@ -56,7 +57,6 @@ const Comment = ({ item }) => {
   useEffect(() => {
     getauthorProfileImageUrl();
   }, [getauthorProfileImageUrl]);
-  // Depend on authorProfileImageUrl and replies changes
 
   const fetchImage = async (imageUrl) => {
     try {
@@ -65,20 +65,9 @@ const Comment = ({ item }) => {
       return URL.createObjectURL(imageBlob);
     } catch (error) {
       console.error("Error fetching image:", error);
-      return null; // Handle error gracefully
+      return null;
     }
   };
-
-  function publishTime(publishedAt) {
-    const currentDate = new Date();
-    const targetDate = new Date(publishedAt);
-    const differenceMs = targetDate - currentDate;
-    const differenceDays = Math.floor(differenceMs / (1000 * 60 * 60 * 24));
-    // console.log(Math.abs(differenceDays));
-
-    const diff = Math.abs(differenceDays) + " days ago";
-    return diff;
-  }
 
   const dispatch = useDispatch();
   const handleReplies = () => {
@@ -88,6 +77,7 @@ const Comment = ({ item }) => {
 
   const isReplyOpen = useSelector((store) => store.comment.isReplyOpen);
   // console.log(isReplyOpen);
+  const publishTime = usePublishTime(publishedAt);
 
   return (
     <div className="comment-container grid grid-flow-col grid-cols-12  w-full overflow-hidden ">
@@ -107,7 +97,7 @@ const Comment = ({ item }) => {
           <div className="user-details flex gap-2 items-center">
             <h2 className="text-xs font-medium">{authorDisplayName}</h2>
             <p className="text-xs text-gray-600 dark:text-stone-200 dark:font-thin">
-              {publishTime(publishedAt)}
+              {publishTime}
             </p>
           </div>
 
