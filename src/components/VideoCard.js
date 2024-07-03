@@ -28,9 +28,9 @@ const VideoCard = ({ items }) => {
   return (
     <div>
       {isMenuOpen ? (
-        <div className="video-card-container  group w-fit my-2 px-2 py-3 sm:p-0 rounded-2xl hover:bg-Video-card-color dark:hover:bg-gray-800 transition ease-linear delay-150  duration-200  ">
-          <div className="video-card w-72 h-64 sm:w-[22rem] sm:h-[19rem] sm:my-2 md:w-80 md:h-64 md:my-2 transition ease-linear  ">
-            <div className="thumbnail-continer rounded-2xl h-40 sm:h-[12.3rem] ">
+        <div className="video-card-container  group w-fit  my-2 px-2 py-3 sm:p-0 rounded-2xl hover:bg-Video-card-color dark:hover:bg-gray-800 transition ease-linear delay-150  duration-200  ">
+          <div className="video-card w-72 h-64 sm:w-96 sm:h-fit sm:my-2 sm:py-2 sm:px-1 md:w-80 md:h-64 md:my-2 transition ease-linear  ">
+            <div className="thumbnail-continer rounded-2xl h-40 sm:h-[12.4rem] ">
               <img
                 src={thumbnails.high.url}
                 alt="thumbnail"
@@ -60,8 +60,8 @@ const VideoCard = ({ items }) => {
         </div>
       ) : (
         <div className="video-card-container group w-fit my-2 px-2 py-3 sm:p-0 rounded-2xl hover:bg-Video-card-color dark:hover:bg-gray-800 transition ease-linear delay-150 duration-200  ">
-          <div className="video-card w-[16.5rem] sm:w-[22rem]  sm:h-[19rem] md:w-80 md:h-64 md:my-2 ">
-            <div className="thumbnail-continer rounded-2xl h-36 sm:h-[12.3rem]">
+          <div className="video-card w-[16.5rem] sm:w-96 sm:h-fit sm:my-2 sm:py-2 sm:px-1 md:w-80 md:h-64 md:my-2 ">
+            <div className="thumbnail-continer rounded-2xl h-36 sm:h-[12.4rem]">
               <img
                 src={thumbnails.high.url}
                 alt="thumbnail"

@@ -126,7 +126,7 @@ const Header = () => {
       <div className="flex  items-center justify-between ">
         <div>
           <HiBars3
-            className="w-6 h-6 mx-3 cursor-pointer sm:ml-3 sm:w-6 sm:h-6 md:mx-1 md:ml-3 md:w-5 md:h-5"
+            className="w-6 h-6 mx-3 cursor-pointer sm:mx-1 sm:ml-3 sm:w-6 sm:h-6 md:mx-1 md:ml-3 md:w-5 md:h-5"
             onClick={() => toggleMenuHandler()}
           />
         </div>
