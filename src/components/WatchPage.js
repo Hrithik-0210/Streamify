@@ -27,7 +27,7 @@ const WatchPage = () => {
   const [sideVideo, setSideVideos] = useState([]);
   const [subscribed, setSubscribed] = useState("Subscribe");
 
-  const GOOGLE_API_KEY = "AIzaSyBJxKtp5wPqY-8BBkpkgTUPWOGTf6D_x60";
+  const GOOGLE_API_KEY = "AIzaSyCmHAf5n_sGXXa6Rig9ACqJ_wStD97y3ZQ";
   const VIDEO_DETAILS =
     "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=" +
     videoId +

@@ -11,7 +11,7 @@ const ChannelPageContainer = () => {
   const [searchParams] = useSearchParams();
   const channelId = searchParams.get("id");
 
-  const GOOGLE_API_KEY = "AIzaSyBJxKtp5wPqY-8BBkpkgTUPWOGTf6D_x60";
+  const GOOGLE_API_KEY = "AIzaSyCmHAf5n_sGXXa6Rig9ACqJ_wStD97y3ZQ";
   const CHANNEL_DETAILS_API = `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}&key=${GOOGLE_API_KEY}`;
   const VIDEOS_BY_CHANNEL_API = `https://www.googleapis.com/youtube/v3/search?key=${GOOGLE_API_KEY}&channelId=${channelId}&part=snippet,id&order=date&maxResults=50`;
 
