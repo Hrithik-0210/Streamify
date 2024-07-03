@@ -17,6 +17,7 @@ import SideVideoCard from "./SideVideoCard";
 import CommentContainer from "./CommentContainer";
 import SubscriberCount from "./SubscriberCount";
 import ChannelLogo from "./ChannelLogo";
+import { GOOGLE_API_KEY } from "../utils/Constants";
 
 const WatchPage = () => {
   const [videoDetails, setVideoDetails] = useState([]);
@@ -26,8 +27,8 @@ const WatchPage = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [sideVideo, setSideVideos] = useState([]);
   const [subscribed, setSubscribed] = useState("Subscribe");
+  const [liked, setLike] = useState("");
 
-  const GOOGLE_API_KEY = "AIzaSyCmHAf5n_sGXXa6Rig9ACqJ_wStD97y3ZQ";
   const VIDEO_DETAILS =
     "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=" +
     videoId +
@@ -86,6 +87,9 @@ const WatchPage = () => {
       setSubscribed("Subscribe");
     }
   };
+  const handleLike = () => {
+    setLike(!liked);
+  };
 
   if (videoDetails?.length === 0) {
     return <WatchPageShimmer />;
@@ -115,7 +119,9 @@ const WatchPage = () => {
             </div>
             <div className=" flex py-1 justify-between sm:flex-col md:flex-col md:w-full  sm:w-full   lg:w-full">
               <div className="left-details-container flex items-center ">
-                <ChannelLogo channelId={channelId} />
+                <Link to={"/channel?id=" + channelId} key={channelId}>
+                  <ChannelLogo channelId={channelId} />
+                </Link>
                 <div className="flex flex-col mx-2">
                   <Link to={"/channel?id=" + channelId} key={channelId}>
                     <div className="flex items-center text-[11.5px] text-gray-700 dark:text-stone-200">
@@ -151,9 +157,14 @@ const WatchPage = () => {
               <div className="right-details-conatiner  flex items-center gap-2  sm:my-3">
                 <div className="like-dislike-container bg-gray-100  rounded-full flex h-8 dark:bg-black">
                   <div className="like-container hover:bg-gray-200 rounded-l-full flex items-center dark:bg-gray-900 dark:text-gray-200 dark:font-medium dark:hover:bg-gray-700 ">
-                    <div className="flex border-r border-gray-400 my-1 px-4  gap-2 items-center justify-center">
+                    <div
+                      className={`flex border-r border-gray-400 my-1 px-4  gap-2 items-center justify-center cursor-pointer ${
+                        liked ? "text-blue-800" : "text-black"
+                      }`}
+                      onClick={handleLike}
+                    >
                       <AiOutlineLike className="w-5 h-5" />
-                      <p className="text-xs font-medium">
+                      <p className="text-xs font-medium ">
                         {formatViews(likeCount)}
                       </p>
                     </div>

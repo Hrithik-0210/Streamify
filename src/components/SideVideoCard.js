@@ -4,7 +4,6 @@ import { PiCheckCircleDuotone } from "react-icons/pi";
 import { BsThreeDots } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import usePublishTime from "../utils/usePublishTime";
-import ChannelLogo from "./ChannelLogo";
 
 const SideVideoCard = ({ items }) => {
   // console.log(items);
@@ -44,7 +43,6 @@ const SideVideoCard = ({ items }) => {
               </div>
               <Link to={"/channel?id=" + channelId} key={channelId}>
                 <div className="check-logo flex gap-1 items-center font-normal   ">
-                  <ChannelLogo channelId={channelId} />
                   <div className="channelName text-[13px] text-gray-500 dark:text-stone-200 dark:font-thin dark:text-[12px]">
                     {channelTitle}
                   </div>

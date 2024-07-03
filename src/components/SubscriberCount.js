@@ -1,10 +1,9 @@
 import React, { useCallback, useEffect, useState } from "react";
-// import { json } from "react-router-dom";
+import { GOOGLE_API_KEY } from "../utils/Constants";
 
 const SubscriberCount = ({ item }) => {
   //   console.log(item);
   const channelId = item;
-  const GOOGLE_API_KEY = "AIzaSyCmHAf5n_sGXXa6Rig9ACqJ_wStD97y3ZQ";
   const SUBSCRIBER_COUNT_API = `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=${GOOGLE_API_KEY}`;
 
   const [subscribersCount, setSubscribersCount] = useState([]);

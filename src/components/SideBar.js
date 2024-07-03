@@ -68,33 +68,15 @@ const SideBar = () => {
               <h2 className="text-[10px] my-1">Shorts</h2>
             </NavLink>
 
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                `${
-                  isActive
-                    ? "bg-gray-100 flex flex-col items-center px-2 py-3 rounded-lg dark:bg-gray-800 dark:text-white"
-                    : "bg-white flex flex-col items-center px-2 py-3 rounded-lg dark:bg-black dark:text-white"
-                } hover:bg-gray-100 my-1`
-              }
-            >
+            <li className="bg-white flex flex-col items-center px-2 py-3 rounded-lg dark:bg-black dark:text-white hover:bg-gray-100 my-1">
               <MdOutlineSubscriptions className="mx-2 w-5 h-5" />
               <h2 className="text-[10px] my-1">Subscriptions</h2>
-            </NavLink>
+            </li>
 
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                `${
-                  isActive
-                    ? "bg-gray-100 flex flex-col items-center px-2 py-3 rounded-lg dark:bg-gray-800 dark:text-white"
-                    : "bg-white flex flex-col items-center px-2 py-3 rounded-lg dark:bg-black dark:text-white"
-                } hover:bg-gray-100 my-1`
-              }
-            >
+            <li className="bg-white flex flex-col items-center px-2 py-3 rounded-lg dark:bg-black dark:text-white hover:bg-gray-100 my-1">
               <MdOutlineVideoLibrary className="mx-2 w-5 h-5" />
               <h2 className="text-[10px] my-1">You</h2>
-            </NavLink>
+            </li>
           </ul>
         </div>
       </div>

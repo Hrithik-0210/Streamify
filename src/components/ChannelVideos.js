@@ -27,7 +27,7 @@ const ChannelVideos = ({ video }) => {
     //   </div>
     // </div>
     // </div>
-    <div className="channel-video-container sm:px-2 sm:py-1 md:px-2 md:py-1 hover:bg-gray-100 rounded-2xl m-1 dark:hover:bg-gray-900 dark:hover:text-white px-2 py-3">
+    <div className="channel-video-container sm:px-2 sm:py-1 md:px-2 md:py-1 hover:bg-gray-100 rounded-2xl m-1 dark:hover:bg-gray-900 dark:hover:text-white px-2 py-2">
       <div className="videocard  sm:grid sm:grid-cols-12  sm:w-[90svw] sm:h-full sm:my-1 w-[16.5rem] md:w-96 md:h-72  rounded-2xl">
         <div className="thumbnail-container sm:col-span-7 sm:h-[8.3rem] md:h-52 rounded-2xl hover:rounded-sm h-[9.3rem] ">
           <img

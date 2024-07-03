@@ -1,8 +1,9 @@
 import React, { useCallback, useEffect, useState } from "react";
+import { GOOGLE_API_KEY } from "../utils/Constants";
+import { TiSocialYoutubeCircular } from "react-icons/ti";
 
 const ChannelLogo = ({ channelId }) => {
   const [channelDetails, setChannelDetails] = useState([]);
-  const GOOGLE_API_KEY = "AIzaSyCmHAf5n_sGXXa6Rig9ACqJ_wStD97y3ZQ";
   const CHANNEL_DETAILS_API = `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}&key=${GOOGLE_API_KEY}`;
 
   // console.log(channelId);
@@ -19,6 +20,7 @@ const ChannelLogo = ({ channelId }) => {
   }, [getChannelDetails]);
 
   if (channelDetails?.length === 0) {
+    <TiSocialYoutubeCircular />;
   } else {
     // console.log(channelDetails);
     const [{ snippet }] = channelDetails;
