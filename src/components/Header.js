@@ -121,12 +121,12 @@ const Header = () => {
   // console.log(suggestions);
   return (
     // Header-Container
-    <div className="flex  justify-between lg:px-5 xl:px-5 2xl:px-5 py-2  items-center w-full h-16 fixed top-0 left-0 z-50  bg-white dark:bg-black dark:text-white sm:px-2">
+    <div className=" header-container  flex  justify-between w-[100%]   lg:px-5 xl:px-5 2xl:px-5 py-2  items-center  h-16 fixed top-0 left-0 z-50  bg-white dark:bg-black dark:text-white sm:px-2">
       {/* Left-side-Container - logo */}
       <div className="flex  items-center justify-between ">
         <div>
           <HiBars3
-            className="w-6 h-6 mx-3 cursor-pointer sm:mx-0 sm:w-5 sm:h-5 md:mx-1 md:w-5 md:h-5"
+            className="w-6 h-6 mx-3 cursor-pointer sm:ml-3 sm:w-6 sm:h-6 md:mx-1 md:ml-3 md:w-5 md:h-5"
             onClick={() => toggleMenuHandler()}
           />
         </div>
@@ -174,7 +174,7 @@ const Header = () => {
           </div>
         </Link>
 
-        <div className="microphone-icon bg-gray-100 flex items-center mx-3 rounded-full p-2 dark:bg-gray-800 sm:hidden">
+        <div className="microphone-icon bg-gray-100 flex items-center mx-3 rounded-full p-2 dark:bg-gray-800 sm:hidden md:hidden">
           <BiSolidMicrophone className="w-5 h-5 dark:text-gray-100" />
         </div>
       </div>
@@ -199,7 +199,7 @@ const Header = () => {
         )}
       </div>
       {/* Right-side-Container - userinfo and theme */}
-      <div className="User-info-container  flex  items-center justify-between w-fit gap-2 p-1 mx-2 sm:mx-0 sm:w-24 sm:gap-0 ">
+      <div className="User-info-container  flex  items-center justify-between w-fit gap-2 p-1 mx-2 sm:mx-0 sm:w-24 sm:gap-0  md:gap-0 ">
         <div className="create-icon  rounded-full  dark:hover:text-black">
           {themeMode === "light" ? (
             <div
@@ -218,13 +218,13 @@ const Header = () => {
           )}
         </div>
 
-        <div className="create-icon sm:hidden  py-[0.35rem] px-2 rounded-full hover:bg-gray-200 dark:hover:text-black">
+        <div className="create-icon sm:hidden md:hidden py-[0.35rem] px-2 rounded-full hover:bg-gray-200 dark:hover:text-black">
           <RiVideoAddLine className="w-5 h-5" />
         </div>
         <div className="notification-icon sm:hidden py-[0.3rem] px-[0.5rem] rounded-full hover:bg-gray-200 dark:hover:text-black">
           <IoMdNotificationsOutline className="w-5 h-5" />
         </div>
-        <div className="user-icon py-[0.3rem] px-[0.5rem] rounded-full hover:bg-gray-200 dark:hover:text-black border dark:border-none">
+        <div className="user-icon py-[0.3rem] px-[0.5rem] rounded-full hover:bg-gray-200 dark:hover:text-black border dark:border-none border-none   bg-gray-100">
           {user ? (
             <div className="flex" onClick={() => handleShowLogout()}>
               <img
@@ -265,11 +265,11 @@ const Header = () => {
             </div>
           ) : (
             <button
-              className="flex gap-2 rounded-3xl  py-1 px-3 items-center sm:gap-0 sm:h-7 sm:px-1 sm:ml-1"
+              className="flex gap-2 rounded-3xl  py-1 px-3 items-center sm:gap-0 sm:h-7 sm:px-1 sm:ml-1 sm:border-none md:border-none"
               onClick={() => loginWithRedirect()}
             >
               <FaUserAlt className="w-4 h-4 sm:hidden" />
-              <span className="text-blue-700 text-sm sm:text-xs sm:w-9  font-medium">
+              <span className="text-blue-700 text-sm sm:text-xs sm:w-9  md:w-9 md:text-xs font-medium">
                 sign in
               </span>
             </button>

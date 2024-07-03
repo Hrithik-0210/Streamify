@@ -25,6 +25,7 @@ const WatchPage = () => {
 
   const [isExpanded, setIsExpanded] = useState(false);
   const [sideVideo, setSideVideos] = useState([]);
+  const [subscribed, setSubscribed] = useState("Subscribe");
 
   const GOOGLE_API_KEY = "AIzaSyBJxKtp5wPqY-8BBkpkgTUPWOGTf6D_x60";
   const VIDEO_DETAILS =
@@ -78,6 +79,14 @@ const WatchPage = () => {
     return diff;
   }
 
+  const handleSubscribe = () => {
+    if (subscribed === "Subscribe") {
+      setSubscribed("Subscribed");
+    } else {
+      setSubscribed("Subscribe");
+    }
+  };
+
   if (videoDetails?.length === 0) {
     return <WatchPageShimmer />;
   } else {
@@ -122,9 +131,21 @@ const WatchPage = () => {
                   </div>
                 </div>
                 <div className="ml-auto">
-                  <button className="text-white text-xs bg-gray-900 rounded-2xl py-[0.45rem] px-4 w-fit h-fit mx-4 dark:bg-stone-200 dark:text-gray-800 dark:font-medium sm:justify-items-end">
-                    Subscribe
-                  </button>
+                  {subscribed === "Subscribe" ? (
+                    <button
+                      className="text-white text-xs bg-gray-900 rounded-2xl py-[0.45rem] px-4 w-fit h-fit mx-4 dark:bg-stone-200 dark:text-gray-800 dark:font-medium sm:justify-items-end"
+                      onClick={() => handleSubscribe()}
+                    >
+                      {subscribed}
+                    </button>
+                  ) : (
+                    <button
+                      className="text-black text-xs bg-gray-100 rounded-2xl py-[0.45rem] px-4 w-fit h-fit mx-4 font-semibold dark:bg-stone-200 dark:text-gray-800 dark:font-medium sm:justify-items-end"
+                      onClick={() => handleSubscribe()}
+                    >
+                      {subscribed}
+                    </button>
+                  )}
                 </div>
               </div>
               <div className="right-details-conatiner  flex items-center gap-2  sm:my-3">

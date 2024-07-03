@@ -17,7 +17,7 @@ const Body = () => {
             <SideBar />
           </div>
         ) : (
-          <div className="mr-3 dark:bg-black dark:text-white">
+          <div className=" dark:bg-black dark:text-white">
             <SideBar />
           </div>
         )}

@@ -37,7 +37,7 @@ const VideoByCategoryContainer = () => {
       return (
         <div className="relative z-0 ">
           <div className="flex flex-col w-full absolute top-16 left-24 sm:left-3 sm:w-96 sm:h-72 sm:my-1 ">
-            <div className="overflow-x-hidden overflow-y-hidden my-1  fixed top-14 left-24 sm:left-0 sm:w-[100%] w-[94%] z-50 bg-white  ">
+            <div className="overflow-x-hidden overflow-y-hidden my-1  fixed top-14 left-24 sm:left-0 sm:w-[100%] md:left-0 md:w-[100%] w-[94%] z-50 bg-white  ">
               <ButtonList />
             </div>
             <div className="flex flex-wrap  justify-center  absolute top-10 sm:absolute sm:left-0">

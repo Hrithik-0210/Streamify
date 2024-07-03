@@ -24,8 +24,11 @@ export const CategoryShimmer = () => {
     >
       {Array(15)
         .fill("")
-        .map((e) => (
-          <div className="w-64 h-[17rem] sm:w-96 sm:h-80  bg-stone-100 flex gap-2 shadow-md dark:bg-gray-700 rounded-lg  mt-5"></div>
+        .map((e, index) => (
+          <div
+            key={index}
+            className="w-64 h-[17rem] sm:w-96 sm:h-80  bg-stone-100 flex gap-2 shadow-md dark:bg-gray-700 rounded-lg  mt-5"
+          ></div>
         ))}
     </div>
   );
