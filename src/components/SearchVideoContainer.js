@@ -32,12 +32,12 @@ const SearchVideoContainer = () => {
     if (isMenuOpen) {
       return (
         <div className="relative z-0">
-          <div className="flex flex-col w-full absolute top-16 left-24 sm:left-3">
-            <div className="overflow-x-hidden overflow-y-hidden my-1  fixed top-14 left-[20%] sm:left-0  sm:w-[98%] w-[70%] z-50 bg-white dark:bg-black ">
+          <div className="flex flex-col w-full absolute top-16 left-24 sm:left-3 md:left-0">
+            <div className="overflow-x-hidden overflow-y-hidden my-1  fixed top-14 left-[20%] sm:left-0  sm:w-[98%] md:w-[98%] md:left-2 lg:w-[75%] w-[70%] z-50 bg-white dark:bg-black ">
               <ButtonList />
             </div>
 
-            <div className="grid grid-flow-row  gap-1 absolute top-10 left-[20%] sm:left-0 justify-center  m-auto  ">
+            <div className="grid grid-flow-row  gap-1 absolute top-10 left-[20%] sm:left-0 md:left-10 justify-center  m-auto  ">
               {searchVideo &&
                 searchVideo.map((video) => (
                   <>
@@ -60,12 +60,12 @@ const SearchVideoContainer = () => {
     } else {
       return (
         <div className="relative z-0">
-          <div className="flex flex-col w-full absolute top-16 left-24 sm:left-3 md:left-3 ">
-            <div className="overflow-x-hidden   overflow-y-hidden my-1  fixed top-14 left-[14rem] sm:left-0 md:left-0 w-[83%] z-50 bg-white   ">
+          <div className="flex flex-col w-full absolute top-16 left-24 sm:left-3 md:left-0 ">
+            <div className="overflow-x-hidden   overflow-y-hidden my-1  fixed top-14 left-[14rem] sm:left-0  sm:w-[98%] md:w-[98%] lg:w-[75%] md:left-2 w-[83%] z-50 bg-white   ">
               <ButtonList />
             </div>
 
-            <div className="grid grid-flow-row  gap-1 absolute top-10 left-[20%] sm:left-0 md:left-0  md:m-0 justify-center  m-auto ">
+            <div className="grid grid-flow-row  gap-1 absolute top-10 left-[20%] sm:left-0 md:left-10   justify-center  m-auto ">
               {searchVideo.map((video) => (
                 <>
                   {video.id.videoId ? (

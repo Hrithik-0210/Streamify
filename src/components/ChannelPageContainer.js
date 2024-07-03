@@ -39,11 +39,11 @@ const ChannelPageContainer = () => {
   if (channelVideos && channelDetails) {
     if (isMenuOpen) {
       return (
-        <div className=" absolute top-20 left-36 sm:top-20 sm:p-2 md:left-10 sm:left-0 flex flex-col justify-center items-center  ">
-          <div className=" sm:pb-4 sm:w-[92svw] border-b-2 w-[85svw] pb-5 ">
+        <div className=" absolute top-20 left-36 sm:top-20 sm:p-2 md:left-0 sm:left-0  flex flex-col justify-center items-center ">
+          <div className=" sm:pb-4 sm:w-[92svw]  border-b-2 w-[85svw] pb-5 ">
             <ChannelDetails item={channelDetails} />
           </div>
-          <div className="  flex flex-wrap gap-1 sm:flex-col w-full justify-center mt-4  ">
+          <div className="  flex flex-wrap gap-1 sm:flex-col w-full justify-center mt-4 ">
             {channelVideos.map((video) => (
               <Link to={"/watch?v=" + video.id.videoId} key={video.id}>
                 <ChannelVideos video={video} key={video.id.videoId} />
@@ -54,7 +54,7 @@ const ChannelPageContainer = () => {
       );
     } else {
       return (
-        <div className=" absolute top-20 left-48 sm:top-20 md:left-44 sm:left-0 sm:p-2 flex flex-col justify-center items-center ">
+        <div className=" absolute top-20 left-48 sm:top-20  sm:left-0 md:left-0 sm:p-2 flex flex-col justify-center items-center ">
           <div className=" pb-5 sm:pb-4 border-b-2 sm:w-[92svw] w-[85svw]  ">
             <ChannelDetails item={channelDetails} />
           </div>

@@ -35,7 +35,7 @@ const ChannelDetails = ({ item }) => {
               className="w-full h-full  rounded-full object-cover object-center"
             />
           </div>
-          <div className="details-container flex flex-col gap-1">
+          <div className="details-container flex flex-col gap-1 ">
             <h2 className="text-xl font-semibold">{title}</h2>
             <p className="text-[11.5px] font-thin">{customUrl}</p>
             <div className="flex gap-2 items-center">
@@ -47,9 +47,34 @@ const ChannelDetails = ({ item }) => {
                 {formatViews(videoCount)} videos
               </p>
             </div>
+            <div className="description-container sm:hidden">
+              <div className="text-xs font-normal whitespace-pre-line  flex items-end justify-start sm:text-[11.5px] my-2 ">
+                <span className={isExpanded ? "" : "line-clamp-2"}>
+                  {description}
+                </span>
+                {description.split("\n").length > 2 && (
+                  <span>
+                    <button
+                      onClick={toggleExpansion}
+                      className="text-gray-800 font-semibold"
+                    >
+                      {isExpanded ? "Show less" : "...more"}
+                    </button>
+                  </span>
+                )}
+              </div>
+            </div>
+            <div className="sebscribe-join-btn-container flex   mt-4 sm:hidden md:hidden">
+              <button className=" font-medium text-xs rounded-2xl py-[0.45rem] px-4  md:w-[50%] w-[150px] h-fit  bg-gray-800 text-white dark:bg-stone-200 dark:text-gray-800 dark:font-medium ">
+                Subscribe
+              </button>
+              <button className="text-white font-medium text-xs bg-gray-800 rounded-2xl py-[0.45rem] px-4  w-[150px] h-fit mx-4 dark:bg-stone-200 dark:text-gray-800 dark:font-medium ">
+                Join
+              </button>
+            </div>
           </div>
         </div>
-        <div className="description-container">
+        <div className="description-container md:hidden lg:hidden xl:hidden 2xl:hidden">
           <div className="text-xs font-normal whitespace-pre-line  flex items-end justify-start sm:text-[11.5px] my-2 ">
             <span className={isExpanded ? "" : "line-clamp-2"}>
               {description}
@@ -66,11 +91,11 @@ const ChannelDetails = ({ item }) => {
             )}
           </div>
         </div>
-        <div className="sebscribe-join-btn-container flex sm:justify-between items-center">
-          <button className="text-gray-700 font-semibold text-xs bg-gray-100 rounded-2xl py-[0.45rem] px-4 sm:w-[50%] w-fit h-fit mx-4 dark:bg-stone-200 dark:text-gray-800 dark:font-medium sm:justify-items-end">
+        <div className="sebscribe-join-btn-container flex sm:justify-between items-center mt-4 lg:hidden xl:hidden 2xl:hidden">
+          <button className=" font-medium text-xs rounded-2xl py-[0.45rem] px-4 sm:w-[50%] md:w-[50%] w-fit h-fit mx-4 bg-gray-800 text-white dark:bg-stone-200 dark:text-gray-800 dark:font-medium sm:justify-items-end">
             Subscribe
           </button>
-          <button className="text-gray-700 font-semibold text-xs bg-gray-100 rounded-2xl py-[0.45rem] px-4 sm:w-[50%] w-fit h-fit mx-4 dark:bg-stone-200 dark:text-gray-800 dark:font-medium sm:justify-items-end">
+          <button className="text-white font-medium text-xs bg-gray-800 rounded-2xl py-[0.45rem] px-4 sm:w-[50%] md:w-[50%] w-fit h-fit mx-4 dark:bg-stone-200 dark:text-gray-800 dark:font-medium sm:justify-items-end">
             Join
           </button>
         </div>

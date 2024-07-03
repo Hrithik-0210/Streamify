@@ -95,9 +95,9 @@ const WatchPage = () => {
       snippet;
     const { viewCount, likeCount, commentCount } = statistics;
     return (
-      <div className="absolute top-20 left-24 sm:left-2 sm:w-svw  w-[92svw] flex md:w-[80svw]  gap-7">
-        <div className=" rounded-xl   w-[70%] h-fit md:w-full sm:w-[95svw]">
-          <div className=" w-[65svw] h-[72.7svh] md:w-[80svw] md:h-[65svw] sm:w-svw sm:h-64">
+      <div className="absolute top-20 left-24 sm:left-2 md:left-2 sm:w-svw md:w-svw  w-[92svw] flex  gap-7">
+        <div className=" rounded-xl   w-[70%] h-fit md:w-97svw sm:w-[96svw] ">
+          <div className=" w-[65svw] h-[72.7svh] sm:w-[96svw] sm:h-64  md:h-[65svw]  md:w-[97svw] ">
             <iframe
               width="100%"
               src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
@@ -113,7 +113,7 @@ const WatchPage = () => {
             <div className="mt-2 p-1  text-base font-semibold sm:text-sm">
               {title}
             </div>
-            <div className=" flex py-1 justify-between sm:flex-col  sm:w-full">
+            <div className=" flex py-1 justify-between sm:flex-col md:flex-col md:w-full  sm:w-full   lg:w-full">
               <div className="left-details-container flex items-center ">
                 <ChannelLogo channelId={channelId} />
                 <div className="flex flex-col mx-2">
@@ -176,13 +176,13 @@ const WatchPage = () => {
                     Download
                   </p>
                 </div>
-                <div className="trim-conatiner sm:hidden md:hidden flex items-center justify-center gap-3 bg-gray-100 rounded-full hover:bg-gray-200 py-2 px-4 h-8 dark:bg-gray-900 dark:text-gray-200 dark:font-medium dark:hover:bg-gray-700">
+                <div className="trim-conatiner sm:hidden md:hidden lg:hidden flex items-center justify-center gap-3 bg-gray-100 rounded-full hover:bg-gray-200 py-2 px-4 h-8 dark:bg-gray-900 dark:text-gray-200 dark:font-medium dark:hover:bg-gray-700">
                   <TiScissorsOutline className="w-5 h-5 text-gray-600 -rotate-90 dark:text-gray-200" />
                   <p className="text-xs font-medium text-gray-700 dark:text-gray-200">
                     Clip
                   </p>
                 </div>
-                <div className="save-conatiner sm:hidden md:hidden  flex items-center justify-center gap-3 bg-gray-100 rounded-full hover:bg-gray-200 py-2 px-4 h-8 dark:bg-gray-900 dark:text-gray-200 dark:font-medium dark:hover:bg-gray-700">
+                <div className="save-conatiner sm:hidden md:hidden lg:hidden flex items-center justify-center gap-3 bg-gray-100 rounded-full hover:bg-gray-200 py-2 px-4 h-8 dark:bg-gray-900 dark:text-gray-200 dark:font-medium dark:hover:bg-gray-700">
                   <MdPlaylistAdd className="w-5 h-5 text-gray-600 dark:text-gray-200 " />
                   <p className="text-xs font-medium text-gray-700 dark:text-gray-200">
                     Save

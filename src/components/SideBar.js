@@ -31,9 +31,6 @@ import { RiFeedbackLine } from "react-icons/ri";
 import { useSelector } from "react-redux";
 import { HiMiniSignal } from "react-icons/hi2";
 import { NavLink } from "react-router-dom";
-// import {  } from "../utils/menuBarSlice";
-// import { toggleMenu } from "../utils/menuBarSlice";
-// import logo from "../images/YouTube_Logo_2017.svg.png";
 
 const SideBar = () => {
   const isMenuOpen = useSelector((store) => store.menu.isMenuOpen);
@@ -58,7 +55,7 @@ const SideBar = () => {
             </NavLink>
 
             <NavLink
-              to="/shorts"
+              to={"/results?search_query=reels"}
               className={({ isActive }) =>
                 `${
                   isActive
@@ -72,7 +69,7 @@ const SideBar = () => {
             </NavLink>
 
             <NavLink
-              to="/subscriptions"
+              to="/"
               className={({ isActive }) =>
                 `${
                   isActive
@@ -86,7 +83,7 @@ const SideBar = () => {
             </NavLink>
 
             <NavLink
-              to="/you"
+              to="/"
               className={({ isActive }) =>
                 `${
                   isActive
@@ -122,7 +119,7 @@ const SideBar = () => {
                 <h2 className="mx-3">Home</h2>
               </NavLink>
               <NavLink
-                to="/shorts"
+                to={"/results?search_query=reels"}
                 className={({ isActive }) =>
                   `  ${
                     isActive
@@ -136,7 +133,7 @@ const SideBar = () => {
               </NavLink>
 
               <NavLink
-                to="/shorts"
+                to="/"
                 className={({ isActive }) =>
                   `  ${
                     isActive

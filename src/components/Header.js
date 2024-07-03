@@ -152,7 +152,7 @@ const Header = () => {
         </div>
       </div>
       {/* Middle-Container - search*/}
-      <div className=" w-1/3  md:w-[40%]  flex  justify-center sm:h-7  md:h-7">
+      <div className=" w-1/3 sm:w-[47%] sm:ml-2 md:w-[40%]  flex  justify-center sm:h-7  md:h-7">
         <div className=" w-full   flex ">
           <input
             type="search"
@@ -224,7 +224,7 @@ const Header = () => {
         <div className="notification-icon sm:hidden py-[0.3rem] px-[0.5rem] rounded-full hover:bg-gray-200 dark:hover:text-black">
           <IoMdNotificationsOutline className="w-5 h-5" />
         </div>
-        <div className="user-icon py-[0.3rem] px-[0.5rem] rounded-full hover:bg-gray-200 dark:hover:text-black border dark:border-none border-none   bg-gray-100">
+        <div className="user-icon py-[0.3rem] px-[0.5rem] rounded-full hover:bg-gray-200 dark:hover:text-black border dark:border-none border-none   bg-gray-100 dark:bg-gray-900 dark:text-white">
           {user ? (
             <div className="flex" onClick={() => handleShowLogout()}>
               <img
@@ -265,11 +265,11 @@ const Header = () => {
             </div>
           ) : (
             <button
-              className="flex gap-2 rounded-3xl  py-1 px-3 items-center sm:gap-0 sm:h-7 sm:px-1 sm:ml-1 sm:border-none md:border-none"
+              className="flex gap-2 rounded-3xl  py-1 px-3  items-center sm:gap-0 sm:h-7 sm:px-1 sm:ml-1 sm:border-none md:border-none dark:bg-gray-900 dark:text-white"
               onClick={() => loginWithRedirect()}
             >
-              <FaUserAlt className="w-4 h-4 sm:hidden" />
-              <span className="text-blue-700 text-sm sm:text-xs sm:w-9  md:w-9 md:text-xs font-medium">
+              <FaUserAlt className="w-4 h-4 sm:hidden " />
+              <span className="text-blue-700 text-sm sm:text-xs sm:w-9  md:w-9 md:text-xs font-medium dark:text-blue-500">
                 sign in
               </span>
             </button>

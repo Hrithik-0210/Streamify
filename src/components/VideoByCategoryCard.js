@@ -28,7 +28,7 @@ const VideoByCategoryCard = ({ item }) => {
             <div className="video-details flex py-2 font-medium">
               <ChannelLogo channelId={channelId} />
 
-              <div className="channel-details flex flex-col overflow-hidden dark:bg-black dark:text-white">
+              <div className="channel-details flex flex-col overflow-hidden ">
                 <div className="title text-[13.9px] my-1 line-clamp-2">
                   {title}
                 </div>
@@ -48,12 +48,12 @@ const VideoByCategoryCard = ({ item }) => {
         </div>
       ) : (
         <div className="video-card-container group w-fit my-[0.40rem]  px-2 py-3 rounded-2xl hover:bg-Video-card-color transition ease-linear delay-150 duration-200 dark:bg-black dark:text-white dark:hover:bg-gray-800">
-          <div className="video-card w-[16.5rem] sm:w-96 sm:h-72 sm:my-1 md:w-80 md:h-64 md:my-2 transition ease-linear  ">
-            <div className="thumbnail-continer rounded-2xl sm:w-96 sm:h-52">
+          <div className="video-card w-[16.5rem] h-60 sm:w-96 sm:h-72 sm:my-1 md:w-80 md:h-64 md:my-2 transition ease-linear  ">
+            <div className="thumbnail-continer rounded-2xl h-36  sm:w-96 sm:h-52">
               <img
                 src={thumbnails.high.url}
                 alt="thumbnail"
-                className="rounded-xl group-hover:rounded-sm transition-all delay-100 w-full sm:w-full sm:h-full"
+                className="rounded-xl group-hover:rounded-sm transition-all object-cover object-center delay-100 w-full h-full sm:w-full sm:h-full"
               />
             </div>
             <div className="video-details flex py-2 font-medium w-full">
