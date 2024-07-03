@@ -10,12 +10,12 @@ const MainContainer = () => {
   if (isMenuOpen)
     return (
       <div className="relative z-0 dark:bg-black dark:text-white">
-        <div className="flex flex-col  w-full absolute top-16 left-24 sm:left-1  md:left-10 dark:bg-black dark:text-white  ">
+        <div className="flex flex-col  w-full absolute top-16 left-24 sm:left-3  md:left-10 dark:bg-black dark:text-white  ">
           <div className="overflow-x-hidden overflow-y-hidden my-1  fixed top-14 left-24 sm:left-0 md:left-0 sm:w-[100%] md:w-[100%] lg:w-[90%] w-[93%] z-50 bg-white py-1 dark:bg-black dark:text-white ">
             <ButtonList />
           </div>
           <div className="relative">
-            <div className=" side-bar h-screen  absolute top-10 left-0 dark:bg-black dark:text-white">
+            <div className=" side-bar h-screen  absolute top-10 left-0 sm:left-[0.30rem] dark:bg-black dark:text-white">
               <VideoContainer />
             </div>
           </div>
@@ -32,7 +32,7 @@ const MainContainer = () => {
             </div>
           </div>
           <div className="relative ">
-            <div className=" side-bar h-screen absolute top-10 left-0 sm:left-0 dark:bg-black dark:text-white">
+            <div className=" side-bar h-screen absolute top-10 left-0 sm:left-[0.30rem] dark:bg-black dark:text-white">
               <VideoContainer />
             </div>
           </div>

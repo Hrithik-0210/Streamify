@@ -67,7 +67,7 @@ const VideoByCategoryContainer = () => {
               <ButtonList />
             </div>
             <div className="relative">
-              <div className="flex flex-wrap gap-1 justify-center  absolute top-10  ">
+              <div className="flex flex-wrap gap-1 justify-center  absolute top-10 ">
                 {searchVideo.map((video) => (
                   <>
                     {video.id.videoId ? (

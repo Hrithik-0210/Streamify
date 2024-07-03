@@ -29,7 +29,7 @@ const ChannelLogo = ({ channelId }) => {
       <img
         src={thumbnails.medium.url}
         alt=""
-        className="w-9 h-9 m-2 rounded-full object-cover object-center"
+        className="w-9 h-9 m-1 rounded-full object-cover object-center"
       />
     );
   }

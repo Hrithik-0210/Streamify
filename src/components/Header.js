@@ -199,7 +199,7 @@ const Header = () => {
         )}
       </div>
       {/* Right-side-Container - userinfo and theme */}
-      <div className="User-info-container  flex  items-center justify-between w-fit gap-2 p-1 mx-2 sm:mx-0 sm:w-24 sm:gap-0  md:gap-0 ">
+      <div className="User-info-container  flex  items-center justify-between w-fit gap-2 p-1 mx-2 sm:my-0 sm:mr-1 sm:w-24 sm:gap-0  md:gap-0 ">
         <div className="create-icon  rounded-full  dark:hover:text-black">
           {themeMode === "light" ? (
             <div
