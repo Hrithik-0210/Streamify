@@ -119,6 +119,7 @@ const Header = () => {
   };
   // console.log(userImageUrl);
   // console.log(suggestions);
+
   return (
     // Header-Container
     <div className=" header-container  flex  justify-between w-[100%]   lg:px-5 xl:px-5 2xl:px-5 py-2  items-center  h-16 fixed top-0 left-0 z-50  bg-white dark:bg-black dark:text-white sm:px-2">

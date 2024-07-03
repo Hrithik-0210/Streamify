@@ -114,19 +114,10 @@ const SideBar = () => {
                 <h2 className="mx-3">Shorts</h2>
               </NavLink>
 
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  `  ${
-                    isActive
-                      ? "bg-gray-100 flex items-center text-[14px]  py-2 pl-2 rounded-xl font-medium dark:bg-gray-800 dark:text-white"
-                      : "bg-white flex items-center text-[14px]  py-2 pl-2 dark:bg-black dark:text-white"
-                  } hover:bg-gray-100 hover:rounded-xl my-1 dark:hover:bg-slate-800 dark:hover:text-white `
-                }
-              >
+              <li className="bg-white flex items-center text-[14px]  py-2 pl-2 dark:bg-black dark:text-white hover:bg-gray-100 hover:rounded-xl my-1 dark:hover:bg-slate-800 dark:hover:text-white">
                 <MdOutlineSubscriptions className="mx-2 w-4 h-4" />
                 <h2 className="mx-3">Subscriptions</h2>
-              </NavLink>
+              </li>
             </ul>
           </div>
           <div className="Section-2 border-b border-gray-300 mx-2 ">

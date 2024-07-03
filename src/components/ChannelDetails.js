@@ -47,7 +47,7 @@ const ChannelDetails = ({ item }) => {
                 {formatViews(videoCount)} videos
               </p>
             </div>
-            <div className="description-container sm:hidden">
+            <div className="description-container sm:hidden ">
               <div className="text-xs font-normal whitespace-pre-line  flex items-end justify-start sm:text-[11.5px] my-2 ">
                 <span className={isExpanded ? "" : "line-clamp-2"}>
                   {description}
@@ -56,7 +56,7 @@ const ChannelDetails = ({ item }) => {
                   <span>
                     <button
                       onClick={toggleExpansion}
-                      className="text-gray-800 font-semibold"
+                      className="text-gray-800 font-semibold dark:text-white"
                     >
                       {isExpanded ? "Show less" : "...more"}
                     </button>
@@ -83,7 +83,7 @@ const ChannelDetails = ({ item }) => {
               <span>
                 <button
                   onClick={toggleExpansion}
-                  className="text-gray-800 font-semibold"
+                  className="text-gray-800 font-semibold dark:text-white"
                 >
                   {isExpanded ? "Show less" : "...more"}
                 </button>

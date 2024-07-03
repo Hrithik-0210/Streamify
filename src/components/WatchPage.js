@@ -73,11 +73,45 @@ const WatchPage = () => {
   function publishTime(publishedAt) {
     const currentDate = new Date();
     const targetDate = new Date(publishedAt);
-    const differenceMs = targetDate - currentDate;
+    const differenceMs = currentDate - targetDate;
+
     const differenceDays = Math.floor(differenceMs / (1000 * 60 * 60 * 24));
-    // console.log(Math.abs(differenceDays));
-    const diff = Math.abs(differenceDays) + " days ago";
-    return diff;
+
+    if (differenceDays >= 365) {
+      const differenceYears = Math.floor(differenceDays / 365);
+      if (differenceYears === 1) {
+        return "1 year ago";
+      } else {
+        return `${differenceYears} years ago`;
+      }
+    } else if (differenceDays >= 30) {
+      const differenceMonths = Math.floor(differenceDays / 30);
+      if (differenceMonths === 1) {
+        return "1 month ago";
+      } else {
+        return `${differenceMonths} months ago`;
+      }
+    } else if (differenceDays > 0) {
+      if (differenceDays === 1) {
+        return "1 day ago";
+      } else {
+        return `${differenceDays} days ago`;
+      }
+    } else {
+      const differenceHours = Math.floor(differenceMs / (1000 * 60 * 60));
+      if (differenceHours === 1) {
+        return "1 hour ago";
+      } else if (differenceHours > 0) {
+        return `${differenceHours} hours ago`;
+      } else {
+        const differenceMinutes = Math.floor(differenceMs / (1000 * 60));
+        if (differenceMinutes === 1) {
+          return "1 minute ago";
+        } else {
+          return `${differenceMinutes} minutes ago`;
+        }
+      }
+    }
   }
 
   const handleSubscribe = () => {
@@ -159,7 +193,9 @@ const WatchPage = () => {
                   <div className="like-container hover:bg-gray-200 rounded-l-full flex items-center dark:bg-gray-900 dark:text-gray-200 dark:font-medium dark:hover:bg-gray-700 ">
                     <div
                       className={`flex border-r border-gray-400 my-1 px-4  gap-2 items-center justify-center cursor-pointer ${
-                        liked ? "text-blue-800" : "text-black"
+                        liked
+                          ? "text-blue-800 dark:text-blue-300"
+                          : "text-black dark:text-white"
                       }`}
                       onClick={handleLike}
                     >
