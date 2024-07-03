@@ -126,7 +126,7 @@ const Header = () => {
       <div className="flex  items-center justify-between ">
         <div>
           <HiBars3
-            className="w-6 h-6 mx-3 cursor-pointer sm:mx-1 sm:ml-3 sm:w-6 sm:h-6 md:mx-1 md:ml-3 md:w-5 md:h-5"
+            className="w-6 h-6 mx-3 cursor-pointer sm:mx-0 sm:ml-3 sm:w-6 sm:h-6 md:mx-1 md:ml-3 md:w-5 md:h-5"
             onClick={() => toggleMenuHandler()}
           />
         </div>
@@ -152,7 +152,7 @@ const Header = () => {
         </div>
       </div>
       {/* Middle-Container - search*/}
-      <div className=" w-1/3 sm:w-[47%] sm:ml-2 md:w-[40%]  flex  justify-center sm:h-7  md:h-7">
+      <div className=" w-1/3 sm:w-[45%] sm:ml-2 md:w-[40%]  flex  justify-center sm:h-7  md:h-7">
         <div className=" w-full   flex ">
           <input
             type="search"

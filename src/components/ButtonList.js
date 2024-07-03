@@ -6,7 +6,7 @@ import { NavLink, useLocation } from "react-router-dom";
 const List = [
   "All",
   "Hindi Music",
-  "Mixes",
+  "DSA",
   "Sony",
   "Live",
   "News",
