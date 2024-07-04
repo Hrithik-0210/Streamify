@@ -10,7 +10,7 @@ import VideoByCategoryContainer from "./components/VideoByCategoryContainer";
 import { ThemeProvider } from "./context/ThemeContext";
 import { useEffect, useState } from "react";
 import ChannelPageContainer from "./components/ChannelPageContainer";
-// import ExeptionPage from "./utils/ExeptionPage";
+import PlaylistItemsContainer from "./components/PlaylistItemsContainer";
 
 const appRouter = createBrowserRouter([
   {
@@ -37,6 +37,14 @@ const appRouter = createBrowserRouter([
       {
         path: "/channel",
         element: <ChannelPageContainer />,
+      },
+      {
+        path: "/playlist",
+        element: <ChannelPageContainer />,
+      },
+      {
+        path: "/playlistItem",
+        element: <PlaylistItemsContainer />,
       },
     ],
   },

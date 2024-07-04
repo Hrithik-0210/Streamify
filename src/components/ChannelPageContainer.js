@@ -1,9 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 import ChannelDetails from "./ChannelDetails";
 import ChannelVideos from "./ChannelVideos";
 import { useSelector } from "react-redux";
 import { GOOGLE_API_KEY } from "../utils/Constants";
+import PlaylistContainer from "./PlaylistContainer";
 
 const ChannelPageContainer = () => {
   const [channelDetails, setChannelDetails] = useState([]);
@@ -34,37 +35,48 @@ const ChannelPageContainer = () => {
     getChannelVideos();
   }, [getChannelDetails, getChannelVideos]);
 
+  const location = useLocation();
+  console.log(location);
+
   const isMenuOpen = useSelector((store) => store.menu.isMenuOpen);
 
   if (channelVideos && channelDetails) {
     if (isMenuOpen) {
       return (
-        <div className=" absolute top-20 left-36 sm:top-20 sm:p-2 md:left-0 sm:left-0  flex flex-col justify-center items-center ">
-          <div className=" sm:pb-4 sm:w-[92svw]  border-b-2 w-[85svw] pb-5 ">
+        <div className=" absolute top-20 left-52 sm:top-20 sm:p-2 md:left-0 sm:left-0  flex flex-col justify-center items-center ">
+          <div className=" sm:w-[92svw]  border-b-2 w-[85svw]  flex items-start justify-start">
             <ChannelDetails item={channelDetails} />
           </div>
-          <div className="  flex flex-wrap gap-1 sm:flex-col w-full justify-center mt-4 ">
-            {channelVideos.map((video) => (
-              <Link to={"/watch?v=" + video.id.videoId} key={video.id}>
-                <ChannelVideos video={video} key={video.id.videoId} />
-              </Link>
-            ))}
-          </div>
+          {location.pathname === "/playlist" ? (
+            <PlaylistContainer channelId={channelId} />
+          ) : (
+            <div className="  flex flex-wrap gap-1 sm:flex-col w-full justify-center mt-4 ">
+              {channelVideos.map((video) => (
+                <Link to={"/watch?v=" + video.id.videoId} key={video.id}>
+                  <ChannelVideos video={video} key={video.id.videoId} />
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       );
     } else {
       return (
-        <div className=" absolute top-20 left-48 sm:top-20  sm:left-0 md:left-0 sm:p-2 flex flex-col justify-center items-center ">
-          <div className=" pb-5 sm:pb-4 border-b-2 sm:w-[92svw] w-[85svw]  ">
+        <div className=" absolute top-20 left-52 sm:top-20  sm:left-0 md:left-0 sm:p-2 flex flex-col justify-center items-center ">
+          <div className=" border-b-2 sm:w-[92svw] w-[85svw] flex items-start justify-start ">
             <ChannelDetails item={channelDetails} />
           </div>
-          <div className=" flex flex-wrap gap-1 sm:flex-col w-full justify-center mt-4 ">
-            {channelVideos.map((video) => (
-              <Link to={"/watch?v=" + video.id.videoId} key={video.id}>
-                <ChannelVideos video={video} key={video.id.videoId} />
-              </Link>
-            ))}
-          </div>
+          {location.pathname === "/playlist" ? (
+            <PlaylistContainer channelId={channelId} />
+          ) : (
+            <div className=" flex flex-wrap gap-1 sm:flex-col w-full justify-center mt-4 ">
+              {channelVideos.map((video) => (
+                <Link to={"/watch?v=" + video.id.videoId} key={video.id}>
+                  <ChannelVideos video={video} key={video.id.videoId} />
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       );
     }
