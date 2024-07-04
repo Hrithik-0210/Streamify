@@ -29,7 +29,7 @@ const SideVideoCard = ({ items }) => {
     <div className=" w-full ">
       <div className="video-card-container group w-full h-full my-2 px-2 rounded-2xl  transition ease-linear delay-150  duration-200   ">
         <div className="video-card w-[100%] h-fit transition ease-linear  grid grid-flow-col grid-cols-12 gap-2  ">
-          <div className="thumbnail-container rounded-2xl  h-32  col-span-6 items-center">
+          <div className="thumbnail-container rounded-2xl  h-28  col-span-6 items-center">
             <img
               src={thumbnails.medium.url}
               alt="thumbnail"

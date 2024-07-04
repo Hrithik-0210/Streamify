@@ -5,7 +5,7 @@ const PlaylistCards = ({ item }) => {
   const { localized, thumbnails } = snippet;
 
   return (
-    <div className="playlist-cardContainer py-2 px-1 w-[16.2rem] sm:w-fit sm:h-64 h-56 my-1 rounded-2xl dark:hover:bg-gray-800 dark:hover:text-white sm:bg-gray-100 ">
+    <div className="playlist-cardContainer py-2 px-1 w-[16.2rem] sm:w-fit sm:h-64 h-56 my-1 rounded-2xl dark:hover:bg-gray-800 dark:hover:text-white sm:bg-gray-100 dark:bg-gray-900 dark:text-white">
       <div className="playlist-thumbnail-container w-64 h-36 sm:w-96 sm:h-48 rounded-2xl">
         <img
           src={thumbnails.high.url}
