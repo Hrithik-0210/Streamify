@@ -31,7 +31,7 @@ const ChannelDetails = ({ item }) => {
       <div className="flex flex-col  pl-5">
         <div className="channelDetails-container sm:w-[94svw]  w-[80svw] mx-auto mb-4">
           <div className="flex sm:gap-2 items-center  w-full gap-4 ">
-            <div className="channelImg-container sm:w-20 sm:h-20 w-36 h-36 rounded-full ">
+            <div className="channelImg-container sm:w-20 sm:h-20 w-72 h-fit rounded-full ">
               <img
                 src={thumbnails.high.url}
                 alt=""
