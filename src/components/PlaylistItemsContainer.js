@@ -13,7 +13,7 @@ const PlaylistItemsContainer = () => {
   const getPlaylistItem = useCallback(async () => {
     const data = await fetch(PLAYLIST_ITEM_API);
     const jsonData = await data.json();
-    console.log(jsonData);
+    // console.log(jsonData);
     setPlaylistItem(jsonData.items);
   }, [PLAYLIST_ITEM_API]);
 

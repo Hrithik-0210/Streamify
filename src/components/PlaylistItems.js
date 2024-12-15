@@ -4,7 +4,7 @@ import { BsThreeDots } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 const PlaylistItems = ({ items }) => {
-  console.log(items);
+  // console.log(items);
 
   const { snippet } = items;
   const { channelId, thumbnails, channelTitle, publishedAt, title } = snippet;

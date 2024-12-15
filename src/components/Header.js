@@ -77,7 +77,7 @@ const Header = () => {
       // Construct the API URL dynamically with the search query
       const url = `${YOUTUBE_SEARCH_API}&q=${encodeURIComponent(
         searchQuery
-      )}&maxResults=10`;
+      )}&maxResults=5`;
 
       // Fetch the data from YouTube API
       const response = await fetch(url);
@@ -86,12 +86,16 @@ const Header = () => {
       // Check if the response has items
       if (data.items) {
         // Map through the items and extract titles (you can modify this based on what you need)
-        const suggestionList = data.items.map((item) => {
-          const title = item.snippet.title;
-          return title.split(" ").slice(0, 3).join(" "); // Limit to 3 words
-        });
-        setSuggestions(suggestionList);
-
+        const suggestionList = data.items
+          .map((item) => {
+            const title = item.snippet.title;
+            return title.split(" ").slice(0, 5).join(" "); // Limit to 3 words
+          })
+          .filter((title) => {
+            // Ensure that the suggestion is relevant to the search query
+            // Convert both the suggestion and query to lowercase to make the check case-insensitive
+            return title.toLowerCase().includes(searchQuery.toLowerCase());
+          });
         // Cache the results in Redux (optional, if you want to avoid refetching)
         dispatch(
           cacheResults({
@@ -106,13 +110,17 @@ const Header = () => {
   }, [searchQuery, dispatch]);
 
   useEffect(() => {
+    if (searchQuery.trim() === "") {
+      setSuggestions([]); // Clear suggestions if search query is empty
+      return;
+    }
     const timer = setTimeout(() => {
       if (searchCache[searchQuery]) {
         setSuggestions(searchCache[searchQuery]);
       } else {
         showSuggestions();
       }
-    }, 200);
+    }, 400);
     return () => {
       clearTimeout(timer);
     };
@@ -217,7 +225,7 @@ const Header = () => {
                   >
                     <CiSearch />
                     <span className="text-[13px] ">{suggestion}</span>
-                    {console.log(suggestion)}
+                    {/* {console.log(suggestion)} */}
                   </li>
                 ))}
             </ul>

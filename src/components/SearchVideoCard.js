@@ -7,7 +7,7 @@ import ChannelLogo from "./ChannelLogo";
 import usePublishTime from "../utils/usePublishTime";
 
 const SearchVideoCard = ({ item }) => {
-  console.log(item);
+  // console.log(item);
   const { snippet } = item;
   const {
     channelTitle,

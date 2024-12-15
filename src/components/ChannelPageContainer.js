@@ -26,7 +26,7 @@ const ChannelPageContainer = () => {
   const getChannelVideos = useCallback(async () => {
     const data = await fetch(VIDEOS_BY_CHANNEL_API);
     const jsonData = await data.json();
-    console.log(jsonData);
+    // console.log(jsonData);
     setChannelVideos(jsonData.items);
   }, [VIDEOS_BY_CHANNEL_API]);
 
@@ -36,7 +36,7 @@ const ChannelPageContainer = () => {
   }, [getChannelDetails, getChannelVideos]);
 
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
 
   const isMenuOpen = useSelector((store) => store.menu.isMenuOpen);
 

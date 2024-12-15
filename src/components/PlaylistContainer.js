@@ -11,14 +11,14 @@ const PlaylistContainer = ({ channelId }) => {
   const getPlayListDetails = useCallback(async () => {
     const data = await fetch(PLAYLIST_DETAILS_API);
     const jsonData = await data.json();
-    console.log(jsonData);
+    // console.log(jsonData);
     setPlaylists(jsonData.items);
   }, [PLAYLIST_DETAILS_API]);
 
   useEffect(() => {
     getPlayListDetails();
   }, [getPlayListDetails]);
-  console.log(playlists.id);
+  // console.log(playlists.id);
   return (
     <div className="flex flex-wrap gap-3 justify-center items-center sm:justify-center  mt-4  ">
       {playlists.map((playlist) => (
