@@ -71,14 +71,38 @@ const Header = () => {
   };
 
   const showSuggestions = useCallback(async () => {
-    const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
-    const jsonData = await data.json();
-    setSuggestions(jsonData[1]);
-    dispatch(
-      cacheResults({
-        [searchQuery]: jsonData[1],
-      })
-    );
+    if (searchQuery.trim() === "") return; // Prevent fetch if search query is empty
+
+    try {
+      // Construct the API URL dynamically with the search query
+      const url = `${YOUTUBE_SEARCH_API}&q=${encodeURIComponent(
+        searchQuery
+      )}&maxResults=10`;
+
+      // Fetch the data from YouTube API
+      const response = await fetch(url);
+      const data = await response.json();
+
+      // Check if the response has items
+      if (data.items) {
+        // Map through the items and extract titles (you can modify this based on what you need)
+        const suggestionList = data.items.map((item) => {
+          const title = item.snippet.title;
+          return title.split(" ").slice(0, 3).join(" "); // Limit to 3 words
+        });
+        setSuggestions(suggestionList);
+
+        // Cache the results in Redux (optional, if you want to avoid refetching)
+        dispatch(
+          cacheResults({
+            [searchQuery]: suggestionList,
+          })
+        );
+      }
+    } catch (error) {
+      console.error("Error fetching YouTube search suggestions:", error);
+      // Optionally handle errors here (e.g., show an error message)
+    }
   }, [searchQuery, dispatch]);
 
   useEffect(() => {
@@ -193,6 +217,7 @@ const Header = () => {
                   >
                     <CiSearch />
                     <span className="text-[13px] ">{suggestion}</span>
+                    {console.log(suggestion)}
                   </li>
                 ))}
             </ul>
