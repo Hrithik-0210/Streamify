@@ -22,8 +22,8 @@ const SearchVideoCard = ({ item }) => {
 
   //   console.log(snippet);
   return (
-    <div className="video-card-container   transition ease-linear delay-150  duration-200 w-[66svw] md:w-[84svw]  md:h-fit xl:h-fit lg:h-fit h-fit   my-1 rounded-2xl grid grid-flow-col grid-cols-12 gap-2 sm:flex sm:flex-col sm:gap-0  sm:my-0 sm:w-fit sm:h-80  ">
-      <div className="thumbnail-container rounded-xl   w-full md:h-40 h-[16.8rem]  items-center sm:m-1 m-2 col-span-5 overflow-hidden hover:rounded-sm transition-all ease-linear delay-100 duration-150 sm:w-96 sm:h-52 lg:h-[11rem] xl:h-52 2xl:h-[14.5rem] ">
+    <div className="video-card-container   transition ease-linear delay-150  duration-200 w-[66svw] md:w-[84svw]   md:h-fit xl:h-fit lg:h-fit h-fit   my-1 rounded-2xl grid grid-flow-col grid-cols-12 gap-2 sm:flex sm:flex-col sm:gap-0  sm:my-0 sm:w-fit sm:h-80">
+      <div className="thumbnail-container rounded-xl   w-full md:h-44 h-[16.8rem]  items-center sm:m-1 m-2 col-span-5 overflow-hidden hover:rounded-sm transition-all ease-linear delay-100 duration-150 sm:w-96 sm:h-52 lg:h-[12rem] xl:h-52 2xl:h-[16.5rem]  ">
         <img
           src={thumbnails.high.url}
           alt="thumbnail"
