@@ -6,7 +6,7 @@ import { FaUserAlt } from "react-icons/fa";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { RiVideoAddLine } from "react-icons/ri";
 import { BiSolidMicrophone } from "react-icons/bi";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { toggleMenu } from "../utils/menuBarSlice";
 import { YOUTUBE_SEARCH_API } from "../utils/Constants";
 import { cacheResults } from "../utils/searchSlice";
@@ -16,6 +16,7 @@ import { FaMoon } from "react-icons/fa";
 import { FiSun } from "react-icons/fi";
 import logo_dark from "../images/youtube -dark-theme-logo.png";
 import { useAuth0 } from "@auth0/auth0-react";
+import jsonp from "jsonp";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -24,9 +25,10 @@ const Header = () => {
   const { themeMode, darkTheme, lightTheme } = useTheme();
   const [userImageUrl, setUserImageUrl] = useState(null);
   const [showUserInfo, setShowUserInfo] = useState(false);
+  const [focusedIndex, setFocusedIndex] = useState(-1); // Track which suggestion is focused
 
   const navigate = useNavigate();
-  const searchCache = useSelector((store) => store.search);
+  // const searchCache = useSelector((store) => store.search);
   const dispatch = useDispatch();
 
   const { user, loginWithRedirect, logout } = useAuth0();
@@ -71,68 +73,64 @@ const Header = () => {
   };
 
   const showSuggestions = useCallback(async () => {
-    if (searchQuery.trim() === "") return; // Prevent fetch if search query is empty
+    if (searchQuery.trim() === "") return; // Prevent fetch if query is empty
+
+    const url = `${YOUTUBE_SEARCH_API}${encodeURIComponent(searchQuery)}`;
+    // console.log("Fetching from URL: ", url);
 
     try {
-      // Construct the API URL dynamically with the search query
-      const url = `${YOUTUBE_SEARCH_API}&q=${encodeURIComponent(
-        searchQuery
-      )}&maxResults=5`;
+      jsonp(url, { param: "callback" }, (err, data) => {
+        if (err) {
+          console.error("Error fetching YouTube search suggestions:", err);
+          return;
+        }
 
-      // Fetch the data from YouTube API
-      const response = await fetch(url);
-      const data = await response.json();
+        if (data && Array.isArray(data[1])) {
+          const suggestionList = data[1].map((item) => item[0]);
 
-      // Check if the response has items
-      if (data.items) {
-        // Map through the items and extract titles (you can modify this based on what you need)
-        const suggestionList = data.items
-          .map((item) => {
-            const title = item.snippet.title;
-            return title.split(" ").slice(0, 5).join(" "); // Limit to 3 words
-          })
-          .filter((title) => {
-            // Ensure that the suggestion is relevant to the search query
-            // Convert both the suggestion and query to lowercase to make the check case-insensitive
-            return title.toLowerCase().includes(searchQuery.toLowerCase());
-          });
-        // Cache the results in Redux (optional, if you want to avoid refetching)
-        dispatch(
-          cacheResults({
-            [searchQuery]: suggestionList,
-          })
-        );
-      }
+          // console.log("Filtered Suggestions: ", suggestionList);
+          dispatch(cacheResults({ [searchQuery]: suggestionList }));
+          setSuggestions(suggestionList);
+        }
+      });
     } catch (error) {
       console.error("Error fetching YouTube search suggestions:", error);
-      // Optionally handle errors here (e.g., show an error message)
     }
   }, [searchQuery, dispatch]);
 
   useEffect(() => {
-    if (searchQuery.trim() === "") {
-      setSuggestions([]); // Clear suggestions if search query is empty
-      return;
-    }
     const timer = setTimeout(() => {
-      if (searchCache[searchQuery]) {
-        setSuggestions(searchCache[searchQuery]);
-      } else {
+      if (searchQuery.trim() !== "") {
         showSuggestions();
+      } else {
+        setSuggestions([]); // Clear suggestions if search query is empty
       }
-    }, 400);
+    }, 400); // 400ms debounce delay
+
     return () => {
-      clearTimeout(timer);
+      clearTimeout(timer); // Cleanup the timeout on component unmount or searchQuery change
     };
-  }, [showSuggestions, searchCache, searchQuery]);
+  }, [searchQuery, showSuggestions]);
 
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
   };
 
   const handleKeyDown = (event) => {
+    if (event.key === "ArrowDown") {
+      // Move focus down
+      setFocusedIndex((prevIndex) => (prevIndex + 1) % suggestions.length);
+    }
+    if (event.key === "ArrowUp") {
+      setFocusedIndex(
+        (prevIndex) => (prevIndex - 1 + suggestions.length) % suggestions.length
+      );
+    }
     if (event.key === "Enter") {
-      navigate(`/results?search_query=${encodeURIComponent(searchQuery)}`);
+      const selectedSuggestion = suggestions[focusedIndex];
+      navigate(
+        `/results?search_query=${encodeURIComponent(selectedSuggestion)}`
+      );
     }
   };
 
@@ -220,8 +218,13 @@ const Header = () => {
                 suggestions.map((suggestion, index) => (
                   <li
                     key={index}
-                    className="flex items-center gap-3 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700 dark:text-white  px-4 py-[0.30rem]  "
+                    className={`flex items-center gap-3 cursor-pointer px-4 py-[0.30rem]  ${
+                      focusedIndex === index
+                        ? "bg-gray-200 dark:bg-gray-700" // Highlight the focused suggestion
+                        : "hover:bg-gray-200 dark:hover:bg-gray-700"
+                    } dark:text-white`}
                     onMouseDown={(e) => onClickSuggestion(e)}
+                    onMouseEnter={() => setFocusedIndex(index)}
                   >
                     <CiSearch />
                     <span className="text-[13px] ">{suggestion}</span>
