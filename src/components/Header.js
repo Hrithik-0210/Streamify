@@ -105,7 +105,7 @@ const Header = () => {
       } else {
         setSuggestions([]); // Clear suggestions if search query is empty
       }
-    }, 400); // 400ms debounce delay
+    }, 300); // 300ms debounce delay
 
     return () => {
       clearTimeout(timer); // Cleanup the timeout on component unmount or searchQuery change
