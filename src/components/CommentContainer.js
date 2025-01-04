@@ -23,7 +23,7 @@ const CommentContainer = ({ comment }) => {
     getComments();
   }, [getComments]);
 
-  console.log(comments);
+  // console.log(comments);
   const commentDetails = comments.map((coment) => coment);
   // const commentReplies = comments.map((coment) => coment?.replies?.comments);
   // console.log(commentDetails[0]);

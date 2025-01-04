@@ -18,6 +18,7 @@ import CommentContainer from "./CommentContainer";
 import SubscriberCount from "./SubscriberCount";
 import ChannelLogo from "./ChannelLogo";
 import { GOOGLE_API_KEY } from "../utils/Constants";
+import Linkify from "react-linkify";
 
 const WatchPage = () => {
   const [videoDetails, setVideoDetails] = useState([]);
@@ -113,6 +114,20 @@ const WatchPage = () => {
       }
     }
   }
+
+  const renderLink = (href, text, key) => {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        key={key}
+        className="text-blue-500 hover:underline"
+      >
+        {text}
+      </a>
+    );
+  };
 
   const handleSubscribe = () => {
     if (subscribed === "Subscribe") {
@@ -250,9 +265,9 @@ const WatchPage = () => {
                 {publishTime(publishedAt)}
               </p>
             </div>
-            <div className="description-content mt-2 text-xs font-normal whitespace-pre-line  flex items-end justify-start ">
+            <div className="description-content mt-2 text-xs font-normal whitespace-pre-line  flex items-end justify-start  ">
               <span className={isExpanded ? "" : "line-clamp-2"}>
-                {description}
+                <Linkify render={renderLink}>{description}</Linkify>
               </span>
               {description.split("\n").length > 2 && (
                 <span>
